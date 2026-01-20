@@ -1,0 +1,14 @@
+# Core ML/LLM dependencies
+torch>=2.0.0
+transformers>=4.40.0
+
+# LangChain ecosystem
+langchain-huggingface>=0.0.3
+langchain-core>=0.2.0
+langgraph>=0.2.0
+
+# For Mermaid graph visualization (PNG export)
+grandalf>=0.8
+
+# SQLite checkpointing support (used in task8)
+langgraph-checkpoint-sqlite>=1.0.0
