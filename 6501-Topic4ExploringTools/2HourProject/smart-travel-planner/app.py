@@ -1,0 +1,126 @@
+#!/usr/bin/env python3
+"""Flask API server for Smart Travel Planner website.
+
+Serves the static website AND provides an API endpoint for weather data.
+"""
+
+import os
+from flask import Flask, jsonify, request, send_from_directory
+from flask_cors import CORS
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
+# Import our weather tool
+from src.tools.weather import get_weather_forecast
+
+app = Flask(__name__, static_folder='.', static_url_path='')
+CORS(app)  # Enable CORS for local development
+
+
+# ==========================================================================
+# STATIC FILE SERVING
+# ==========================================================================
+
+@app.route('/')
+def serve_index():
+    """Serve the main index.html page."""
+    return send_from_directory('.', 'index.html')
+
+
+@app.route('/<path:path>')
+def serve_static(path):
+    """Serve static files (CSS, JS, images)."""
+    return send_from_directory('.', path)
+
+
+# ==========================================================================
+# API ENDPOINTS
+# ==========================================================================
+
+@app.route('/api/weather', methods=['GET'])
+def get_weather():
+    """
+    Get weather forecast for a city.
+    
+    Query Parameters:
+        city (str): Name of the city (required)
+        units (str): 'metric' or 'imperial' (default: 'metric')
+    
+    Returns:
+        JSON with weather data or error message
+    """
+    city = request.args.get('city', '').strip()
+    units = request.args.get('units', 'metric')
+    
+    if not city:
+        return jsonify({
+            'error': 'City parameter is required',
+            'example': '/api/weather?city=Paris&units=metric'
+        }), 400
+    
+    if units not in ['metric', 'imperial']:
+        units = 'metric'
+    
+    try:
+        # Call our weather tool
+        result = get_weather_forecast.invoke({
+            'city': city,
+            'units': units
+        })
+        
+        # Check if result contains an error
+        if result.startswith('❌'):
+            return jsonify({
+                'error': result.replace('❌ ', ''),
+                'city': city
+            }), 400
+        
+        return jsonify({
+            'success': True,
+            'city': city,
+            'units': units,
+            'weather': result
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'error': f'Failed to fetch weather: {str(e)}',
+            'city': city
+        }), 500
+
+
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Simple health check endpoint."""
+    api_key_configured = bool(os.getenv('OPENWEATHER_API_KEY'))
+    return jsonify({
+        'status': 'healthy',
+        'api_key_configured': api_key_configured
+    })
+
+
+# ==========================================================================
+# MAIN
+# ==========================================================================
+
+if __name__ == '__main__':
+    # Check for API key
+    if not os.getenv('OPENWEATHER_API_KEY'):
+        print("\n⚠️  Warning: OPENWEATHER_API_KEY not set!")
+        print("   Copy .env.example to .env and add your API key.")
+        print("   Get a free key at: https://openweathermap.org/api\n")
+    
+    print("\n🌤️  TripCast - Smart Travel Planner")
+    print("=" * 40)
+    print("\n🚀 Server starting...")
+    print("   Website: http://localhost:3000")
+    print("   API:     http://localhost:3000/api/weather?city=Paris")
+    print("\n   Press Ctrl+C to stop.\n")
+    
+    app.run(
+        host='0.0.0.0',
+        port=3000,
+        debug=True
+    )

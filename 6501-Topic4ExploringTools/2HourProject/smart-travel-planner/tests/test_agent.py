@@ -45,6 +45,8 @@ class TestTravelAgentCreation:
         create_travel_agent(model="gpt-4o")
         
         mock_llm.assert_called_once_with(model="gpt-4o", temperature=0.7)
+        # Verify create_react_agent was called with prompt parameter
+        mock_create_agent.assert_called_once()
     
     @patch('src.agent.travel_agent.ChatOpenAI')
     @patch('src.agent.travel_agent.create_react_agent')

@@ -146,10 +146,11 @@ def create_travel_agent(model: str = "gpt-4o-mini", temperature: float = 0.7):
     """
     llm = ChatOpenAI(model=model, temperature=temperature)
     
+    # Use 'prompt' parameter (newer LangGraph API) for system instructions
     agent = create_react_agent(
         llm,
         tools=[get_weather_forecast],
-        state_modifier=SYSTEM_PROMPT,
+        prompt=SYSTEM_PROMPT,
     )
     
     return agent
