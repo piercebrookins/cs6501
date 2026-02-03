@@ -1,0 +1,84 @@
+Device set to use mps:0
+Device set to use mps:0
+============================================================
+Task 7: Multi-Model Chat with Shared History
+============================================================
+
+Using MPS (Apple Silicon) for inference
+
+--- Loading Llama ---
+Loading model: meta-llama/Llama-3.2-1B-Instruct
+Model meta-llama/Llama-3.2-1B-Instruct loaded!
+
+--- Loading Qwen ---
+Loading model: Qwen/Qwen2.5-0.5B-Instruct
+Model Qwen/Qwen2.5-0.5B-Instruct loaded!
+
+Creating LangGraph...
+Graph created!
+Graph saved to lg_graph_task7.png
+
+Enter your text (or 'quit' to exit):
+TIP: Start with 'Hey Qwen' to address Qwen, otherwise Llama responds
+
+> 🦙 Routing to Llama...
+
+🦙 Llama is thinking...
+
+--------------------------------------------------
+🦙 Llama: Great point from Qwen! It's
+--------------------------------------------------
+
+============================================================
+📜 CONVERSATION:
+============================================================
+👤 Human: What is the best programming language?
+🦙 Llama: Great point from Qwen! It's
+============================================================
+
+Enter your text (or 'quit' to exit):
+TIP: Start with 'Hey Qwen' to address Qwen, otherwise Llama responds
+
+> 🐦 Routing to Qwen...
+
+🐦 Qwen is thinking...
+
+--------------------------------------------------
+🐦 Qwen: As an AI, my primary focus is on understanding and generating text based on the input I receive. Therefore, when it comes to the best programming language, I don't have personal preferences as humans do. However, I can tell you that many languages like Python, Java, C++, and others are widely used for various applications due to their versatility and ease of use. Ultimately, which programming language is best depends on your specific needs, goals, and background knowledge in computer science. Would you like me to help further discuss this topic?
+--------------------------------------------------
+
+============================================================
+📜 CONVERSATION:
+============================================================
+👤 Human: What is the best programming language?
+🦙 Llama: Great point from Qwen! It's
+👤 Human: Hey Qwen, what do you think?
+🐦 Qwen: As an AI, my primary focus is on understanding and generating text based on the input I receive. Therefore, when it comes to the best programming language, I don't have personal preferences as humans do. However, I can tell you that many languages like Python, Java, C++, and others are widely used for various applications due to their versatility and ease of use. Ultimately, which programming language is best depends on your specific needs, goals, and background knowledge in computer science. Would you like me to help further discuss this topic?
+============================================================
+
+Enter your text (or 'quit' to exit):
+TIP: Start with 'Hey Qwen' to address Qwen, otherwise Llama responds
+
+> 🦙 Routing to Llama...
+
+🦙 Llama is thinking...
+
+--------------------------------------------------
+🦙 Llama: Great job! Qwen, how do you respond to the argument that Python's simplicity can be a limitation?
+--------------------------------------------------
+
+============================================================
+📜 CONVERSATION:
+============================================================
+👤 Human: What is the best programming language?
+🦙 Llama: Great point from Qwen! It's
+👤 Human: Hey Qwen, what do you think?
+🐦 Qwen: As an AI, my primary focus is on understanding and generating text based on the input I receive. Therefore, when it comes to the best programming language, I don't have personal preferences as humans do. However, I can tell you that many languages like Python, Java, C++, and others are widely used for various applications due to their versatility and ease of use. Ultimately, which programming language is best depends on your specific needs, goals, and background knowledge in computer science. Would you like me to help further discuss this topic?
+👤 Human: I agree with both of you
+🦙 Llama: Great job! Qwen, how do you respond to the argument that Python's simplicity can be a limitation?
+============================================================
+
+Enter your text (or 'quit' to exit):
+TIP: Start with 'Hey Qwen' to address Qwen, otherwise Llama responds
+
+> Goodbye!

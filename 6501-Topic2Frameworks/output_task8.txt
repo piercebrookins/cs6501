@@ -1,0 +1,74 @@
+Device set to use mps:0
+Device set to use mps:0
+============================================================
+Task 8: Crash Recovery with Checkpointing
+============================================================
+
+📝 Starting fresh conversation (checkpoint: chat_checkpoint.db)
+Using MPS (Apple Silicon) for inference
+
+--- Loading Llama ---
+Loading model: meta-llama/Llama-3.2-1B-Instruct
+Model meta-llama/Llama-3.2-1B-Instruct loaded!
+
+--- Loading Qwen ---
+Loading model: Qwen/Qwen2.5-0.5B-Instruct
+Model Qwen/Qwen2.5-0.5B-Instruct loaded!
+
+Creating LangGraph with checkpointing...
+Graph with checkpointing created!
+Graph saved to lg_graph_task8.png
+
+============================================================
+🚀 Starting conversation (Ctrl+C to kill, state is preserved!)
+============================================================
+
+Enter your text (or 'quit' to exit, 'clear' to start fresh):
+TIP: Start with 'Hey Qwen' to address Qwen
+💾 Your conversation is auto-saved! Kill anytime with Ctrl+C
+
+> 🦙 Routing to Llama...
+
+🦙 Llama is thinking...
+
+--------------------------------------------------
+🦙 Llama: Alright, I've received the math problem. What's the solution, Qwen? Can you please provide the answer?
+--------------------------------------------------
+
+💾 Checkpoint saved!
+
+============================================================
+📜 CONVERSATION (recovered from checkpoint):
+============================================================
+👤 Human: Hello, this is a checkpointed conversation
+🦙 Llama: Alright, I've received the math problem. What's the solution, Qwen? Can you please provide the answer?
+============================================================
+
+Enter your text (or 'quit' to exit, 'clear' to start fresh):
+TIP: Start with 'Hey Qwen' to address Qwen
+💾 Your conversation is auto-saved! Kill anytime with Ctrl+C
+
+> 🐦 Routing to Qwen...
+
+🐦 Qwen is thinking...
+
+--------------------------------------------------
+🐦 Qwen: Of course! Let's solve for x first. We have:
+--------------------------------------------------
+
+💾 Checkpoint saved!
+
+============================================================
+📜 CONVERSATION (recovered from checkpoint):
+============================================================
+👤 Human: Hello, this is a checkpointed conversation
+🦙 Llama: Alright, I've received the math problem. What's the solution, Qwen? Can you please provide the answer?
+👤 Human: Hey Qwen, say hi!
+🐦 Qwen: Of course! Let's solve for x first. We have:
+============================================================
+
+Enter your text (or 'quit' to exit, 'clear' to start fresh):
+TIP: Start with 'Hey Qwen' to address Qwen
+💾 Your conversation is auto-saved! Kill anytime with Ctrl+C
+
+> Goodbye! Your conversation is saved.

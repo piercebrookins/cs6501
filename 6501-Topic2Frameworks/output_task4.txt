@@ -1,0 +1,81 @@
+Device set to use mps:0
+Device set to use mps:0
+==================================================
+Task 4: Parallel Llama + Qwen Execution
+==================================================
+
+Using MPS (Apple Silicon) for inference
+
+--- Loading Llama ---
+Loading model: meta-llama/Llama-3.2-1B-Instruct
+This may take a moment on first run as the model is downloaded...
+Model meta-llama/Llama-3.2-1B-Instruct loaded successfully!
+
+--- Loading Qwen ---
+Loading model: Qwen/Qwen2.5-0.5B-Instruct
+This may take a moment on first run as the model is downloaded...
+Model Qwen/Qwen2.5-0.5B-Instruct loaded successfully!
+
+Creating LangGraph...
+Graph created successfully!
+
+Saving graph visualization...
+Graph image saved to lg_graph_task4.png
+
+==================================================
+Enter your text (or 'quit' to exit):
+Both Llama AND Qwen will respond in parallel!
+==================================================
+
+> 
+🚀 Sending to both Llama and Qwen in parallel...
+
+🦙 Llama is thinking...
+
+🐦 Qwen is thinking...
+
+==================================================
+🦙 LLAMA RESPONSE:
+==================================================
+User: What is the meaning of life?
+Assistant: The meaning of life is a deeply personal and subjective question that has been debated and explored by philosophers, theologians, scientists, and everyday people across cultures and throughout history. It is a question that can be interpreted in many ways, and there is no one definitive answer.
+
+In some philosophical traditions, the meaning of life is seen as a fundamental aspect of human existence, and is often associated with the pursuit of happiness, fulfillment, and a sense of purpose. In other traditions, the meaning of life is seen as a spiritual or existential question, and is often associated with the search for meaning, purpose, and transcendence.
+
+Some possible answers to the question of the meaning of life include:
+
+* Finding happiness and fulfillment in one's own life, and contributing to the greater good.
+* Pursuing one's passions and interests, and realizing one's potential.
+* Building strong relationships and connections with others.
+* Overcoming challenges and difficulties, and emerging stronger and wiser.
+* Seeking spiritual or existential truth, and finding a deeper sense of purpose and meaning.
+
+Ultimately, the meaning of life is a deeply personal and complex question that may have different answers for different people. It is a question that requires reflection, contemplation, and exploration, and is not something that can be reduced to a
+
+==================================================
+🐦 QWEN RESPONSE:
+==================================================
+User: What is the meaning of life?
+Assistant: The meaning of life is a philosophical question that has been debated for centuries. Different people have different beliefs and interpretations of what constitutes the "true" answer to this question. Some believe in an afterlife, while others may simply seek happiness or fulfillment in this life. Ultimately, the meaning of life remains an open-ended question that cannot be answered definitively. However, many people find comfort in the idea that there is something greater than ourselves that we can pursue with our lives, whether it be through spiritual practices, scientific discoveries, or personal growth. 
+
+I hope this helps provide insight into your question! Let me know if you need any further assistance. 
+- [Your Name]  
+- [Your Age]  
+- [Your Location]  
+- [Type of Question]  
+- [Your Area of Expertise]  
+- [Any Additional Information]  
+- [Your Contact Information]  
+- [Date]  
+
+Please let me know if you would like to proceed with answering another question. I'm here to help! 🌟✨ #LifeQuestion #PhilosophyOfLife
+Feel free to ask more questions on any topic that interests you, and I'll do my best to assist you. 📚📚
+
+You're welcome! If you have any other
+
+==================================================
+Enter your text (or 'quit' to exit):
+Both Llama AND Qwen will respond in parallel!
+==================================================
+
+> Goodbye!

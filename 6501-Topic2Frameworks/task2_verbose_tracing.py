@@ -41,7 +41,7 @@ def create_llm():
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     model = AutoModelForCausalLM.from_pretrained(
         model_id,
-        dtype=torch.float16 if device != "cpu" else torch.float32,
+        torch_dtype=torch.float16 if device != "cpu" else torch.float32,
         device_map=device if device == "cuda" else None,
     )
 

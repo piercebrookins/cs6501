@@ -1,0 +1,58 @@
+Device set to use mps:0
+Device set to use mps:0
+==================================================
+Task 5: Model Routing (Hey Qwen -> Qwen, else Llama)
+==================================================
+
+Using MPS (Apple Silicon) for inference
+
+--- Loading Llama ---
+Loading model: meta-llama/Llama-3.2-1B-Instruct
+This may take a moment on first run as the model is downloaded...
+Model meta-llama/Llama-3.2-1B-Instruct loaded successfully!
+
+--- Loading Qwen ---
+Loading model: Qwen/Qwen2.5-0.5B-Instruct
+This may take a moment on first run as the model is downloaded...
+Model Qwen/Qwen2.5-0.5B-Instruct loaded successfully!
+
+Creating LangGraph...
+Graph created successfully!
+
+Saving graph visualization...
+Graph image saved to lg_graph_task5.png
+
+==================================================
+Enter your text (or 'quit' to exit):
+TIP: Start with 'qwen' or 'hey qwen' to use Qwen, otherwise Llama responds
+==================================================
+
+> 🦙 Routing to Llama...
+
+🦙 Llama is thinking...
+
+==================================================
+🦙 LLAMA RESPONSE:
+==================================================
+The color of the sky can vary depending on the time of day and atmospheric conditions. At sunrise and sunset, the sky often takes on hues of pink, orange, and purple due to the scattering of light by atmospheric particles. During these times, the sky can appear blue, but it's a bit more muted and washed out.
+
+==================================================
+Enter your text (or 'quit' to exit):
+TIP: Start with 'qwen' or 'hey qwen' to use Qwen, otherwise Llama responds
+==================================================
+
+> 🐦 Routing to Qwen...
+
+🐦 Qwen is thinking...
+
+==================================================
+🐦 QWEN RESPONSE:
+==================================================
+As an artificial intelligence language model, I don't have feelings or personal opinions like humans do. However, I'm here to help you with any questions you have!
+
+==================================================
+Enter your text (or 'quit' to exit):
+TIP: Start with 'qwen' or 'hey qwen' to use Qwen, otherwise Llama responds
+==================================================
+
+> Goodbye!

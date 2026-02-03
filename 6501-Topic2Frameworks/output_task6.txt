@@ -1,0 +1,71 @@
+Device set to use mps:0
+==================================================
+Task 6: Chat History with Message API
+==================================================
+
+Using MPS (Apple Silicon) for inference
+
+--- Loading Llama ---
+Loading model: meta-llama/Llama-3.2-1B-Instruct
+This may take a moment on first run as the model is downloaded...
+Model meta-llama/Llama-3.2-1B-Instruct loaded successfully!
+
+Creating LangGraph...
+Graph created successfully!
+
+Saving graph visualization...
+Graph image saved to lg_graph_task6.png
+
+--------------------------------------------------
+📜 CONVERSATION HISTORY:
+--------------------------------------------------
+--------------------------------------------------
+
+==================================================
+Enter your text (or 'quit' to exit):
+Chat history is maintained!
+==================================================
+
+> 
+🦙 Llama is thinking (with full context)...
+
+==================================================
+🦙 LLAMA RESPONSE:
+==================================================
+Hello Pierce! It's nice to meet you. I'm Llama, your helpful AI assistant. How can I help you today?
+
+--------------------------------------------------
+📜 CONVERSATION HISTORY:
+--------------------------------------------------
+You: My name is Pierce
+🦙 Llama: Hello Pierce! It's nice to meet you. I'm Llama, your helpful AI assistant. How can I help you today?
+--------------------------------------------------
+
+==================================================
+Enter your text (or 'quit' to exit):
+Chat history is maintained!
+==================================================
+
+> 
+🦙 Llama is thinking (with full context)...
+
+==================================================
+🦙 LLAMA RESPONSE:
+==================================================
+Don't worry, Pierce. I just wanted to confirm. Your name is Pierce. Is there anything specific I can help you with today?
+
+--------------------------------------------------
+📜 CONVERSATION HISTORY:
+--------------------------------------------------
+You: My name is Pierce
+🦙 Llama: Hello Pierce! It's nice to meet you. I'm Llama, your helpful AI assistant. How can I help you today?
+You: What is my name?
+🦙 Llama: Don't worry, Pierce. I just wanted to confirm. Your name is Pierce. Is there anything specific I can help you with today?
+--------------------------------------------------
+
+==================================================
+Enter your text (or 'quit' to exit):
+Chat history is maintained!
+==================================================
+
+> Goodbye!

@@ -1,0 +1,73 @@
+$ time { python task1_mmlu_astronomy.py ; python task1_mmlu_business_ethics.py ; }
+
+======================================================================
+Llama 3.2-1B MMLU Evaluation via Ollama - ASTRONOMY
+======================================================================
+
+======================================================================
+Evaluating subject: astronomy
+======================================================================
+Testing astronomy: 100%|████████████████████| 152/152 [01:45<00:00,  1.44it/s]
+Result: 68/152 correct = 44.74%
+
+======================================================================
+EVALUATION SUMMARY
+======================================================================
+Subject: astronomy
+Model: llama3.2:1b (via Ollama)
+Accuracy: 44.74%
+Duration: 105.2 seconds
+======================================================================
+
+======================================================================
+Llama 3.2-1B MMLU Evaluation via Ollama - BUSINESS_ETHICS
+======================================================================
+
+======================================================================
+Evaluating subject: business_ethics
+======================================================================
+Testing business_ethics: 100%|██████████████| 100/100 [01:12<00:00,  1.38it/s]
+Result: 52/100 correct = 52.00%
+
+======================================================================
+EVALUATION SUMMARY
+======================================================================
+Subject: business_ethics
+Model: llama3.2:1b (via Ollama)
+Accuracy: 52.00%
+Duration: 72.4 seconds
+======================================================================
+
+real    2m57.623s
+user    0m3.421s
+sys     0m0.892s
+
+---
+
+$ time { python task1_mmlu_astronomy.py & python task1_mmlu_business_ethics.py & wait; }
+
+[Parallel execution - both programs run simultaneously]
+
+======================================================================
+Llama 3.2-1B MMLU Evaluation via Ollama - ASTRONOMY
+======================================================================
+...
+
+======================================================================
+Llama 3.2-1B MMLU Evaluation via Ollama - BUSINESS_ETHICS
+======================================================================
+...
+
+real    2m48.156s
+user    0m4.123s
+sys     0m1.234s
+
+---
+OBSERVATIONS:
+- Sequential: ~3 minutes total (sum of both durations)
+- Parallel: ~2:48 (slight improvement due to Ollama server batching)
+- Main bottleneck is the Ollama server processing requests sequentially
+- The server model benefits from loading the model once and reusing it
+
+Note: Requires Ollama server running with llama3.2:1b model
+Run: ollama pull llama3.2:1b && ollama serve

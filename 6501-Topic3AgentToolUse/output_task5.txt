@@ -1,0 +1,46 @@
+
+======================================================================
+Task 5: DEMO MODE - Showing tool use and conversation memory
+======================================================================
+
+==================================================
+You: Hi! What's 15 times 23?
+--------------------------------------------------
+  [Tool] calculator: {"operation": "multiply", "a": 15, "b": 23}
+  [Result] {"result": 345.0, "operation": "multiply"}
+
+Assistant: 15 times 23 is 345.
+
+==================================================
+You: Now add 50 to that result.
+--------------------------------------------------
+  [Tool] calculator: {"operation": "add", "a": 345, "b": 50}
+  [Result] {"result": 395.0, "operation": "add"}
+
+Assistant: Adding 50 to 345 gives you 395.
+
+==================================================
+You: How many i's are in Mississippi?
+--------------------------------------------------
+  [Tool] count_letter: {"text": "Mississippi", "letter": "i"}
+  [Result] {"text": "Mississippi", "letter": "i", "count": 4}
+
+Assistant: There are 4 "i's" in "Mississippi."
+
+==================================================
+You: What's the square root of that count?
+--------------------------------------------------
+  [Tool] calculator: {"operation": "sqrt", "a": 4}
+  [Result] {"result": 2.0, "operation": "sqrt"}
+
+Assistant: The square root of 4 is 2.
+
+==================================================
+You: Thanks! Can you remind me what calculation we did first?
+--------------------------------------------------
+
+Assistant: Sure! The first calculation we did was multiplying 15 by 23, which resulted in 345.
+
+======================================================================
+Demo complete! The conversation was checkpointed to demo_checkpoint.db
+======================================================================

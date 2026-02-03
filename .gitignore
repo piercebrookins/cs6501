@@ -1,8 +1,194 @@
-
-# secrets
+# ===========================
+# Environment & Secrets
+# ===========================
 .env
+.env.*
+!.env.example
 **/.env
+*.local
 
-# secrets
-.env
-**/.env
+# ===========================
+# macOS
+# ===========================
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ===========================
+# Python
+# ===========================
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+.conda/
+*.virtualenv
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# mypy / type checkers
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pytype/
+.pyre/
+
+# ===========================
+# Jupyter / IPython
+# ===========================
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+*.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# ===========================
+# IDEs & Editors
+# ===========================
+# VSCode
+.vscode/
+*.code-workspace
+
+# JetBrains (PyCharm, IntelliJ, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim/Neovim
+*.swp
+*.swo
+*.swn
+*~
+.netrwhist
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+
+# Sublime Text
+*.sublime-workspace
+*.sublime-project
+
+# ===========================
+# ML / Data Science
+# ===========================
+# Model files (can be huge!)
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+*.joblib
+*.model
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.gguf
+*.bin
+!requirements*.txt
+
+# Hugging Face cache
+.cache/
+**/.cache/
+huggingface/
+
+# MLflow
+mlruns/
+mlflow/
+
+# Weights & Biases
+wandb/
+
+# ===========================
+# Databases
+# ===========================
+*.db
+*.sqlite
+*.sqlite3
+
+# ===========================
+# Logs & Temp Files
+# ===========================
+*.log
+logs/
+*.tmp
+*.temp
+*.bak
+*.backup
+tmp/
+temp/
+
+# ===========================
+# Node.js (just in case)
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
+
+# ===========================
+# OS Generated
+# ===========================
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ===========================
+# Archives
+# ===========================
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.rar
+*.7z

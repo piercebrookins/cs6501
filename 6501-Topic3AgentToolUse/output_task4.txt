@@ -1,0 +1,335 @@
+/Users/pierce/Documents/CS6501/6501-Topic3AgentToolUse/task4_langgraph_tools.py:220: LangGraphDeprecatedSinceV10: create_react_agent has been moved to `langchain.agents`. Please update your import to `from langchain.agents import create_agent`. Deprecated in LangGraph V1.0 to be removed in V2.0.
+  agent = create_react_agent(
+
+======================================================================
+Task 4: LangGraph Tool Handling with Multiple Tools
+======================================================================
+
+Tools available:
+  - calculator: Calculator with arithmetic and geometric functions.
+Supports...
+  - count_letter: Count the number of occurrences of a specific letter in a pi...
+  - word_analyzer: Analyze text for various statistics:
+- Word count
+- Characte...
+
+
+######################################################################
+# Test 1
+######################################################################
+
+======================================================================
+Query: What is 25 times 17?
+======================================================================
+
+[Final Response]
+Assistant: What is 25 times 17?
+
+[Turn 1] Tool Call: calculator
+  Args: {
+  "operation": "multiply",
+  "a": 25,
+  "b": 17
+}
+  Result: {"result": 425.0, "operation": "multiply", "inputs": {"a": 25.0, "b": 17.0, "c": null}}
+
+[Final Response]
+Assistant: 25 times 17 is 425.
+
+[Completed in 1 tool turns]
+
+
+######################################################################
+# Test 2
+######################################################################
+
+======================================================================
+Query: How many s's are in Mississippi riverboats?
+======================================================================
+
+[Final Response]
+Assistant: How many s's are in Mississippi riverboats?
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi riverboats",
+  "letter": "s"
+}
+  Result: {"text": "Mississippi riverboats", "letter": "s", "count": 5}
+
+[Final Response]
+Assistant: There are 5 's's in "Mississippi riverboats."
+
+[Completed in 1 tool turns]
+
+
+######################################################################
+# Test 3
+######################################################################
+
+======================================================================
+Query: Analyze this text: The quick brown fox jumps over the lazy dog.
+======================================================================
+
+[Final Response]
+Assistant: Analyze this text: The quick brown fox jumps over the lazy dog.
+
+[Turn 1] Tool Call: word_analyzer
+  Args: {
+  "text": "The quick brown fox jumps over the lazy dog."
+}
+  Result: {"word_count": 9, "character_count_with_spaces": 44, "character_count_no_spaces": 36, "sentence_count": 1, "average_word_length": 3.89, "longest_word": "quick", "shortest_word": "The", "most_common_letter": "o", "most_common_letter_count": 4}
+
+[Final Response]
+Assistant: Here are the statistics for the text "The quick brown fox jumps over the lazy dog.":
+
+- **Word Count:** 9
+- **Character Count (with spaces):** 44
+- **Character Count (without spaces):** 36
+- **Sentence Count:** 1
+- **Average Word Length:** 3.89
+- **Longest Word:** "quick"
+- **Shortest Word:** "The"
+- **Most Common Letter:** "o" (occurs 4 times)
+
+[Completed in 1 tool turns]
+
+
+######################################################################
+# Test 4
+######################################################################
+
+======================================================================
+Query: Are there more i's than s's in Mississippi riverboats?
+======================================================================
+
+[Final Response]
+Assistant: Are there more i's than s's in Mississippi riverboats?
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi riverboats",
+  "letter": "i"
+}
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi riverboats",
+  "letter": "s"
+}
+  Result: {"text": "Mississippi riverboats", "letter": "s", "count": 5}
+
+[Turn 2] Tool Call: calculator
+  Args: {
+  "operation": "subtract",
+  "a": 5,
+  "b": 5
+}
+  Result: {"result": 0.0, "operation": "subtract", "inputs": {"a": 5.0, "b": 5.0, "c": null}}
+
+[Final Response]
+Assistant: There are 5 'i's and 5 's's in "Mississippi riverboats." Therefore, there are not more 'i's than 's's; they are equal.
+
+[Completed in 2 tool turns]
+
+
+######################################################################
+# Test 5
+######################################################################
+
+======================================================================
+Query: What is the difference between the number of i's and s's in Mississippi?
+======================================================================
+
+[Final Response]
+Assistant: What is the difference between the number of i's and s's in Mississippi?
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi",
+  "letter": "i"
+}
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi",
+  "letter": "s"
+}
+  Result: {"text": "Mississippi", "letter": "s", "count": 4}
+
+[Turn 2] Tool Call: calculator
+  Args: {
+  "operation": "subtract",
+  "a": 4,
+  "b": 4
+}
+  Result: {"result": 0.0, "operation": "subtract", "inputs": {"a": 4.0, "b": 4.0, "c": null}}
+
+[Final Response]
+Assistant: The difference between the number of i's and s's in "Mississippi" is 0.
+
+[Completed in 2 tool turns]
+
+
+######################################################################
+# Test 6
+######################################################################
+
+======================================================================
+Query: What is the sine of the difference between the number of i's and the number of s's in Mississippi riverboats?
+======================================================================
+
+[Final Response]
+Assistant: What is the sine of the difference between the number of i's and the number of s's in Mississippi riverboats?
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi riverboats",
+  "letter": "i"
+}
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi riverboats",
+  "letter": "s"
+}
+  Result: {"text": "Mississippi riverboats", "letter": "s", "count": 5}
+
+[Turn 2] Tool Call: calculator
+  Args: {
+  "operation": "subtract",
+  "a": 5,
+  "b": 5
+}
+  Result: {"result": 0.0, "operation": "subtract", "inputs": {"a": 5.0, "b": 5.0, "c": null}}
+
+[Turn 3] Tool Call: calculator
+  Args: {
+  "operation": "sin",
+  "a": 0
+}
+  Result: {"result": 0.0, "operation": "sin", "inputs": {"a": 0.0, "b": null, "c": null}}
+
+[Final Response]
+Assistant: The sine of the difference between the number of i's and the number of s's in "Mississippi riverboats" is 0.0.
+
+[Completed in 3 tool turns]
+
+
+######################################################################
+# Test 7
+######################################################################
+
+======================================================================
+Query: Analyze the phrase 'mathematical calculation' - tell me the word count, how many a's it has, and what is the square root of the letter count?
+======================================================================
+
+[Final Response]
+Assistant: Analyze the phrase 'mathematical calculation' - tell me the word count, how many a's it has, and what is the square root of the letter count?
+
+[Turn 1] Tool Call: word_analyzer
+  Args: {
+  "text": "mathematical calculation"
+}
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "mathematical calculation",
+  "letter": "a"
+}
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "mathematical calculation",
+  "letter": ""
+}
+  Result: {"error": "Please provide exactly one letter to count"}
+
+[Turn 2] Tool Call: count_letter
+  Args: {
+  "text": "mathematical calculation",
+  "letter": ""
+}
+  Result: {"error": "Please provide exactly one letter to count"}
+
+[Turn 3] Tool Call: count_letter
+  Args: {
+  "text": "mathematical calculation",
+  "letter": "a"
+}
+  Result: {"text": "mathematical calculation", "letter": "a", "count": 5}
+
+[Turn 4] Tool Call: calculator
+  Args: {
+  "operation": "sqrt",
+  "a": 23
+}
+  Result: {"result": 4.795831523312719, "operation": "sqrt", "inputs": {"a": 23.0, "b": null, "c": null}}
+
+[Final Response]
+Assistant: Here are the results for the phrase "mathematical calculation":
+
+- **Word Count**: 2
+- **Number of 'a's**: 5
+- **Square Root of the Letter Count**: Approximately 4.80 (since there are 23 letters in total)
+
+[Completed in 4 tool turns]
+
+
+######################################################################
+# Test 8
+######################################################################
+
+======================================================================
+Query: Count the i's in Mississippi, count the s's, subtract them, take the absolute value, multiply by pi, and then calculate the area of a circle with that radius.
+======================================================================
+
+[Final Response]
+Assistant: Count the i's in Mississippi, count the s's, subtract them, take the absolute value, multiply by pi, and then calculate the area of a circle with that radius.
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi",
+  "letter": "i"
+}
+
+[Turn 1] Tool Call: count_letter
+  Args: {
+  "text": "Mississippi",
+  "letter": "s"
+}
+  Result: {"text": "Mississippi", "letter": "s", "count": 4}
+
+[Turn 2] Tool Call: calculator
+  Args: {
+  "operation": "subtract",
+  "a": 4,
+  "b": 4
+}
+  Result: {"result": 0.0, "operation": "subtract", "inputs": {"a": 4.0, "b": 4.0, "c": null}}
+
+[Turn 3] Tool Call: calculator
+  Args: {
+  "operation": "abs",
+  "a": 0
+}
+  Result: {"result": 0.0, "operation": "abs", "inputs": {"a": 0.0, "b": null, "c": null}}
+
+[Turn 4] Tool Call: calculator
+  Args: {
+  "operation": "multiply",
+  "a": 0,
+  "b": 3.14159
+}
+  Result: {"result": 0.0, "operation": "multiply", "inputs": {"a": 0.0, "b": 3.14159, "c": null}}
+
+[Turn 5] Tool Call: calculator
+  Args: {
+  "operation": "area_circle",
+  "a": 0
+}
+  Result: {"result": 0.0, "operation": "area_circle", "inputs": {"a": 0.0, "b": null, "c": null}}
+
+[Reached max turns limit: 5]
+
+[Completed in 5 tool turns]

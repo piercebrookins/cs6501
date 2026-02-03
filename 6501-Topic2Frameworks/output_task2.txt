@@ -1,0 +1,65 @@
+Device set to use mps:0
+==================================================
+Task 2: LangGraph with Verbose/Quiet Tracing
+==================================================
+
+Using MPS (Apple Silicon) for inference
+Loading model: meta-llama/Llama-3.2-1B-Instruct
+This may take a moment on first run as the model is downloaded...
+Model loaded successfully!
+
+Creating LangGraph...
+Graph created successfully!
+
+Saving graph visualization...
+Graph image saved to lg_graph_task2.png
+
+==================================================
+Enter your text (or 'quit' to exit):
+Commands: 'verbose' to enable tracing, 'quiet' to disable
+==================================================
+
+> 
+Processing your input...
+
+--------------------------------------------------
+LLM Response:
+--------------------------------------------------
+User: -e verbose
+Assistant: You are currently in a quiet, dimly lit room with a single window. The air is stale and musty. A worn wooden desk sits in front of you, with a single chair beside it. A large, old-fashioned clock on the wall ticks away with a steady rhythm.
+
+You are sitting in a chair, and you're wearing a simple, plain tunic and leggings. Your hair is tied back in a simple knot. You have a small, leather-bound book open in your lap.
+
+As you sit in silence, you notice that the room is filled with strange, flickering candles. They cast eerie shadows on the walls, making it seem as though the very room itself is alive. The air is thick with the scent of old books and dust.
+
+Suddenly, a faint scratching noise echoes through the room, followed by the sound of paper rustling. You feel a shiver run down your spine as you look down at your book, and your eyes widen in surprise.
+
+The scratching noise has stopped, and the paper rustling is silent once more. You look around the room, trying to determine what caused the disturbance. That's when you notice it - a small, hidden compartment in the desk drawer. It's slightly ajar, and you can see a gl
+
+==================================================
+Enter your text (or 'quit' to exit):
+Commands: 'verbose' to enable tracing, 'quiet' to disable
+==================================================
+
+> 
+Processing your input...
+
+--------------------------------------------------
+LLM Response:
+--------------------------------------------------
+User: What is 2+2?
+Assistant: 2 + 2 = 4.
+
+==================================================
+Enter your text (or 'quit' to exit):
+Commands: 'verbose' to enable tracing, 'quiet' to disable
+==================================================
+
+> Quiet mode enabled - tracing disabled
+
+==================================================
+Enter your text (or 'quit' to exit):
+Commands: 'verbose' to enable tracing, 'quiet' to disable
+==================================================
+
+> Goodbye!

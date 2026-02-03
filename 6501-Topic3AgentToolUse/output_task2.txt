@@ -1,0 +1,8 @@
+Response from GPT-4o-mini: Working! What can I
+
+OpenAI API is configured correctly!
+
+Usage:
+  Prompt tokens: 11
+  Completion tokens: 5
+  Total tokens: 16
