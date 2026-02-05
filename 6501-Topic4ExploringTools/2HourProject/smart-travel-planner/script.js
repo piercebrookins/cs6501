@@ -1,6 +1,6 @@
 /**
- * Nexus Website - Interactive Elements
- * Based on Ultimate Website Design Guide v5
+ * TripCast — Interactive Elements
+ * Trip planner form, results display, scroll effects, mobile nav.
  */
 
 // ==========================================================================
@@ -245,6 +245,21 @@ async function fetchTripPlan(city, units = 'metric', startDate = '', endDate = '
   }
 }
 
+/**
+ * Safely render a list of strings into a container via DOM APIs.
+ * Avoids innerHTML to prevent XSS from LLM-generated content.
+ */
+function renderList(container, items) {
+  container.textContent = '';           // clear previous content
+  const ul = document.createElement('ul');
+  for (const text of items) {
+    const li = document.createElement('li');
+    li.textContent = text;              // textContent is XSS-safe
+    ul.appendChild(li);
+  }
+  container.appendChild(ul);
+}
+
 // Display results — uses AI data when available, hardcoded fallback otherwise
 function displayResults(city, data) {
   // Title with optional date range
@@ -254,15 +269,10 @@ function displayResults(city, data) {
   }
   resultsTitle.textContent = title;
 
-  // Badge
-  const badge = data.ai_powered
-    ? '<span class="ai-badge">✨ AI-Powered</span>'
-    : '<span class="ai-badge fallback">📋 Basic</span>';
-
   // Always show the detailed day-by-day weather forecast
   weatherResults.textContent = data.weather || 'No weather data available';
 
-  // AI summary
+  // AI summary (built with safe DOM methods — no innerHTML with API data)
   const existingSummary = document.getElementById('ai-summary');
   if (existingSummary) existingSummary.remove();
 
@@ -270,7 +280,15 @@ function displayResults(city, data) {
     const summaryEl = document.createElement('div');
     summaryEl.id = 'ai-summary';
     summaryEl.className = 'ai-summary';
-    summaryEl.innerHTML = `<p>${badge} ${data.summary}</p>`;
+
+    const p = document.createElement('p');
+    const badge = document.createElement('span');
+    badge.className = 'ai-badge';
+    badge.textContent = '✨ AI-Powered';
+    p.appendChild(badge);
+    p.append(' ' + data.summary);
+    summaryEl.appendChild(p);
+
     weatherResults.after(summaryEl);
   }
 
@@ -278,15 +296,13 @@ function displayResults(city, data) {
   const packingItems = (data.ai_powered && data.packing && data.packing.length)
     ? data.packing
     : generatePackingListItems(data);
-  packingResults.querySelector('.results-content').innerHTML =
-    `<ul>${packingItems.map(item => `<li>${item}</li>`).join('')}</ul>`;
+  renderList(packingResults.querySelector('.results-content'), packingItems);
 
   // Activities — prefer AI, fall back to hardcoded
   const activityItems = (data.ai_powered && data.activities && data.activities.length)
     ? data.activities
     : generateActivityItems(data);
-  activityResults.querySelector('.results-content').innerHTML =
-    `<ul>${activityItems.map(a => `<li>${a}</li>`).join('')}</ul>`;
+  renderList(activityResults.querySelector('.results-content'), activityItems);
 
   resultsContainer.hidden = false;
   resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });

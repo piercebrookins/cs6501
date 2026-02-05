@@ -13,7 +13,7 @@ Fallback chain for /api/travel-plan:
 import logging
 import os
 
-from flask import Flask, jsonify, request, send_from_directory
+from flask import Flask, abort, jsonify, request, send_from_directory
 from flask_cors import CORS
 from dotenv import load_dotenv
 
@@ -32,7 +32,9 @@ from src.utils.response_parser import parse_agent_response
 
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__, static_folder='.', static_url_path='')
+# Disable Flask's built-in static handler (static_folder=None) so that all
+# file serving goes through our whitelisted serve_static route.
+app = Flask(__name__, static_folder=None)
 CORS(app)  # Enable CORS for local development
 
 
@@ -46,9 +48,31 @@ def serve_index():
     return send_from_directory('.', 'index.html')
 
 
+# Extensions that are safe to serve.  Everything else (e.g. .env, .py,
+# .txt, .ini) gets a 404 so we never accidentally leak secrets.
+ALLOWED_STATIC_EXT = {
+    '.css', '.js', '.html', '.htm',
+    '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico',
+    '.woff', '.woff2', '.ttf', '.eot',
+    '.json', '.map',
+}
+
+
 @app.route('/<path:path>')
 def serve_static(path):
-    """Serve static files (CSS, JS, images)."""
+    """Serve whitelisted static files only.
+
+    Rejects dotfiles and any extension not in ALLOWED_STATIC_EXT so that
+    sensitive files like .env, .py, or requirements.txt are never served.
+    """
+    # Block dotfiles (e.g. .env, .git/)
+    if any(part.startswith('.') for part in path.split('/')):
+        abort(404)
+
+    ext = os.path.splitext(path)[1].lower()
+    if ext not in ALLOWED_STATIC_EXT:
+        abort(404)
+
     return send_from_directory('.', path)
 
 
