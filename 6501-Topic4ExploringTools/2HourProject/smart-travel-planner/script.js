@@ -427,14 +427,14 @@ if (retryBtn) {
   });
 }
 
-// Fetch trip plan from API
+// Fetch trip plan from API (uses OpenAI when available, falls back to hardcoded)
 async function fetchTripPlan(city, units = 'metric') {
   showLoading(true);
   hideError();
   hideResults();
   
   try {
-    const response = await fetch(`${API_BASE_URL}/weather?city=${encodeURIComponent(city)}&units=${units}`);
+    const response = await fetch(`${API_BASE_URL}/travel-plan?city=${encodeURIComponent(city)}&units=${units}`);
     const data = await response.json();
     
     if (!response.ok) {
@@ -451,44 +451,69 @@ async function fetchTripPlan(city, units = 'metric') {
   }
 }
 
-// Display results
+// Display results — uses AI data when available, hardcoded fallback otherwise
 function displayResults(city, data) {
   resultsTitle.textContent = `🌤️ Trip Plan for ${city}`;
   
   // Display raw weather data
   weatherResults.textContent = data.weather || 'No weather data available';
-  
-  // Generate and display packing list
-  const packingList = generatePackingList(data);
-  packingResults.querySelector('.results-content').innerHTML = packingList;
-  
-  // Generate and display activity suggestions
-  const activities = generateActivities(data);
-  activityResults.querySelector('.results-content').innerHTML = activities;
+
+  // Show an AI badge or fallback note
+  const badge = data.ai_powered
+    ? '<span class="ai-badge">✨ AI-Powered</span>'
+    : '<span class="ai-badge fallback">📋 Basic</span>';
+
+  if (data.ai_powered && data.summary) {
+    // Inject a summary block above the cards
+    const existingSummary = document.getElementById('ai-summary');
+    if (existingSummary) existingSummary.remove();
+
+    const summaryEl = document.createElement('div');
+    summaryEl.id = 'ai-summary';
+    summaryEl.className = 'ai-summary';
+    summaryEl.innerHTML = `<p>${badge} ${data.summary}</p>`;
+    weatherResults.after(summaryEl);
+  } else {
+    const existingSummary = document.getElementById('ai-summary');
+    if (existingSummary) existingSummary.remove();
+  }
+
+  // Packing list — prefer AI, fall back to hardcoded
+  const packingItems = (data.ai_powered && data.packing)
+    ? data.packing
+    : generatePackingListItems(data);
+  packingResults.querySelector('.results-content').innerHTML =
+    `<ul>${packingItems.map(item => `<li>${item}</li>`).join('')}</ul>`;
+
+  // Activities — prefer AI, fall back to hardcoded
+  const activityItems = (data.ai_powered && data.activities)
+    ? data.activities
+    : generateActivityItems(data);
+  activityResults.querySelector('.results-content').innerHTML =
+    `<ul>${activityItems.map(a => `<li>${a}</li>`).join('')}</ul>`;
   
   resultsContainer.hidden = false;
   resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// Generate packing list based on weather data
-function generatePackingList(data) {
+// ---------------------------------------------------------------------------
+// FALLBACK generators — used when OpenAI is unavailable
+// ---------------------------------------------------------------------------
+
+// Returns a flat array of packing item strings
+function generatePackingListItems(data) {
   const items = [];
   const weather = data.weather || '';
   
-  // Parse temperature from weather string (rough extraction)
   const tempMatch = weather.match(/(-?\d+\.?\d*).*?(-?\d+\.?\d*).*?°/);
-  let avgTemp = 20; // default
+  let avgTemp = 20;
   if (tempMatch) {
-    const low = parseFloat(tempMatch[1]);
-    const high = parseFloat(tempMatch[2]);
-    avgTemp = (low + high) / 2;
+    avgTemp = (parseFloat(tempMatch[1]) + parseFloat(tempMatch[2])) / 2;
   }
   
-  // Check for rain
   const hasRain = weather.toLowerCase().includes('rain') || 
                   weather.match(/\d{2,3}%.*rain/i);
   
-  // Temperature-based recommendations
   if (avgTemp < 10) {
     items.push('Heavy winter coat', 'Thermal layers', 'Warm sweater', 'Gloves & scarf', 'Warm boots', 'Beanie/warm hat');
   } else if (avgTemp < 20) {
@@ -499,29 +524,23 @@ function generatePackingList(data) {
     items.push('Very light fabrics', 'Shorts & tank tops', 'Wide-brim sun hat', 'Light colored clothing', 'Breathable shoes');
   }
   
-  // Rain gear
   if (hasRain) {
     items.push('Compact umbrella', 'Rain jacket', 'Waterproof shoes');
   }
-  
-  // Always recommend
   items.push('Sunscreen (SPF 30+)', 'Sunglasses');
-  
-  return `<ul>${items.map(item => `<li>${item}</li>`).join('')}</ul>`;
+  return items;
 }
 
-// Generate activity suggestions based on weather
-function generateActivities(data) {
+// Returns a flat array of activity strings
+function generateActivityItems(data) {
   const activities = [];
   const weather = data.weather || '';
   
-  // Check conditions
   const hasRain = weather.toLowerCase().includes('rain') || 
                   weather.match(/\d{2,3}%.*rain/i);
   const isSunny = weather.toLowerCase().includes('clear') || 
                   weather.toLowerCase().includes('sunny');
   
-  // Parse temperature
   const tempMatch = weather.match(/(-?\d+\.?\d*).*?(-?\d+\.?\d*).*?°/);
   let avgTemp = 20;
   if (tempMatch) {
@@ -531,25 +550,19 @@ function generateActivities(data) {
   if (hasRain) {
     activities.push('Visit museums & galleries', 'Explore local cafés', 'Indoor shopping', 'Cooking class', 'Spa day', 'Catch a local show');
   }
-  
   if (isSunny && avgTemp > 15) {
     activities.push('Walking city tour', 'Park picnic', 'Outdoor markets', 'Rooftop bars', 'Bike rental', 'Scenic viewpoints');
   }
-  
   if (avgTemp < 10) {
     activities.push('Hot springs or thermal baths', 'Cozy restaurant hopping', 'Indoor cultural sites', 'Local coffee shops');
   }
-  
   if (avgTemp > 28) {
     activities.push('Swimming/beach time', 'Early morning sightseeing', 'Air-conditioned museums', 'Evening outdoor dining');
   }
-  
-  // Default activities if none added
   if (activities.length === 0) {
     activities.push('Explore the city center', 'Visit local landmarks', 'Try local cuisine', 'People-watch at a café', 'Take photos at scenic spots');
   }
-  
-  return `<ul>${activities.map(a => `<li>${a}</li>`).join('')}</ul>`;
+  return activities;
 }
 
 // Show/hide loading state
