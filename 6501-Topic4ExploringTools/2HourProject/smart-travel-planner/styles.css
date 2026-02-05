@@ -1047,6 +1047,21 @@ p {
   gap: var(--space-4);
 }
 
+.form-row-2col {
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 480px) {
+  .form-row-2col {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Date inputs — fix native picker styling on dark backgrounds */
+.trip-form input[type="date"] {
+  color-scheme: dark;
+}
+
 .input-group {
   position: relative;
   display: flex;

@@ -132,246 +132,13 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 // ==========================================================================
-// BUTTON RIPPLE EFFECT (Optional enhancement)
-// ==========================================================================
-
-function createRipple(event) {
-  const button = event.currentTarget;
-  
-  // Remove existing ripple
-  const existingRipple = button.querySelector('.ripple');
-  if (existingRipple) {
-    existingRipple.remove();
-  }
-  
-  const ripple = document.createElement('span');
-  ripple.classList.add('ripple');
-  
-  const rect = button.getBoundingClientRect();
-  const size = Math.max(rect.width, rect.height);
-  
-  ripple.style.width = ripple.style.height = `${size}px`;
-  ripple.style.left = `${event.clientX - rect.left - size / 2}px`;
-  ripple.style.top = `${event.clientY - rect.top - size / 2}px`;
-  
-  button.appendChild(ripple);
-  
-  // Remove ripple after animation
-  ripple.addEventListener('animationend', () => {
-    ripple.remove();
-  });
-}
-
-// Add ripple to primary buttons
-document.querySelectorAll('.btn-primary').forEach(button => {
-  button.style.position = 'relative';
-  button.style.overflow = 'hidden';
-  button.addEventListener('click', createRipple);
-});
-
-// Add ripple styles dynamically
-const rippleStyles = document.createElement('style');
-rippleStyles.textContent = `
-  .ripple {
-    position: absolute;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: scale(0);
-    animation: ripple-animation 0.6s linear;
-    pointer-events: none;
-  }
-  
-  @keyframes ripple-animation {
-    to {
-      transform: scale(4);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(rippleStyles);
-
-// ==========================================================================
-// PARALLAX FLOATING CARDS (Subtle mouse movement)
-// ==========================================================================
-
-const floatingCards = document.querySelectorAll('.floating-card');
-
-if (floatingCards.length > 0) {
-  document.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX / window.innerWidth - 0.5;
-    const mouseY = e.clientY / window.innerHeight - 0.5;
-    
-    floatingCards.forEach((card, index) => {
-      const speed = (index + 1) * 10;
-      const x = mouseX * speed;
-      const y = mouseY * speed;
-      
-      card.style.transform = `translate(${x}px, ${y}px)`;
-    });
-  });
-}
-
-// ==========================================================================
-// PRICING CARD HOVER EFFECT
-// ==========================================================================
-
-const pricingCards = document.querySelectorAll('.pricing-card');
-
-pricingCards.forEach(card => {
-  card.addEventListener('mouseenter', () => {
-    // Dim other cards slightly
-    pricingCards.forEach(otherCard => {
-      if (otherCard !== card) {
-        otherCard.style.opacity = '0.7';
-      }
-    });
-  });
-  
-  card.addEventListener('mouseleave', () => {
-    // Reset all cards
-    pricingCards.forEach(otherCard => {
-      otherCard.style.opacity = '1';
-    });
-  });
-});
-
-// ==========================================================================
-// TYPED EFFECT FOR HERO (Optional - uncomment to enable)
-// ==========================================================================
-
-/*
-const heroTitle = document.querySelector('.hero-title');
-const originalText = heroTitle.innerHTML;
-
-function typeText(element, text, speed = 50) {
-  element.innerHTML = '';
-  let i = 0;
-  
-  function type() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
-    }
-  }
-  
-  type();
-}
-
-// Trigger on page load
-window.addEventListener('load', () => {
-  typeText(heroTitle, originalText, 30);
-});
-*/
-
-// ==========================================================================
-// COUNTER ANIMATION FOR STATS
-// ==========================================================================
-
-function animateCounter(element, target, duration = 2000) {
-  let start = 0;
-  const increment = target / (duration / 16);
-  
-  function updateCounter() {
-    start += increment;
-    if (start < target) {
-      element.textContent = Math.floor(start).toLocaleString();
-      requestAnimationFrame(updateCounter);
-    } else {
-      element.textContent = target.toLocaleString();
-    }
-  }
-  
-  updateCounter();
-}
-
-// Observe stats for animation trigger
-const statValues = document.querySelectorAll('.stat-value');
-const statsObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const text = entry.target.textContent;
-      
-      // Only animate numeric values
-      if (text.includes('+')) {
-        const num = parseInt(text.replace(/[^0-9]/g, ''));
-        entry.target.textContent = '0+';
-        animateCounter(entry.target, num);
-        entry.target.textContent = num.toLocaleString() + '+';
-      }
-      
-      statsObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.5 });
-
-statValues.forEach(stat => statsObserver.observe(stat));
-
-// ==========================================================================
-// FORM INTERACTIONS (If forms are added later)
-// ==========================================================================
-
-function initForms() {
-  const inputs = document.querySelectorAll('input, textarea');
-  
-  inputs.forEach(input => {
-    // Float label effect
-    input.addEventListener('focus', () => {
-      input.parentElement?.classList.add('focused');
-    });
-    
-    input.addEventListener('blur', () => {
-      if (!input.value) {
-        input.parentElement?.classList.remove('focused');
-      }
-    });
-    
-    // Validate on blur
-    input.addEventListener('blur', () => {
-      if (input.hasAttribute('required') && !input.value) {
-        input.classList.add('error');
-      } else {
-        input.classList.remove('error');
-      }
-    });
-  });
-}
-
-// Initialize forms if they exist
-if (document.querySelector('form')) {
-  initForms();
-}
-
-// ==========================================================================
-// CONSOLE EASTER EGG
-// ==========================================================================
-
-console.log(`
-%c🌤️ TRIPCAST %c
-
-Welcome, curious developer! 👋
-This site was built following the Ultimate Website Design Guide v5.
-
-Key principles applied:
-• Dark sophisticated theme with teal accents
-• 8px spacing grid system  
-• Two-font typography (DM Sans + Libre Baskerville)
-• Scroll-triggered animations
-• Mobile-first responsive design
-
-Powered by OpenWeatherMap API.
-Built with ❤️ for the Smart Travel Planner project.
-`, 
-'color: #00D4AA; font-size: 24px; font-weight: bold;',
-'color: #888; font-size: 12px;'
-);
-
-// ==========================================================================
 // TRY IT OUT - TRIP PLANNER FORM
 // ==========================================================================
 
 const tripForm = document.getElementById('trip-form');
 const destinationInput = document.getElementById('destination');
+const startDateInput = document.getElementById('start-date');
+const endDateInput = document.getElementById('end-date');
 const unitsSelect = document.getElementById('units');
 const resultsContainer = document.getElementById('results');
 const weatherResults = document.getElementById('weather-results');
@@ -384,20 +151,43 @@ const clearResultsBtn = document.getElementById('clear-results');
 const retryBtn = document.getElementById('retry-btn');
 const cityButtons = document.querySelectorAll('.city-btn');
 
+// Default the date pickers to today → +5 days
+if (startDateInput && endDateInput) {
+  const today = new Date();
+  const inFive = new Date(today);
+  inFive.setDate(inFive.getDate() + 5);
+
+  const fmt = d => d.toISOString().split('T')[0];
+  startDateInput.value = fmt(today);
+  startDateInput.min = fmt(today);
+  endDateInput.value = fmt(inFive);
+  endDateInput.min = fmt(today);
+
+  // Keep end ≥ start
+  startDateInput.addEventListener('change', () => {
+    if (endDateInput.value < startDateInput.value) {
+      endDateInput.value = startDateInput.value;
+    }
+    endDateInput.min = startDateInput.value;
+  });
+}
+
 // Form submission handler
 if (tripForm) {
   tripForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
+
     const destination = destinationInput.value.trim();
     const units = unitsSelect.value;
-    
+    const startDate = startDateInput?.value || '';
+    const endDate = endDateInput?.value || '';
+
     if (!destination) {
       showError('Please enter a destination city.');
       return;
     }
-    
-    await fetchTripPlan(destination, units);
+
+    await fetchTripPlan(destination, units, startDate, endDate);
   });
 }
 
@@ -427,22 +217,26 @@ if (retryBtn) {
   });
 }
 
-// Fetch trip plan from API (uses OpenAI when available, falls back to hardcoded)
-async function fetchTripPlan(city, units = 'metric') {
+// Fetch trip plan from API (agent → OpenAI service → hardcoded fallback)
+async function fetchTripPlan(city, units = 'metric', startDate = '', endDate = '') {
   showLoading(true);
   hideError();
   hideResults();
-  
+
+  const params = new URLSearchParams({ city, units });
+  if (startDate) params.set('start_date', startDate);
+  if (endDate) params.set('end_date', endDate);
+
   try {
-    const response = await fetch(`${API_BASE_URL}/travel-plan?city=${encodeURIComponent(city)}&units=${units}`);
+    const response = await fetch(`${API_BASE_URL}/travel-plan?${params}`);
     const data = await response.json();
-    
+
     if (!response.ok) {
       throw new Error(data.error || 'Failed to fetch weather data');
     }
-    
+
     displayResults(city, data);
-    
+
   } catch (error) {
     console.error('Error fetching trip plan:', error);
     showError(error.message || 'Unable to fetch weather data. Please try again.');
@@ -453,45 +247,47 @@ async function fetchTripPlan(city, units = 'metric') {
 
 // Display results — uses AI data when available, hardcoded fallback otherwise
 function displayResults(city, data) {
-  resultsTitle.textContent = `🌤️ Trip Plan for ${city}`;
-  
-  // Display raw weather data
-  weatherResults.textContent = data.weather || 'No weather data available';
+  // Title with optional date range
+  let title = `🌤️ Trip Plan for ${city}`;
+  if (data.start_date && data.end_date) {
+    title += ` (${data.start_date} → ${data.end_date})`;
+  }
+  resultsTitle.textContent = title;
 
-  // Show an AI badge or fallback note
+  // Badge
   const badge = data.ai_powered
     ? '<span class="ai-badge">✨ AI-Powered</span>'
     : '<span class="ai-badge fallback">📋 Basic</span>';
 
-  if (data.ai_powered && data.summary) {
-    // Inject a summary block above the cards
-    const existingSummary = document.getElementById('ai-summary');
-    if (existingSummary) existingSummary.remove();
+  // Always show the detailed day-by-day weather forecast
+  weatherResults.textContent = data.weather || 'No weather data available';
 
+  // AI summary
+  const existingSummary = document.getElementById('ai-summary');
+  if (existingSummary) existingSummary.remove();
+
+  if (data.ai_powered && data.summary) {
     const summaryEl = document.createElement('div');
     summaryEl.id = 'ai-summary';
     summaryEl.className = 'ai-summary';
     summaryEl.innerHTML = `<p>${badge} ${data.summary}</p>`;
     weatherResults.after(summaryEl);
-  } else {
-    const existingSummary = document.getElementById('ai-summary');
-    if (existingSummary) existingSummary.remove();
   }
 
   // Packing list — prefer AI, fall back to hardcoded
-  const packingItems = (data.ai_powered && data.packing)
+  const packingItems = (data.ai_powered && data.packing && data.packing.length)
     ? data.packing
     : generatePackingListItems(data);
   packingResults.querySelector('.results-content').innerHTML =
     `<ul>${packingItems.map(item => `<li>${item}</li>`).join('')}</ul>`;
 
   // Activities — prefer AI, fall back to hardcoded
-  const activityItems = (data.ai_powered && data.activities)
+  const activityItems = (data.ai_powered && data.activities && data.activities.length)
     ? data.activities
     : generateActivityItems(data);
   activityResults.querySelector('.results-content').innerHTML =
     `<ul>${activityItems.map(a => `<li>${a}</li>`).join('')}</ul>`;
-  
+
   resultsContainer.hidden = false;
   resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }

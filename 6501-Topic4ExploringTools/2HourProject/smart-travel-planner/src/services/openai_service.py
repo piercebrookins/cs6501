@@ -44,6 +44,8 @@ def generate_travel_recommendations(
     city: str,
     weather_text: str,
     units: str = "metric",
+    start_date: str | None = None,
+    end_date: str | None = None,
     model: str = "gpt-4o-mini",
 ) -> dict | None:
     """
@@ -53,6 +55,8 @@ def generate_travel_recommendations(
         city: Destination city name.
         weather_text: The formatted weather forecast string from our weather tool.
         units: 'metric' or 'imperial' — passed for context.
+        start_date: Arrival date (YYYY-MM-DD) or None.
+        end_date: Departure date (YYYY-MM-DD) or None.
         model: OpenAI model to use. gpt-4o-mini is cheap & fast.
 
     Returns:
@@ -65,9 +69,17 @@ def generate_travel_recommendations(
         return None
 
     unit_label = "Celsius" if units == "metric" else "Fahrenheit"
+
+    date_line = ""
+    if start_date and end_date:
+        date_line = f"Travel dates: {start_date} to {end_date}\n"
+    elif start_date:
+        date_line = f"Arrival date: {start_date}\n"
+
     user_message = (
         f"Destination: {city}\n"
-        f"Temperature units: {unit_label}\n\n"
+        f"Temperature units: {unit_label}\n"
+        f"{date_line}\n"
         f"Weather forecast:\n{weather_text}"
     )
 

@@ -382,6 +382,23 @@
             </div>
           </div>
           
+          <div class="form-row form-row-2col">
+            <div class="form-group">
+              <label for="start-date">Arrival Date</label>
+              <div class="input-group">
+                <span class="input-icon">📅</span>
+                <input type="date" id="start-date" name="start_date">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="end-date">Departure Date</label>
+              <div class="input-group">
+                <span class="input-icon">📅</span>
+                <input type="date" id="end-date" name="end_date">
+              </div>
+            </div>
+          </div>
+
           <div class="form-row">
             <div class="form-group">
               <label for="units">Temperature Units</label>
@@ -399,7 +416,7 @@
             <span class="btn-text">Get My Travel Plan</span>
             <span class="btn-loading" hidden>
               <span class="spinner"></span>
-              Generating travel plan...
+              AI is planning your trip...
             </span>
             <span class="btn-arrow">→</span>
           </button>
@@ -533,6 +550,7 @@
     </div>
   </footer>
   
+  <script src="ui-effects.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
