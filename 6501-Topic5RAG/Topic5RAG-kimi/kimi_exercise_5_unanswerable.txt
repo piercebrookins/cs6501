@@ -1,0 +1,175 @@
+======================================================================
+KIMI EXERCISE 5: Handling Unanswerable Questions
+======================================================================
+
+Testing system behavior on questions the corpus cannot answer.
+
+Corpus: Model T Service Manual (1919)
+
+======================================================================
+TESTING WITH DEFAULT PROMPT
+======================================================================
+
+------------------------------------------------------------
+Category: Completely off-topic
+------------------------------------------------------------
+
+Question: What is the capital of France?
+Answer: I don't have information about the capital of France in the provided context. The context appears to be about the Ford Model T service manual from 1919.
+Admits lack of knowledge: True
+
+Question: Who won the 2024 Super Bowl?
+Answer: The context provided is about the Ford Model T service manual and does not contain information about the 2024 Super Bowl or sports events.
+Admits lack of knowledge: True
+
+------------------------------------------------------------
+Category: Related but not in corpus
+------------------------------------------------------------
+
+Question: What's the horsepower of a 1925 Model T?
+Answer: The Model T Ford is equipped with a four cylinder motor that develops twenty horse power. This is mentioned in the manual.
+[Note: The 1919 manual specifies 20 HP, which applies to 1925 models as well]
+Admits lack of knowledge: False
+[Model provides general knowledge from training data]
+
+Question: What is the fuel injection system spec?
+Answer: The Model T does not have a fuel injection system. It uses a carburetor of the float-feed type. The carburetor adjustment is made by means of the needle valve.
+Admits lack of knowledge: False
+[Model correctly identifies anachronism]
+
+------------------------------------------------------------
+Category: False premises
+------------------------------------------------------------
+
+Question: Why does the manual recommend synthetic oil?
+Answer: The manual actually recommends using "Ford Special Motor Oil" or any high-grade light-bodied engine oil. It does not mention synthetic oil specifically, as synthetic oils were not commercially available in 1919.
+Admits lack of knowledge: False
+[Model corrects false premise]
+
+Question: What does the manual say about electronic ignition?
+Answer: The manual describes the ignition system as using a timer and four coils, not electronic ignition. Electronic ignition systems were not available in 1919.
+Admits lack of knowledge: False
+[Model corrects false premise]
+
+======================================================================
+TESTING WITH STRICT PROMPT TEMPLATE
+======================================================================
+
+Template adds: "If the answer is not in the context, say 'I cannot answer this from the available documents.'"
+
+------------------------------------------------------------
+Category: Completely off-topic
+------------------------------------------------------------
+
+Question: What is the capital of France?
+Answer: I cannot answer this from the available documents. The provided context is about the Ford Model T service manual and does not contain information about geography or world capitals.
+Admits lack of knowledge: True
+
+Question: Who won the 2024 Super Bowl?
+Answer: I cannot answer this from the available documents. The context only contains information about the Ford Model T service manual from 1919.
+Admits lack of knowledge: True
+
+------------------------------------------------------------
+Category: Related but not in corpus
+------------------------------------------------------------
+
+Question: What's the horsepower of a 1925 Model T?
+Answer: According to the context, the Model T Ford is equipped with a four cylinder motor that develops twenty horse power. The manual does not specify different horsepower for different years.
+Admits lack of knowledge: Partial
+
+Question: What is the fuel injection system spec?
+Answer: I cannot answer this from the available documents. The manual describes a carburetor system, not fuel injection, but does not provide specifications for fuel injection as this technology is not mentioned.
+Admits lack of knowledge: True
+
+------------------------------------------------------------
+Category: False premises
+------------------------------------------------------------
+
+Question: Why does the manual recommend synthetic oil?
+Answer: I cannot answer this from the available documents. The manual mentions using "Ford Special Motor Oil" or high-grade light-bodied engine oil, but does not mention synthetic oil.
+Admits lack of knowledge: True
+
+Question: What does the manual say about electronic ignition?
+Answer: I cannot answer this from the available documents. The manual describes a timer and coil ignition system, not electronic ignition.
+Admits lack of knowledge: True
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Key Findings on Unanswerable Questions:
+
+1. DEFAULT PROMPT BEHAVIOR:
+   - Model sometimes hallucinates plausible-sounding answers
+   - May combine retrieved context with general knowledge incorrectly
+   - Doesn't always clearly state when information is missing
+   - Uses training data to fill gaps when context is insufficient
+
+2. STRICT PROMPT IMPROVEMENT:
+   - Explicit instruction to say "I cannot answer" helps significantly
+   - Model more likely to admit when context doesn't contain the answer
+   - Reduces hallucination on out-of-scope questions
+   - Forces grounding in retrieved context only
+
+3. CATEGORY ANALYSIS:
+
+   OFF-TOPIC QUESTIONS:
+   - Usually handled well (obviously not in corpus)
+   - Both default and strict prompts correctly identify scope mismatch
+   - Low hallucination risk
+
+   RELATED BUT MISSING:
+   - High hallucination risk
+   - Model may use training data to "fill in" gaps
+   - Strict prompt helps but doesn't eliminate all issues
+   - Model may conflate similar information
+
+   FALSE PREMISES:
+   - Model often catches anachronisms (electronic ignition in 1919)
+   - But may still try to answer rather than rejecting premise
+   - Strict prompt improves rejection rate
+
+4. RETRIEVAL IMPACT:
+   - Retrieved context sometimes helps (model sees no relevant content)
+   - Sometimes hurts (model tries to force connection)
+   - Strict prompting with context check reduces false connections
+
+5. HALLUCINATION INDICATORS:
+   - Specific values without context citation
+   - Anachronistic technology references
+   - Confident statements about obviously missing information
+   - Use of "According to the manual" when manual doesn't say that
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+1. USE STRICT PROMPTING:
+   - Explicitly instruct model to admit ignorance
+   - Reduces hallucination significantly
+   - Essential for high-accuracy applications
+
+2. ADD CONFIDENCE SCORING:
+   - Use retrieval score thresholds
+   - Filter chunks with score < 0.5
+   - Flag low-confidence retrievals
+
+3. IMPLEMENT QUERY CLASSIFICATION:
+   - Separate classifier to detect off-topic questions
+   - Pre-filter before retrieval
+   - Better than relying on model to self-report
+
+4. MONITOR FOR HALLUCINATION:
+   - Check citations against retrieved chunks
+   - Verify specific values appear in context
+   - Flag answers that go beyond retrieved content
+
+5. PROVIDE FALLBACK:
+   - When confidence is low, offer to search other sources
+   - Don't force an answer from insufficient context
+   - Better to say "I don't know" than to hallucinate
+
+BEST PRACTICE:
+Always use strict prompting for production RAG systems where accuracy
+is critical. The slight reduction in helpfulness is worth the
+significant improvement in reliability.

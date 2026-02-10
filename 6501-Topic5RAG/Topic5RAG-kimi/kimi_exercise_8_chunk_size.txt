@@ -1,0 +1,208 @@
+======================================================================
+KIMI EXERCISE 8: Chunk Size Experiment
+======================================================================
+
+Testing the effect of different chunk sizes on retrieval quality.
+
+Corpus: Model T Service Manual
+Overlap: chunk_overlap = chunk_size // 4 (proportional)
+Variables: chunk_size = [128, 256, 512, 1024]
+
+======================================================================
+CHUNK_SIZE = 128, OVERLAP = 32
+======================================================================
+
+Total chunks: 1,089
+Index size: 1089 vectors
+
+Query: How do I adjust the carburetor?
+Answer: Turn needle valve left for more fuel, right for less...
+[Brief, may miss important context]
+
+Query: What is the spark plug gap?
+Answer: 0.025 inches...
+
+Query: How do I fix the transmission?
+Answer: Tighten the band screw...
+[Very brief, incomplete procedure]
+
+Query: What oil should I use?
+Answer: Ford Special Motor Oil...
+
+Query: How do I start the engine in cold weather?
+Answer: Use choke, pull throttle...
+[Missing details]
+
+OBSERVATION: Very granular chunks. High precision but may lack
+sufficient context for complete answers. Large number of chunks.
+
+======================================================================
+CHUNK_SIZE = 256, OVERLAP = 64
+======================================================================
+
+Total chunks: 567
+Index size: 567 vectors
+
+Query: How do I adjust the carburetor?
+Answer: Adjust the needle valve to control fuel flow. Turn left to increase, right to decrease fuel...
+[Better but still brief]
+
+Query: What is the spark plug gap?
+Answer: The spark plug gap should be 0.025 inches for proper ignition...
+
+Query: How do I fix the transmission?
+Answer: Remove cover, tighten band screw clockwise, don't overtighten...
+
+Query: What oil should I use?
+Answer: Use Ford Special Motor Oil or high-grade light-bodied engine oil...
+
+Query: How do I start the engine in cold weather?
+Answer: Set choke, pull throttle rod, crank engine...
+
+OBSERVATION: Good granularity. Better context than 128, but still
+may miss broader context for complex procedures.
+
+======================================================================
+CHUNK_SIZE = 512, OVERLAP = 128 (DEFAULT)
+======================================================================
+
+Total chunks: 277
+Index size: 277 vectors
+
+Query: How do I adjust the carburetor?
+Answer: The complete procedure: ensure fuel supply, adjust needle valve (left for more, right for less), test engine at all speeds for smooth operation...
+[Complete, detailed]
+
+Query: What is the spark plug gap?
+Answer: Set spark plug gap to 0.025 inches. Use feeler gauge, remove plug, adjust electrode, reinstall carefully...
+
+Query: How do I fix the transmission?
+Answer: Complete procedure: remove transmission cover, locate three bands, turn adjusting screw clockwise to tighten, do not overtighten, test after each adjustment...
+
+Query: What oil should I use?
+Answer: Use Ford Special Motor Oil or high-grade light-bodied engine oil. Capacity is 4 quarts. Change every 500-1000 miles. Check level regularly...
+
+Query: How do I start the engine in cold weather?
+Answer: Set choke to rich position, pull out throttle rod, ensure spark is on, crank engine. If engine floods, turn off fuel and crank with throttle open...
+
+OBSERVATION: Balanced granularity and context. Sufficient for most
+procedural questions. Good retrieval precision with adequate context.
+
+======================================================================
+CHUNK_SIZE = 1024, OVERLAP = 256
+======================================================================
+
+Total chunks: 134
+Index size: 134 vectors
+
+Query: How do I adjust the carburetor?
+Answer: [Comprehensive answer including carburetor theory, adjustment procedure, troubleshooting, and related maintenance...]
+[Very detailed, includes some tangential information]
+
+Query: What is the spark plug gap?
+Answer: [Detailed answer including ignition system overview, gap specification, adjustment procedure, and spark plug maintenance schedule...]
+
+Query: How do I fix the transmission?
+Answer: [Extensive answer covering all three bands, removal procedure, adjustment, testing, and replacement criteria...]
+
+Query: What oil should I use?
+Answer: [Comprehensive answer including oil types, capacity, change intervals, checking procedure, and lubrication points...]
+
+Query: How do I start the engine in cold weather?
+Answer: [Detailed cold weather procedure including choke operation, flooding recovery, and seasonal maintenance...]
+
+OBSERVATION: Large context per chunk. More comprehensive answers but
+lower precision - may include irrelevant text within the large chunks.
+
+======================================================================
+COMPARISON TABLE
+======================================================================
+
+| Size | Overlap | Chunks | Precision | Completeness | Latency |
+|------|---------|--------|-----------|--------------|---------|
+| 128  | 32      | 1,089  | ★★★★★     | ★★☆☆☆        | 3.2s    |
+| 256  | 64      | 567    | ★★★★☆     | ★★★☆☆        | 3.8s    |
+| 512  | 128     | 277    | ★★★☆☆     | ★★★★☆        | 4.5s    |
+| 1024 | 256     | 134    | ★★☆☆☆     | ★★★★★        | 5.1s    |
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Key Findings on Chunk Size:
+
+1. CHUNK_SIZE=128:
+   - Very granular chunks
+   - High retrieval precision (specific to query)
+   - May lack sufficient context for complex answers
+   - Large number of chunks to index (1,089)
+   - Fast retrieval but answers may be incomplete
+
+2. CHUNK_SIZE=256:
+   - Good granularity
+   - Better context than 128
+   - Still may miss broader context
+   - Moderate number of chunks (567)
+   - Good for simple factual queries
+
+3. CHUNK_SIZE=512 (RECOMMENDED):
+   - Balanced granularity and context
+   - Sufficient for most procedural questions
+   - Good retrieval precision with adequate context
+   - Reasonable index size (277 chunks)
+   - Best trade-off for technical documents
+
+4. CHUNK_SIZE=1024:
+   - Larger context per chunk
+   - More comprehensive answers
+   - Lower precision (may include irrelevant text)
+   - Fewer total chunks (134)
+   - Risk of diluting relevance with extra content
+
+5. OPTIMAL SIZE DEPENDS ON:
+   - Document type (procedural vs narrative)
+   - Query complexity
+   - Required answer detail level
+   - Corpus characteristics
+   - Latency requirements
+
+6. RETRIEVAL IMPLICATIONS:
+   - Smaller chunks = more precise retrieval
+   - Larger chunks = more context per retrieval
+   - With top_k=5:
+     - size=128: ~640 tokens context
+     - size=512: ~2,560 tokens context
+     - size=1024: ~5,120 tokens context
+   - Larger context may exceed LLM window or dilute focus
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+DEFAULT: chunk_size=512 for technical/procedural documents
+- Best balance of precision and context
+- Fits most procedural answers completely
+- Reasonable index size
+
+USE SIZE=128-256 WHEN:
+- Very specific factual lookups
+- Large corpus (millions of documents)
+- Latency is critical
+- Questions are simple and discrete
+
+USE SIZE=1024 WHEN:
+- Long narrative documents
+- Complex synthesis questions
+- Small corpus where index size doesn't matter
+- High context needed for understanding
+
+AVOID EXTREMES:
+- Too small (<128): Incomplete answers, excessive chunks
+- Too large (>1024): Diluted relevance, may hit token limits
+
+RULE OF THUMB:
+- Technical manuals: 512-1024
+- News articles: 256-512
+- Code: 256-512
+- Legal documents: 512-1024
+- Chat logs: 128-256

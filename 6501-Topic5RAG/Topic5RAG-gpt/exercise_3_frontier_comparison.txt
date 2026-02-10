@@ -1,0 +1,18 @@
+chat: ================================================================================
+chat: EXERCISE 3: Frontier chat model comparison (manual)
+chat: ================================================================================
+chat: Manual step (web UI). No file upload. Use the SAME 8 queries from Exercise 1:
+chat: - How do I adjust the carburetor on a Model T?
+chat: - What is the correct spark plug gap for a Model T Ford?
+chat: - How do I fix a slipping transmission band?
+chat: - What oil should I use in a Model T engine?
+chat: - What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?
+chat: - What mistake did Elise Stefanik make in Congress on January 23, 2026?
+chat: - What is the purpose of the Main Street Parity Act?
+chat: - Who in Congress has spoken for and against funding of pregnancy centers?
+chat: 
+chat: Record observations:
+chat: - Where general knowledge succeeds
+chat: - Where it hallucinates
+chat: - Whether it appears to use web search
+chat: - Where your local Qwen+RAG is more specific/accurate

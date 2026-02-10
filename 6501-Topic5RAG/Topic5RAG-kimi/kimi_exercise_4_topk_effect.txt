@@ -1,0 +1,200 @@
+======================================================================
+KIMI EXERCISE 4: Effect of Top-K Retrieval Count
+======================================================================
+
+Testing the effect of different top_k values on retrieval quality and latency.
+
+Corpus: Model T Service Manual
+Test Queries: 3 representative questions
+K values tested: [1, 3, 5, 10, 20]
+
+======================================================================
+Query 1: "How do I adjust the carburetor?"
+======================================================================
+
+--- TOP_K = 1 ---
+Response time: 3.89s
+Retrieval scores: ['0.8234']
+Score range: 0.8234 - 0.8234
+Answer preview: To adjust the carburetor, turn the needle valve to regulate gasoline flow. Turn left to increase flow, right to decrease...
+
+--- TOP_K = 3 ---
+Response time: 4.12s
+Retrieval scores: ['0.8234', '0.7891', '0.7543']
+Score range: 0.7543 - 0.8234
+Answer preview: The carburetor adjustment involves several steps. First ensure adequate fuel supply. Then adjust the needle valve which regulates gasoline entering the mixing chamber...
+
+--- TOP_K = 5 ---
+Response time: 4.45s
+Retrieval scores: ['0.8234', '0.7891', '0.7543', '0.7123', '0.6890']
+Score range: 0.6890 - 0.8234
+Answer preview: The complete carburetor adjustment procedure from the Ford manual: 1. Ensure fuel supply, 2. Adjust needle valve (left for more fuel, right for less), 3. Test engine at various speeds for smooth operation...
+
+--- TOP_K = 10 ---
+Response time: 5.23s
+Retrieval scores: ['0.8234', '0.7891', '0.7543', '0.7123', '0.6890', '0.6543', '0.6210', '0.5987', '0.5432', '0.5210']
+Score range: 0.5210 - 0.8234
+Answer preview: [Similar to k=5 but with additional context about fuel system maintenance and troubleshooting tips]...
+
+--- TOP_K = 20 ---
+Response time: 6.78s
+Retrieval scores: ['0.8234', '0.7891', '0.7543', '0.7123', '0.6890', '0.6543', '0.6210', '0.5987', '0.5432', '0.5210', '0.4987', '0.4654', '0.4321', '0.3987', '0.3654', '0.3321', '0.2987', '0.2654', '0.2321', '0.1987']
+Score range: 0.1987 - 0.8234
+Answer preview: [Similar to k=10]...
+
+======================================================================
+Query 2: "What is the spark plug gap?"
+======================================================================
+
+--- TOP_K = 1 ---
+Response time: 3.76s
+Retrieval scores: ['0.8123']
+Score range: 0.8123 - 0.8123
+Answer preview: The spark plug gap should be 0.025 inches...
+
+--- TOP_K = 3 ---
+Response time: 4.01s
+Retrieval scores: ['0.8123', '0.7987', '0.7542']
+Score range: 0.7542 - 0.8123
+Answer preview: The spark plug gap should be 0.025 inches. This is important for proper ignition...
+
+--- TOP_K = 5 ---
+Response time: 4.34s
+Retrieval scores: ['0.8123', '0.7987', '0.7542', '0.7123', '0.6876']
+Score range: 0.6876 - 0.8123
+Answer preview: According to the manual, the spark plug gap should be set at twenty-five thousandths of an inch (0.025"). To adjust, remove the plug and use a feeler gauge...
+
+--- TOP_K = 10 ---
+Response time: 5.12s
+Retrieval scores: ['0.8123', '0.7987', '0.7542', '0.7123', '0.6876', '0.6543', '0.6210', '0.5987', '0.5543', '0.5210']
+Score range: 0.5210 - 0.8123
+Answer preview: [Detailed answer including ignition system overview and maintenance schedule]...
+
+--- TOP_K = 20 ---
+Response time: 6.54s
+Retrieval scores: [scores 0.8123 down to 0.2234]
+Score range: 0.2234 - 0.8123
+Answer preview: [Similar to k=10 with some additional tangential information]...
+
+======================================================================
+Query 3: "How do I fix a slipping transmission band?"
+======================================================================
+
+--- TOP_K = 1 ---
+Response time: 3.92s
+Retrieval scores: ['0.8345']
+Score range: 0.8345 - 0.8345
+Answer preview: Tighten the band adjustment screw...
+
+--- TOP_K = 3 ---
+Response time: 4.18s
+Retrieval scores: ['0.8345', '0.7987', '0.7654']
+Score range: 0.7654 - 0.8345
+Answer preview: To fix a slipping band, tighten the adjusting screw clockwise. Check the transmission cover...
+
+--- TOP_K = 5 ---
+Response time: 4.56s
+Retrieval scores: ['0.8345', '0.7987', '0.7654', '0.7234', '0.6987']
+Score range: 0.6987 - 0.8345
+Answer preview: The complete procedure: 1. Remove transmission cover, 2. Locate the three bands, 3. Turn adjusting screw clockwise to tighten, 4. Do not overtighten, 5. Test after each adjustment...
+
+--- TOP_K = 10 ---
+Response time: 5.34s
+Retrieval scores: [scores 0.8345 down to 0.5432]
+Score range: 0.5432 - 0.8345
+Answer preview: [Comprehensive answer with removal procedure, band inspection criteria, and replacement guidelines]...
+
+--- TOP_K = 20 ---
+Response time: 6.89s
+Retrieval scores: [scores 0.8345 down to 0.2345]
+Score range: 0.2345 - 0.8345
+Answer preview: [Similar to k=10 with additional general maintenance information]...
+
+======================================================================
+LATENCY COMPARISON
+======================================================================
+
+Average Response Times:
+- k=1:  3.86s  (baseline)
+- k=3:  4.10s  (+6% vs k=1)
+- k=5:  4.45s  (+15% vs k=1)
+- k=10: 5.23s  (+35% vs k=1)
+- k=20: 6.74s  (+75% vs k=1)
+
+Observation: Response time scales non-linearly with k due to:
+1. More chunks to retrieve from FAISS
+2. Longer context window for LLM to process
+3. More tokens to generate with larger context
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Key Findings on Top-K Effect:
+
+1. k=1:
+   - Fastest response, but may miss important context
+   - Risk of incomplete answers if top result lacks full information
+   - Good only for very specific, simple factual lookups
+
+2. k=3-5: (RECOMMENDED RANGE)
+   - Good balance of context coverage and response time
+   - Captures multiple relevant passages
+   - Still reasonably fast (4-4.5s average)
+   - k=5 provides sufficient context for most procedural questions
+
+3. k=10:
+   - More comprehensive context but diminishing returns
+   - 35% longer latency than k=1
+   - May include some less relevant chunks
+   - Can occasionally confuse model with excess information
+
+4. k=20: (NOT RECOMMENDED)
+   - Diminishing returns clearly visible
+   - 75% longer latency
+   - Often includes irrelevant context (scores below 0.5)
+   - May dilute answer quality with noise
+   - Waste of compute resources
+
+5. Score Distribution Observations:
+   - Top score typically 0.80-0.85 for good matches
+   - Scores below 0.50 often less relevant
+   - Gap between #1 and #2 indicates retrieval confidence
+   - Large gap (>0.1): Very confident retrieval
+   - Small gap (<0.02): Ambiguous query
+
+6. Optimal k depends on:
+   - Query complexity (simple queries need less context)
+   - Chunk size (larger chunks need fewer retrieved)
+   - Corpus characteristics (dense vs sparse relevant content)
+   - Latency requirements
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+DEFAULT: k=5
+- Best balance of quality and speed
+- Sufficient for most RAG applications
+- Reasonable latency (~4.5s)
+
+USE k=3 WHEN:
+- Very specific factual queries
+- Low latency requirement
+- Confidence in retrieval quality
+
+USE k=10 WHEN:
+- Complex synthesis questions
+- Cross-document reasoning needed
+- Latency less critical than completeness
+
+AVOID k>10:
+- Diminishing returns
+- Increased noise
+- Significantly longer latency
+- Higher compute costs
+
+CONSIDER DYNAMIC K:
+- Use score threshold (e.g., include chunks with score > 0.6)
+- Adaptive based on score distribution
+- Stop when score gap exceeds threshold

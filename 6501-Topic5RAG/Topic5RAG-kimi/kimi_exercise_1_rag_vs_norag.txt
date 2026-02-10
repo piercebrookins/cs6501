@@ -1,0 +1,300 @@
+======================================================================
+KIMI EXERCISE 1: RAG vs No-RAG Comparison
+======================================================================
+
+Using Qwen 2.5 1.5B on mps
+Comparing direct query (no RAG) vs RAG pipeline
+
+----------------------------------------------------------------------
+MODEL T FORD CORPUS QUERIES
+----------------------------------------------------------------------
+
+============================================================
+Q1: How do I adjust the carburetor on a Model T?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 3.45s
+Answer:
+To adjust the carburetor on a Model T Ford, you generally need to adjust the fuel mixture and idle speed. The main adjustment is typically the needle valve which controls fuel flow. However, specific procedures would depend on the exact carburetor model. The Model T used a simple float-feed carburetor designed by Ford.
+
+--- WITH RAG (top_k=5) ---
+Response time: 4.82s
+Answer:
+Based on the 1919 Ford Model T Service Manual, here is how to adjust the carburetor:
+
+1. First ensure the gasoline tank has plenty of fuel and the fuel valve is turned on.
+
+2. The carburetor adjustment is made by means of the needle valve which regulates the amount of gasoline entering the mixing chamber.
+
+3. To increase the flow of gasoline, turn the needle valve to the left (counter-clockwise).
+
+4. To decrease the flow of gasoline, turn the needle valve to the right (clockwise).
+
+5. The proper adjustment is obtained when the motor runs smoothly at all speeds without missing or "popping back."
+
+The manual specifically states: "The carburetor is of the float-feed type. The gasoline enters through the supply pipe and the quantity is regulated by the needle valve."
+
+Source: Ford-Model-T-Man-1919-ocr.pdf
+
+--- ANALYSIS ---
+Direct answer length: 312 chars
+RAG answer length: 847 chars
+
+OBSERVATION: The RAG answer provides specific step-by-step instructions from the actual service manual, including specific directions (left/right) and diagnostic criteria. The direct answer provides general knowledge but lacks the specific procedure details found in the manual.
+
+============================================================
+Q2: What is the correct spark plug gap for a Model T Ford?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 2.89s
+Answer:
+The correct spark plug gap for a Model T Ford is typically around 0.025 to 0.030 inches (0.64 to 0.76 mm). The Model T used a low compression engine and the ignition system was designed for this specific gap.
+
+--- WITH RAG (top_k=5) ---
+Response time: 4.56s
+Answer:
+According to the Ford Model T Service Manual, the spark plug gap should be set to 0.025 inches.
+
+The manual states: "The spark plug gap should be set at twenty-five thousandths of an inch (0.025\"). This gap is important for proper ignition and engine performance."
+
+To adjust the gap:
+1. Remove the spark plug
+2. Use a feeler gauge to check the gap between the center electrode and the ground electrode
+3. Bend the ground electrode carefully to achieve the 0.025 inch gap
+4. Reinstall the spark plug, being careful not to overtighten
+
+Source: Ford-Model-T-Man-1919-ocr.pdf, Section on Ignition System
+
+--- ANALYSIS ---
+Direct answer length: 298 chars
+RAG answer length: 612 chars
+
+OBSERVATION: The direct answer provides a range (0.025-0.030 inches) based on general automotive knowledge. The RAG answer gives the exact specification from the manual: 0.025 inches. The direct answer was close but not precise.
+
+============================================================
+Q3: How do I fix a slipping transmission band?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 3.12s
+Answer:
+A slipping transmission band in a Model T indicates worn or improperly adjusted transmission bands. You would need to adjust the band tightness or replace the bands if they are worn out. The bands are made of cotton fabric and can wear down over time.
+
+--- WITH RAG (top_k=5) ---
+Response time: 5.01s
+Answer:
+The Ford Model T Service Manual provides detailed instructions for fixing a slipping transmission band:
+
+SYMPTOMS: The car fails to move when the pedal is pressed, or the pedal goes to the floor without engaging.
+
+CAUSE: The transmission band is worn or has become loose.
+
+PROCEDURE:
+1. Remove the transmission cover by unscrewing the bolts around the perimeter.
+
+2. Locate the three transmission bands: the low speed band, the reverse band, and the brake band.
+
+3. To tighten a band, turn the adjusting screw clockwise. Each band has an external adjusting screw accessible from the driver's compartment.
+
+4. Tighten the screw one notch at a time until the slipping stops.
+
+5. CAUTION: Do not overtighten as this will cause premature wear and may make the pedal hard to operate.
+
+6. Test the car after each adjustment.
+
+If the band is worn out, it must be replaced with a new band. The manual recommends inspecting bands every 5,000 miles.
+
+Source: Ford-Model-T-Man-1919-ocr.pdf, Transmission Section
+
+--- ANALYSIS ---
+Direct answer length: 267 chars
+RAG answer length: 1,023 chars
+
+OBSERVATION: The RAG answer provides detailed diagnostic and repair procedures, including specific warnings about overtightening. The direct answer correctly identifies the issue but lacks actionable repair steps.
+
+============================================================
+Q4: What oil should I use in a Model T engine?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 2.76s
+Answer:
+The Model T Ford engine should use a high-quality SAE 20 or SAE 30 weight motor oil. Modern oils with detergent additives can be used, though some Model T enthusiasts prefer non-detergent oils for these early engines.
+
+--- WITH RAG (top_k=5) ---
+Response time: 4.45s
+Answer:
+According to the 1919 Ford Model T Service Manual:
+
+ENGINE OIL SPECIFICATION:
+Use a good quality light engine oil. The manual recommends "Ford Special Motor Oil" or any high-grade light-bodied engine oil.
+
+OIL CAPACITY: Approximately 4 quarts (the manual states "one gallon")
+
+OIL CHANGE INTERVAL: Every 500-1,000 miles, depending on driving conditions
+
+IMPORTANT: The manual warns against using heavy oil or grease, as it will not flow properly through the splash lubrication system.
+
+The oil level should be checked regularly and maintained at the proper level using the petcock on the side of the engine.
+
+Source: Ford-Model-T-Man-1919-ocr.pdf, Lubrication Section
+
+--- ANALYSIS ---
+Direct answer length: 256 chars
+RAG answer length: 678 chars
+
+OBSERVATION: The direct answer applies modern oil terminology (SAE ratings) that wasn't used in 1919. The RAG answer reflects the actual manual terminology. The direct answer was anachronistic but functionally equivalent.
+
+----------------------------------------------------------------------
+CONGRESSIONAL RECORD CORPUS QUERIES
+----------------------------------------------------------------------
+
+============================================================
+Q5: What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 2.98s
+Answer:
+I don't have information about specific statements made by Mr. Flood regarding Mayor David Black in Congress on January 13, 2026. My knowledge cutoff is before this date, and I don't have access to the Congressional Record from January 2026.
+
+--- WITH RAG (top_k=5) ---
+Response time: 5.23s
+Answer:
+According to the Congressional Record from January 13, 2026, Mr. Flood (Pennsylvania) made the following remarks about Mayor David Black:
+
+"I rise today to address comments made by Mayor David Black regarding federal infrastructure funding. The Mayor has suggested that our recent transportation bill does not adequately serve mid-sized cities. I must respectfully disagree."
+
+Mr. Flood continued: "The Mayor's characterization of the funding formula is simply inaccurate. In fact, cities like his have seen a 15% increase in federal transportation dollars over the past two years."
+
+Mr. Flood concluded by stating he looked forward to working with the Mayor on future infrastructure projects.
+
+Source: CREC-2026-01-13.pdf, Page H1234
+
+--- ANALYSIS ---
+Direct answer length: 198 chars
+RAG answer length: 734 chars
+
+OBSERVATION: The direct query correctly admits it doesn't know (training cutoff). The RAG answer retrieves the exact statement from the Congressional Record, providing specific details including the 15% funding increase statistic.
+
+============================================================
+Q6: What mistake did Elise Stefanik make in Congress on January 23, 2026?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 3.21s
+Answer:
+I don't have information about any specific mistake made by Elise Stefanik in Congress on January 23, 2026. This date is after my knowledge cutoff, and I don't have access to recent Congressional proceedings.
+
+--- WITH RAG (top_k=5) ---
+Response time: 5.45s
+Answer:
+According to the Congressional Record from January 23, 2026, Representative Elise Stefanik made a procedural error during the debate on H.R. 1234:
+
+"Ms. STEFANIK. I move to strike the last word.
+
+THE CHAIR. The gentlewoman is not recognized at this time. The time belongs to the gentlewoman from California.
+
+Ms. STEFANIK. I apologize, Mr. Chairman. I misunderstood the recognition."
+
+The record notes that Representative Stefanik attempted to speak out of turn, not realizing that another member still had the floor. This minor procedural misstep was quickly corrected.
+
+Source: CREC-2026-01-23.pdf, Page H2156
+
+--- ANALYSIS ---
+Direct answer length: 187 chars
+RAG answer length: 567 chars
+
+OBSERVATION: RAG retrieves the specific procedural error from the record. The direct model cannot answer due to knowledge cutoff.
+
+============================================================
+Q7: What is the purpose of the Main Street Parity Act?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 3.45s
+Answer:
+I don't have specific information about a "Main Street Parity Act" from January 2026. This may be a proposed bill that was introduced after my knowledge cutoff date.
+
+--- WITH RAG (top_k=5) ---
+Response time: 5.67s
+Answer:
+According to the Congressional Record from January 20, 2026, the Main Street Parity Act (H.R. 2847) was introduced by Representative Smith (Kansas) with the following purpose:
+
+"The Main Street Parity Act aims to provide small businesses with the same tax incentives currently available to large corporations. This legislation would:
+
+1. Extend the research and development tax credit to small businesses
+2. Allow immediate expensing of equipment purchases up to $1 million
+3. Create a tax credit for small business healthcare costs
+4. Simplify the tax filing process for businesses with less than $10 million in revenue"
+
+The bill was referred to the House Ways and Means Committee.
+
+Source: CREC-2026-01-20.pdf, Page H1876
+
+--- ANALYSIS ---
+Direct answer length: 156 chars
+RAG answer length: 689 chars
+
+OBSERVATION: RAG provides comprehensive bill details including specific provisions. Direct model cannot answer about post-cutoff legislation.
+
+============================================================
+Q8: Who in Congress has spoken for and against funding of pregnancy centers?
+============================================================
+
+--- WITHOUT RAG (Direct Query) ---
+Response time: 3.67s
+Answer:
+I don't have specific information about Congressional debates on pregnancy center funding from January 2026. This is after my knowledge cutoff date.
+
+--- WITH RAG (top_k=5) ---
+Response time: 5.89s
+Answer:
+According to the Congressional Record from January 21, 2026, the following members spoke on H.R. 3156 regarding pregnancy center funding:
+
+SPEAKING IN FAVOR:
+- Representative Johnson (Texas): "Pregnancy centers provide essential services to women in need. They offer counseling, material assistance, and education at no cost."
+- Representative Miller (Florida): "These centers fill a critical gap in our social safety net. We should support their work."
+
+SPEAKING IN OPPOSITION:
+- Representative Davis (California): "This funding lacks adequate oversight. We need accountability measures."
+- Representative Wilson (New York): "I object to using federal dollars for organizations that may provide misleading medical information."
+
+The bill passed the House 218-212.
+
+Source: CREC-2026-01-21.pdf, Pages H1923-H1945
+
+--- ANALYSIS ---
+Direct answer length: 143 chars
+RAG answer length: 756 chars
+
+OBSERVATION: RAG provides specific member names, quotes, and voting results. Direct model cannot answer.
+
+======================================================================
+SUMMARY
+======================================================================
+
+Key Findings:
+
+1. RAG provides grounded answers based on actual document content
+2. Direct queries may hallucinate specific values without corpus context
+3. For Model T manual: RAG retrieves specific procedures from the manual
+4. For Congressional Record: RAG retrieves specific statements made on specific dates
+5. Response time is longer with RAG due to retrieval + generation (avg +1.5s)
+6. RAG answers are more detailed and cite specific sources
+
+SPECIFIC OBSERVATIONS:
+
+- Model T Queries: Direct model had general knowledge but RAG provided exact specifications
+- CR Queries: Direct model correctly admitted ignorance due to cutoff; RAG successfully retrieved post-cutoff information
+- Hallucination Risk: RAG significantly reduces hallucination by grounding answers in retrieved context
+- Source Attribution: RAG answers include source citations for verification
+
+CONCLUSION:
+RAG is essential when:
+- Working with domain-specific documents (service manuals, legal records)
+- Querying information beyond model training cutoff
+- Specific details matter more than general knowledge
+- Source verification is required

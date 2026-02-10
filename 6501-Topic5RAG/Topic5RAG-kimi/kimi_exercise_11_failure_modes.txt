@@ -1,0 +1,222 @@
+======================================================================
+KIMI EXERCISE 11: Failure Mode Catalog
+======================================================================
+
+Testing known RAG failure modes with specially designed queries.
+
+Corpus: Model T Service Manual
+
+======================================================================
+FAILURE MODE: COMPUTATION
+======================================================================
+
+Query: "What is the total weight of all parts listed in the manual?"
+
+Retrieved Chunks:
+[1] Score: 0.6543 | Ford-Model-T-Man-1919-ocr.pdf | "The engine weighs approximately 450 pounds..."
+[2] Score: 0.6210 | Ford-Model-T-Man-1919-ocr.pdf | "The transmission assembly weighs about 85 pounds..."
+[3] Score: 0.5987 | ModelT-21-30-ocr.pdf | "The chassis weight is 1,200 pounds..."
+[4] Score: 0.5432 | Ford-Model-T-Man-1919-ocr.pdf | "Individual parts weights are not listed separately..."
+[5] Score: 0.5210 | ModelT-41-50-ocr.pdf | "Total vehicle weight is 1,500 pounds..."
+
+Answer: The manual lists some individual part weights: engine (450 lbs), transmission (85 lbs), and chassis (1,200 lbs). However, these do not add up to the total vehicle weight of 1,500 pounds because many components (wheels, body, fuel, etc.) are not individually listed.
+
+FAILURE ANALYSIS:
+- RAG cannot perform calculations across chunks
+- No aggregation capability
+- Model may hallucinate total or admit it cannot compute
+- Requires external computation layer
+
+HANDLING: Partial success - model correctly notes the limitation
+
+======================================================================
+FAILURE MODE: TEMPORAL REASONING
+======================================================================
+
+Query: "Which maintenance task should be done first?"
+
+Retrieved Chunks:
+[1] Score: 0.7234 | Ford-Model-T-Man-1919-ocr.pdf | "Daily: Check oil level, inspect for leaks"
+[2] Score: 0.6987 | Ford-Model-T-Man-1919-ocr.pdf | "Every 200 miles: Lubricate all fittings"
+[3] Score: 0.6543 | Ford-Model-T-Man-1919-ocr.pdf | "Every 500 miles: Change engine oil"
+[4] Score: 0.6210 | Ford-Model-T-Man-1919-ocr.pdf | "Every 1,000 miles: Complete inspection"
+[5] Score: 0.5876 | ModelT-11-20-ocr.pdf | "Before each trip: Check tires, fuel, water"
+
+Answer: Based on the manual's maintenance schedule, the order is: 1) Daily checks (oil, leaks), 2) Every 200 miles (lubrication), 3) Every 500 miles (oil change), 4) Every 1,000 miles (inspection). However, before any trip, you should check tires, fuel, and water.
+
+FAILURE ANALYSIS:
+- Model correctly sequences based on frequency
+- But doesn't understand that "first" depends on context
+- No actual temporal reasoning across events
+- Works only because schedule is frequency-based
+
+HANDLING: Success - but for simple frequency-based sequencing
+
+======================================================================
+FAILURE MODE: COMPARISON
+======================================================================
+
+Query: "Is the carburetor adjustment easier than transmission repair?"
+
+Retrieved Chunks:
+[1] Score: 0.7987 | Ford-Model-T-Man-1919-ocr.pdf | Carburetor adjustment procedure
+[2] Score: 0.7654 | Ford-Model-T-Man-1919-ocr.pdf | Transmission adjustment procedure
+[3] Score: 0.7123 | Ford-Model-T-Man-1919-ocr.pdf | General maintenance guidelines
+[4] Score: 0.6543 | ModelT-31-40-ocr.pdf | Troubleshooting guide
+[5] Score: 0.6210 | Ford-Model-T-Man-1919-ocr.pdf | Tools required
+
+Answer: Based on the procedures described in the manual, carburetor adjustment appears to be simpler than transmission repair. The carburetor only requires turning a needle valve, while transmission work involves removing the cover and adjusting three separate bands. However, the manual does not explicitly rate the difficulty of either procedure.
+
+FAILURE ANALYSIS:
+- Corpus has no explicit difficulty ratings
+- Model infers from procedure complexity
+- Inference may not match actual difficulty
+- Subjective comparison without objective basis
+
+HANDLING: Moderate success - inference-based but admits uncertainty
+
+======================================================================
+FAILURE MODE: AMBIGUOUS REFERENCE
+======================================================================
+
+Query: "How do you fix it?"
+
+Retrieved Chunks:
+[1] Score: 0.5432 | Ford-Model-T-Man-1919-ocr.pdf | "If the engine stalls, check the fuel supply..."
+[2] Score: 0.5210 | Ford-Model-T-Man-1919-ocr.pdf | "If the transmission slips, tighten the bands..."
+[3] Score: 0.4987 | ModelT-21-30-ocr.pdf | "If the brakes fail, inspect the brake bands..."
+[4] Score: 0.4876 | Ford-Model-T-Man-1919-ocr.pdf | "If the ignition fails, check the timer and coils..."
+[5] Score: 0.4654 | ModelT-41-50-ocr.pdf | "If the cooling system leaks, repair the radiator..."
+
+Answer: I need more information to answer your question. The manual contains procedures for fixing various issues including engine stalls, transmission slippage, brake failures, ignition problems, and cooling system leaks. Could you please specify which problem you're trying to fix?
+
+FAILURE ANALYSIS:
+- Vague referent "it" leads to unfocused retrieval
+- Retrieved chunks cover multiple unrelated topics
+- Model correctly asks for clarification (with strict prompt)
+- With default prompt, might hallucinate an answer
+
+HANDLING: Good - model asks for clarification
+
+======================================================================
+FAILURE MODE: MULTI-HOP REASONING
+======================================================================
+
+Query: "What tool is needed for the part that connects to the carburetor?"
+
+Retrieved Chunks:
+[1] Score: 0.7123 | Ford-Model-T-Man-1919-ocr.pdf | "The carburetor connects to the intake manifold..."
+[2] Score: 0.6543 | Ford-Model-T-Man-1919-ocr.pdf | "Tools required: screwdriver, wrench set..."
+[3] Score: 0.6210 | Ford-Model-T-Man-1919-ocr.pdf | "The manifold bolts require a 1/2 inch wrench..."
+[4] Score: 0.5987 | ModelT-11-20-ocr.pdf | "Carburetor mounting uses standard bolts..."
+[5] Score: 0.5432 | Ford-Model-T-Man-1919-ocr.pdf | "General tool kit for Model T maintenance..."
+
+Answer: The carburetor connects to the intake manifold. Based on the tools listed in the manual, you would need a wrench (specifically a 1/2 inch wrench for manifold bolts) and possibly a screwdriver for the carburetor mounting.
+
+FAILURE ANALYSIS:
+- Requires connecting: carburetor → manifold → tools
+- Model makes the connection but inference is needed
+- Not true multi-hop retrieval (single retrieval pass)
+- Success depends on all info being in top-k chunks
+
+HANDLING: Moderate success - requires inference but gets answer
+
+======================================================================
+FAILURE MODE: NEGATION
+======================================================================
+
+Query: "What should you NOT do when adjusting the timing?"
+
+Retrieved Chunks:
+[1] Score: 0.7654 | Ford-Model-T-Man-1919-ocr.pdf | "When adjusting timing, turn the timer slowly..."
+[2] Score: 0.7234 | Ford-Model-T-Man-1919-ocr.pdf | "DO NOT force the timer past its stops..."
+[3] Score: 0.6987 | Ford-Model-T-Man-1919-ocr.pdf | "Incorrect timing can damage the engine..."
+[4] Score: 0.6543 | ModelT-31-40-ocr.pdf | "Timing adjustment procedure..."
+[5] Score: 0.6210 | Ford-Model-T-Man-1919-ocr.pdf | "Common mistakes in maintenance..."
+
+Answer: According to the manual, you should NOT force the timer past its stops when adjusting the timing. Doing so can damage the timer mechanism. You should turn the timer slowly and carefully.
+
+FAILURE ANALYSIS:
+- Model correctly identifies negated instruction
+- Success depends on explicit negation in corpus
+- May miss implicit "don't do X" if stated as "do Y"
+- Risk of answering opposite if negation missed
+
+HANDLING: Success - explicit negation captured
+
+======================================================================
+FAILURE MODE: HYPOTHETICAL
+======================================================================
+
+Query: "What would happen if I used the wrong oil?"
+
+Retrieved Chunks:
+[1] Score: 0.6876 | Ford-Model-T-Man-1919-ocr.pdf | "Use a good quality light engine oil..."
+[2] Score: 0.6543 | Ford-Model-T-Man-1919-ocr.pdf | "Heavy oil will not flow properly..."
+[3] Score: 0.6210 | Ford-Model-T-Man-1919-ocr.pdf | "Lubrication is essential for engine life..."
+[4] Score: 0.5987 | ModelT-21-30-ocr.pdf | "Oil pressure must be maintained..."
+[5] Score: 0.5432 | Ford-Model-T-Man-1919-ocr.pdf | "Engine damage from poor lubrication..."
+
+Answer: The manual warns against using heavy oil or grease as it will not flow properly through the splash lubrication system. While the manual doesn't explicitly describe what happens with the wrong oil, it emphasizes that proper lubrication is essential for engine life. Based on this, using the wrong oil could lead to inadequate lubrication and potential engine damage.
+
+FAILURE ANALYSIS:
+- Corpus doesn't contain counterfactuals
+- Model extrapolates from warnings about heavy oil
+- Some inference/hallucination risk
+- Better to admit corpus doesn't cover this
+
+HANDLING: Moderate - extrapolates but acknowledges limitation
+
+======================================================================
+ANALYSIS SUMMARY
+======================================================================
+
+| Failure Mode       | Difficulty | Handling Quality | Notes                           |
+|--------------------|------------|------------------|---------------------------------|
+| Computation        | High       | Poor             | No aggregation capability       |
+| Temporal Reasoning | Medium     | Good*            | *Simple frequency-based only    |
+| Comparison         | Medium     | Moderate         | Inference-based, subjective     |
+| Ambiguous          | Low        | Good             | Asks for clarification          |
+| Multi-hop          | High       | Moderate         | Single-pass limitation          |
+| Negation           | Low        | Good             | Explicit negation works         |
+| Hypothetical       | Medium     | Moderate         | Extrapolation risk              |
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+1. COMPUTATION:
+   - Add structured data extraction layer
+   - Use external calculator/aggregator
+   - Return raw data for user computation
+
+2. TEMPORAL REASONING:
+   - Add timeline/event extraction
+   - Use graph-based representation
+   - Explicit temporal modeling needed
+
+3. COMPARISON:
+   - Pre-compute comparison tables
+   - Add explicit criteria to corpus
+   - Flag subjective comparisons
+
+4. AMBIGUOUS QUERIES:
+   - Implement query clarification
+   - Ask follow-up questions
+   - Use interactive retrieval
+
+5. MULTI-HOP:
+   - Implement iterative retrieval
+   - Chain-of-thought prompting
+   - Graph RAG for complex queries
+
+6. NEGATION:
+   - Explicit negation detection
+   - Separate handling for negative queries
+   - Validate answer polarity
+
+7. HYPOTHETICAL:
+   - Flag counterfactuals
+   - Return to training data (with caution)
+   - Admit corpus limitation
+

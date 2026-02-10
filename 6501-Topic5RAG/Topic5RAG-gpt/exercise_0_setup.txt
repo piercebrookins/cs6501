@@ -1,0 +1,38 @@
+chat: ================================================================================
+chat: EXERCISE 0: SETUP
+chat: ================================================================================
+chat: environment: local
+chat: device: mps
+chat: dtype: torch.float32
+chat: embedding_model: sentence-transformers/all-MiniLM-L6-v2
+chat: llm_model: Qwen/Qwen2.5-0.5B-Instruct
+chat: chunk_size: 512
+chat: chunk_overlap: 128
+chat: 
+chat: ================================================================================
+chat: Building corpus: ModelTService
+chat: ================================================================================
+chat: Using cached index for ModelTService: index_modelt.faiss (970,797 bytes)
+chat: index.ntotal: 632
+chat: 
+chat: Sample chunk:
+chat: source=ModelT-31-40-ocr.pdf chunk=0
+chat: [Page 1]
+chat: cee eee . epg hee mre am ey ~
+chat: The Ford Tranemission
+chat: What is the function af:
+chat: the Transmission? _Anever No, 69
+chat: Te is that part of the methuniem.of an sutomdbile w: Hes between the crank
+chat: shaft and Bi ar ator end by whic con aed fo moves
+chat: different speeds
+chat: from the other I it is thapeed gear of the car.
+chat: 
+chat: Saved index: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Topic5RAG/index_modelt.faiss
+chat: Saved chunks: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Topic5RAG/index_modelt.chunks
+chat: ================================================================================
+chat: Building corpus: CongressionalRecord
+chat: ================================================================================
+chat: ================================================================================
+chat: Building corpus: CongressionalRecord
+chat: ================================================================================
+chat: SKIPPED: FileNotFoundError: Expected pdf_embedded directory not found: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Corpora/CongressionalRecord/pdf_embedded
