@@ -1,5 +1,0 @@
-chat: ================================================================================
-chat: EXERCISE 2: GPT-4o Mini comparison
-chat: ================================================================================
-chat: SKIPPED: OPENAI_API_KEY not set.
-chat: Set it and re-run to generate this file.

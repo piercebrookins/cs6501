@@ -1,0 +1,166 @@
+chat: ================================================================================
+chat: EXERCISE 3: Frontier chat model comparison (automated, no RAG)
+chat: ================================================================================
+chat: models: OpenAI gpt-4o vs OpenAI gpt-4o-mini
+chat: setup: same 8 queries, no retrieval, no tool use
+chat: ================================================================================
+chat: Query :: How do I adjust the carburetor on a Model T?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: Adjusting the carburetor on a Model T Ford involves a few steps, as these vehicles have a relatively simple carburetor system. Here's a basic guide:
+chat: 
+chat: 1. **Warm Up the Engine**: Start the engine and let it warm up to its normal operating temperature. This ensures that adjustments are made under typical running conditions.
+chat: 
+chat: 2. **Locate the Adjustment Needle**: The Model T typically has a single adjustment needle on the carburetor. This needle controls the fuel-air mixture.
+chat: 
+chat: 3. **Initial Adjustment**: Turn the adjustment needle clockwise until it is lightly seated. Then, turn it counterclockwise about 1 to 1.5 turns as a starting point.
+chat: 
+chat: 4. **Fine-Tuning**: With the engine running, slowly turn the adjustment needle clockwise until the engine starts to run poorly or begins to stumble. Then, turn it counterclockwise until the engine runs smoothly. You are looking for the point where the engine runs the best.
+chat: 
+chat: 5. **Test Drive**: Take the car for a short drive to ensure it accelerates smoothly and runs well under load. If necessary, make further minor adjustments to the needle.
+chat: 
+chat: 6. **Idle Speed**: If the idle speed needs adjustment, this is typically done with a separate idle speed screw, if available. Adjust it to achieve a smooth idle.
+chat: 
+chat: Remember, the Model T's carburetor is quite basic, and adjustments are generally straightforward. However, if you're not comfortable making these adjustments yourself, it might be best to consult with a professional or a vintage car specialist.
+chat: gpt-4o_seconds: 9.45
+chat:
+chat: gpt-4o-mini answer:
+chat: To adjust the carburetor on a Model T Ford, follow these steps:
+chat: 
+chat: 1. **Warm Up the Engine**: Start the engine and let it warm up to operating temperature.
+chat: 
+chat: 2. **Locate the Carburetor**: The carburetor is typically mounted on the side of the engine.
+chat: 
+chat: 3. **Adjust the Fuel Mixture**: 
+chat:    - Look for the mixture adjustment screw, usually located on the side of the carburetor.
+chat:    - Turn the screw clockwise to lean the mixture (less fuel) and counterclockwise to enrich it (more fuel).
+chat:    - Adjust in small increments and listen for engine response.
+chat: 
+chat: 4. **Adjust the Idle Speed**: 
+chat:    - Locate the idle speed screw, which controls the throttle opening at idle.
+chat:    - Turn the screw to increase or decrease the idle speed as needed.
+chat: 
+chat: 5. **Test Drive**: After adjustments, take the car for a short drive to see how it performs. Make further adjustments if necessary.
+chat: 
+chat: 6. **Final Check**: Ensure the engine runs smoothly at various speeds and under different loads.
+chat: 
+chat: Always refer to a Model T service manual for specific details and recommendations.
+chat: gpt-4o-mini_seconds: 4.37
+chat:
+chat: ================================================================================
+chat: Query :: What is the correct spark plug gap for a Model T Ford?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: The correct spark plug gap for a Model T Ford is typically 0.025 inches. However, it's always a good idea to consult any available manuals or resources specific to your vehicle for confirmation.
+chat: gpt-4o_seconds: 1.23
+chat:
+chat: gpt-4o-mini answer:
+chat: The correct spark plug gap for a Model T Ford is typically around 0.025 inches (0.635 mm). However, it's always a good idea to check the specific recommendations for your vehicle, as there may be variations based on the engine's condition and modifications.
+chat: gpt-4o-mini_seconds: 1.49
+chat:
+chat: ================================================================================
+chat: Query :: How do I fix a slipping transmission band?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: Fixing a slipping transmission band typically requires adjusting or replacing the band. However, this task can be complex and may require professional assistance, especially if you're not experienced with automotive repairs. Here are some general steps you might consider:
+chat: 
+chat: 1. **Check Transmission Fluid**: Ensure the transmission fluid is at the correct level and in good condition. Low or dirty fluid can cause slipping. If needed, top off or replace the fluid.
+chat: 
+chat: 2. **Adjust the Band**: Some transmissions have adjustable bands. Consult your vehicle's service manual for specific instructions on how to adjust the band tension. This usually involves tightening a locknut and adjusting a screw to the specified torque.
+chat: 
+chat: 3. **Inspect for Wear**: If adjustment doesn't resolve the issue, the band may be worn out. This typically requires disassembling the transmission to replace the band, which is a more involved process.
+chat: 
+chat: 4. **Professional Help**: If you're not comfortable performing these tasks or if the problem persists, it's advisable to take your vehicle to a professional mechanic or transmission specialist.
+chat: 
+chat: Remember, working on a transmission can be complicated and may require specialized tools and knowledge. If you're uncertain, seeking professional help is the best course of action.
+chat: gpt-4o_seconds: 6.10
+chat:
+chat: gpt-4o-mini answer:
+chat: Fixing a slipping transmission band typically requires professional expertise, as it involves disassembling parts of the transmission. However, here are some general steps you might consider:
+chat: 
+chat: 1. **Check Fluid Level**: Ensure the transmission fluid is at the proper level and in good condition. Low or dirty fluid can cause slipping.
+chat: 
+chat: 2. **Fluid Change**: If the fluid is old or contaminated, consider changing it. Use the manufacturer-recommended type of fluid.
+chat: 
+chat: 3. **Adjust Band**: Some transmissions have adjustable bands. If applicable, consult your vehicle's service manual for the correct procedure to adjust the bands.
+chat: 
+chat: 4. **Inspect for Damage**: Look for signs of wear or damage in the transmission components. Worn bands may need replacement.
+chat: 
+chat: 5. **Professional Help**: If the problem persists, it's advisable to take the vehicle to a qualified mechanic or transmission specialist for a thorough diagnosis and repair.
+chat: 
+chat: Attempting to fix a transmission issue without proper knowledge can lead to further damage, so professional assistance is often the best route.
+chat: gpt-4o-mini_seconds: 4.70
+chat:
+chat: ================================================================================
+chat: Query :: What oil should I use in a Model T engine?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: For a Model T engine, it is generally recommended to use a non-detergent SAE 30 motor oil. This type of oil is suitable for the engine's design and operating conditions. If you are unsure or have specific concerns, consulting a specialist in vintage cars or referring to a Model T club or forum for advice might be helpful.
+chat: gpt-4o_seconds: 2.25
+chat:
+chat: gpt-4o-mini answer:
+chat: For a Model T engine, it is generally recommended to use a non-detergent oil with a viscosity of 30 weight. Many owners opt for a straight mineral oil or a specific oil designed for vintage engines. It's important to avoid modern multi-viscosity oils, as they may not be suitable for the engine's design and materials. Always check the owner's manual or consult with a vintage car expert for the best recommendations.
+chat: gpt-4o-mini_seconds: 2.76
+chat:
+chat: ================================================================================
+chat: Query :: What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: I'm unable to provide information on events or statements that occurred after October 2023. If you have any questions about events prior to that date, feel free to ask!
+chat: gpt-4o_seconds: 0.86
+chat:
+chat: gpt-4o-mini answer:
+chat: I'm sorry, but I don't have information about events or statements made after October 2023, including any comments made by Mr. Flood about Mayor David Black in Congress on January 13, 2026.
+chat: gpt-4o-mini_seconds: 1.92
+chat:
+chat: ================================================================================
+chat: Query :: What mistake did Elise Stefanik make in Congress on January 23, 2026?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: I'm unable to provide information about events or actions that occurred after October 2023. If you have questions about events prior to that date, feel free to ask!
+chat: gpt-4o_seconds: 0.79
+chat:
+chat: gpt-4o-mini answer:
+chat: I'm sorry, but I cannot provide information on events that occurred after my last training cut-off in October 2023.
+chat: gpt-4o-mini_seconds: 0.85
+chat:
+chat: ================================================================================
+chat: Query :: What is the purpose of the Main Street Parity Act?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: The Main Street Parity Act is designed to address the issue of online sales tax collection. Its primary purpose is to level the playing field between online retailers and brick-and-mortar stores by ensuring that online sellers collect and remit sales taxes in the same way that physical stores are required to do. This act aims to eliminate the competitive disadvantage faced by local businesses that have to charge sales tax, potentially making their prices higher than those of online competitors who do not collect such taxes.
+chat: gpt-4o_seconds: 2.22
+chat:
+chat: gpt-4o-mini answer:
+chat: The Main Street Parity Act aims to provide regulatory parity between banks and credit unions regarding the treatment of certain financial services and products. Specifically, it seeks to ensure that credit unions can offer similar services as banks without facing unnecessary regulatory burdens, thereby promoting competition and consumer choice in the financial services market. The act is intended to support the growth and sustainability of credit unions while maintaining consumer protections.
+chat: gpt-4o-mini_seconds: 1.77
+chat:
+chat: ================================================================================
+chat: Query :: Who in Congress has spoken for and against funding of pregnancy centers?
+chat: ================================================================================
+chat: gpt-4o answer:
+chat: In Congress, there have been various members who have spoken both for and against the funding of pregnancy centers, often reflecting broader political and ideological divides.
+chat: 
+chat: **For funding:**
+chat: - **Republican Members:** Generally, Republican members of Congress have been more supportive of funding pregnancy centers, particularly those that are anti-abortion or pro-life. They often argue that these centers provide essential support and resources to pregnant women, offering alternatives to abortion.
+chat: 
+chat: **Against funding:**
+chat: - **Democratic Members:** Many Democratic members of Congress have expressed opposition to funding pregnancy centers, especially those that are perceived to be anti-abortion. They argue that some of these centers may provide misleading information about reproductive health and do not offer comprehensive medical services.
+chat: 
+chat: Specific names of members who have spoken on this issue can vary over time and with specific legislative proposals. For the most current and detailed information, it would be best to look at recent congressional records or statements related to specific bills or funding proposals concerning pregnancy centers.
+chat: gpt-4o_seconds: 5.58
+chat:
+chat: gpt-4o-mini answer:
+chat: As of my last update in October 2023, various members of Congress have expressed differing views on funding for pregnancy centers. Supporters, often from Republican and conservative factions, argue that these centers provide essential services and support for pregnant women. Notable proponents include members of the House Freedom Caucus and other conservative lawmakers.
+chat: 
+chat: On the other hand, opponents, primarily from the Democratic Party, argue that funding for these centers can divert resources from comprehensive reproductive health services and may promote misinformation about reproductive health. Prominent critics include members of the Congressional Progressive Caucus and various Democratic senators and representatives.
+chat: 
+chat: For the most current and specific names or statements, you may want to check recent congressional records or news articles, as positions can evolve and new members may have taken stances since my last update.
+chat: gpt-4o-mini_seconds: 2.87
+chat:
+chat: ================================================================================
+chat: Observations
+chat: ================================================================================
+chat: gpt-4o generally gave more concise and cautious refusals on unverifiable/date-specific questions.
+chat: gpt-4o-mini was typically faster and often similar on broad questions, but can be less calibrated on edge cases.
+chat: Both are still no-RAG here, so factual grounding on corpus-specific details is weaker than a correctly configured RAG pipeline.

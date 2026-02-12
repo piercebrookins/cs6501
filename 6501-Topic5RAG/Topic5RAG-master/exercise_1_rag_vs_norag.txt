@@ -1,0 +1,267 @@
+chat: ================================================================================
+chat: EXERCISE 1: RAG vs NO-RAG (Model T)
+chat: ================================================================================
+chat: Using cached index for ModelT: index_modelt.faiss (970,797 bytes)
+chat: index.ntotal: 632
+chat: ================================================================================
+chat: ModelT :: How do I adjust the carburetor on a Model T?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: To adjust the carburetor on a Model T, follow these steps:
+chat: 
+chat: 1. **Warm Up the Engine**: Start the engine and let it warm up to operating temperature.
+chat: 
+chat: 2. **Adjust the Idle**: Locate the idle adjustment screw on the carburetor. Turn it clockwise to increase the idle speed and counterclockwise to decrease it. Aim for a smooth, steady idle.
+chat: 
+chat: 3. **Adjust the Mixture**: Find the mixture adjustment screw. Turn it slowly to find the best mixture. If the engine runs rough, adjust it slightly until it runs smoothly.
+chat: 
+chat: 4. **Test Drive**: Take the car for a short drive to see how it performs under load. Adjust the idle and mixture as needed based on performance.
+chat: 
+chat: 5. **Final Adjustments**: Make any final tweaks to ensure the engine runs smoothly at both idle and higher speeds.
+chat: 
+chat: Always refer to the specific service manual for your Model T for detailed instructions and specifications.
+chat: no_rag_seconds: 4.01
+chat: 
+chat: RAG answer:
+chat: To adjust the carburetor on a Model T, you may need to turn the dash adjustment one-quarter turn to the left, especially when starting a cold engine. In warm weather, to economize on gasoline, you can reduce the quantity of gasoline in the mixture by turning the carburetor adjustment to the right as far as possible without reducing speed.
+chat: rag_seconds: 1.22
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.6404 source=ModelT-11-20-ocr.pdf chunk=60 :: install a new one.   [Page 10] iin Ta i Se nt i This cut illustrates the principle of Ford Carburetion. » (Cut No. 7)
+chat: [2] score=0.5775 source=ModelT-21-30-ocr.pdf chunk=2 :: on of float and needle. The quantity of gagoline entering into the mixture is governed by the needle valve (see Answer No. 45). The volume of gas mixture entering the intake pipe is controlled by opening and closing the throttle, accord- in...
+chat: [3] score=0.5775 source=Ford-Model-T-Man-1919-ocr.pdf chunk=126 :: on of float and needle. The quantity of gagoline entering into the mixture is governed by the needle valve (see Answer No. 45). The volume of gas mixture entering the intake pipe is controlled by opening and closing the throttle, accord- in...
+chat: [4] score=0.5672 source=ModelT-21-30-ocr.pdf chunk=4 :: probably be found necessary to turn the dash adjustment one- quarter turn to the left, particularly in starting a cold engine. As gasoline vapor- izes readily in warm weather, the driver will find it economical to reduce the quan- tity of g...
+chat: [5] score=0.5672 source=Ford-Model-T-Man-1919-ocr.pdf chunk=128 :: probably be found necessary to turn the dash adjustment one- quarter turn to the left, particularly in starting a cold engine. As gasoline vapor- izes readily in warm weather, the driver will find it economical to reduce the quan- tity of g...
+chat: ================================================================================
+chat: ModelT :: What is the correct spark plug gap for a Model T Ford?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: The correct spark plug gap for a Model T Ford is typically around 0.025 inches (0.635 mm).
+chat: no_rag_seconds: 0.56
+chat: 
+chat: RAG answer:
+chat: The correct spark plug gap for a Model T Ford is 74 inches, about the thickness of a smooth dime.
+chat: rag_seconds: 0.72
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.5378 source=Ford-Model-T-Man-1919-ocr.pdf chunk=91 :: carbonize quickly. The porcelain and other parts should finally be washed in gasoline and wiped dry with a cloth. oe ~ . _—_   [Page 15] THE FORD ENGINE is In assembling the plug care should be taken to see that the pack nut ia net tight- e...
+chat: [2] score=0.5226 source=ModelT-11-20-ocr.pdf chunk=28 :: carbonize quickly. The porcelain and other parts should finally be washed in gasoline and wiped dry with a cloth. oe ~ . _—_   [Page 5] THE FORD ENGINE is In assembling the plug care should be taken to see that the pack nut ia net tight- en...
+chat: [3] score=0.5004 source=ModelT-21-30-ocr.pdf chunk=37 :: placed if they peréist in not working properly. There is nothing to be gained by experimenting with different makes of plugs.. The make of plugs with which Ford engines are.equipped when they leave the factory are best adapted to the requir...
+chat: [4] score=0.5004 source=Ford-Model-T-Man-1919-ocr.pdf chunk=161 :: placed if they peréist in not working properly. There is nothing to be gained by experimenting with different makes of plugs.. The make of plugs with which Ford engines are.equipped when they leave the factory are best adapted to the requir...
+chat: [5] score=0.4906 source=ModelT-51-60-ocr.pdf chunk=41 :: . Spark plugs dirty. 4. Cbdil vibrator improperly adjusted. | S Air leak in intake manifold. 6. Weak exhaust valve spring. , 7. Too great clearance between valve , eter and push rod. | 8. Too close gap between spark plug ‘At High Speeds. 1....
+chat: ================================================================================
+chat: ModelT :: How do I fix a slipping transmission band?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: Fixing a slipping transmission band typically involves the following steps:
+chat: 
+chat: 1. **Check Fluid Levels**: Ensure the transmission fluid is at the correct level and in good condition. Low or dirty fluid can cause slipping.
+chat: 
+chat: 2. **Adjust the Band**: If your transmission has an adjustable band, locate the adjustment screw and follow the manufacturer's specifications to adjust it.
+chat: 
+chat: 3. **Replace Worn Bands**: If the bands are worn or damaged, they may need to be replaced. This usually requires disassembling the transmission.
+chat: 
+chat: 4. **Inspect for Other Issues**: Check for other potential issues such as a faulty torque converter, worn clutches, or internal damage.
+chat: 
+chat: 5. **Consult a Professional**: If you're unsure or the problem persists, it's best to consult a professional mechanic for a thorough diagnosis and repair.
+chat: 
+chat: Always refer to your vehicle's service manual for specific instructions related to your model.
+chat: no_rag_seconds: 3.54
+chat: 
+chat: RAG answer:
+chat: To fix a slipping transmission band, you can tighten the slow-speed band by loosening the lock nut at the tight side of the transmission cover and turning the adjusting screw to the right. Additionally, to tighten the brake and reverse bands, you need to remove the transmission cover door and turn the adjusting nuts on the shafts to the right. Ensure that the bands do not drag on the drums when disengaged, as this can cause overheating.
+chat: rag_seconds: 2.07
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.5783 source=Ford-Model-T-Man-1919-ocr.pdf chunk=191 :: you against placing any small! toala or objects over or'ip the transmission case without a good wire or cord attached to them. Otherwise if they are dropped into the transmission case it is almost impossible to recover them ‘ée Bands adjust...
+chat: [2] score=0.5783 source=ModelT-31-40-ocr.pdf chunk=11 :: you against placing any small! toala or objects over or'ip the transmission case without a good wire or cord attached to them. Otherwise if they are dropped into the transmission case it is almost impossible to recover them ‘ée Bands adjust...
+chat: [3] score=0.5144 source=Ford-Model-T-Man-1919-ocr.pdf chunk=192 :: osening the lock nut at the tight side of the transmission cover, and turning the adjusting screw (see Cut No. 12)'té tf right. To tighten the brake and reverse bands remove the transmission cover doof and turn the adjusting nuts on the sha...
+chat: [4] score=0.5144 source=ModelT-31-40-ocr.pdf chunk=12 :: osening the lock nut at the tight side of the transmission cover, and turning the adjusting screw (see Cut No. 12)'té tf right. To tighten the brake and reverse bands remove the transmission cover doof and turn the adjusting nuts on the sha...
+chat: [5] score=0.4601 source=ModelT-31-40-ocr.pdf chunk=28 :: r by means of the adjusting sttews. within aspace of two or two and one-sixteenth inches to insure against the clafch slipping. Care should be exercised to see that the screws in the fingers areigd- justed so the apring is compressed evenly...
+chat: ================================================================================
+chat: ModelT :: What oil should I use in a Model T engine?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: For a Model T engine, it is recommended to use a non-detergent motor oil with a viscosity of 30 weight. Some owners also use straight 20 weight oil, especially in cooler temperatures. Always check the owner's manual for specific recommendations.
+chat: no_rag_seconds: 0.99
+chat: 
+chat: RAG answer:
+chat: The provided context does not specify what type of oil should be used in a Model T engine.
+chat: rag_seconds: 3.03
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.3973 source=ModelT-01-10-ocr.pdf chunk=11 :: pet cocks. Pour off in sléwly - until it runs out of the upper cock. Leave the cock open until it stopd running— then close it. ‘After the engine has become thoroughly limbered up, the best results will be obtained by carrying the oil at a ...
+chat: [2] score=0.3973 source=Ford-Model-T-Man-1919-ocr.pdf chunk=11 :: pet cocks. Pour off in sléwly - until it runs out of the upper cock. Leave the cock open until it stopd running— then close it. ‘After the engine has become thoroughly limbered up, the best results will be obtained by carrying the oil at a ...
+chat: [3] score=0.3618 source=Ford-Model-T-Man-1919-ocr.pdf chunk=281 :: at suitable speeds is accomifiished by the __ cut-out, which is mounted on the generator. This cat-out is, property st the, ‘ . : , , S87 t a . * _ 3 alder é ‘ . ae” ae, a oe ee . eg a an   [Page 56] THE FORD STARTING AND LIGHTING What abou...
+chat: [4] score=0.3615 source=ModelT-51-60-ocr.pdf chunk=10 :: at suitable speeds is accomifiished by the __ cut-out, which is mounted on the generator. This cat-out is, property st the, ‘ . : , , S87 t a . * _ 3 alder é ‘ . ae” ae, a oe ee . eg a an   [Page 6] THE FORD STARTING AND LIGHTING What about...
+chat: [5] score=0.3590 source=ModelT-51-60-ocr.pdf chunk=11 :: ord splash system, the same aa the engine and transmission. The generator ie lubricated by a splash of oil from the time gears. In addition an oil cup is located at the end of the generator housing and a few drope of oil should be applied o...
+chat: ================================================================================
+chat: EXERCISE 1: RAG vs NO-RAG (Congressional Record)
+chat: ================================================================================
+chat: Using cached index for CR: index_cr.faiss (73,540,653 bytes)
+chat: index.ntotal: 47878
+chat: ================================================================================
+chat: CR :: What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: I'm sorry, but I don't have information on events or statements made after October 2023.
+chat: no_rag_seconds: 0.44
+chat: 
+chat: RAG answer:
+chat: Mr. Flood recognized Mayor David Black of Papillion, Nebraska, as a paragon of public service and remarkable stewardship. He noted that Mayor Black helped guide the city into a thriving economic hub and announced that he would not seek reelection, concluding 17.5 years as mayor and nearly 5 additional years of service in other roles. Mr. Flood expressed gratitude for Mayor Black's outstanding public service and highlighted the special nature of Papillion, emphasizing Mayor Black's legacy.
+chat: rag_seconds: 2.11
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.6316 source=CREC-2026-01-13.pdf chunk=42 :: vencido’’; ‘‘the people  united shall never be defeated.’’  Mr. Speaker, I thank and congratu- late Juliet for all of her work.  f  RECOGNIZING MAYOR DAVID  BLACK  The SPEAKER pro tempore. The  Chair now recognizes the gentleman  from Nebra...
+chat: [2] score=0.6080 source=CREC-2026-01-13.pdf chunk=44 :: Frm 00002 Fmt 4634 Sfmt 0634 E:\RECORD26\JANUARY\H13JA6.REC H13JA6 abonner on LAPGK3WLY3PROD with CONG-REC-ONLINE CORRECTION   [Page 3] CONGRESSIONAL RECORD — HOUSE H665  January 13, 2026  Mayor Black helped to guide the city  into the thri...
+chat: [3] score=0.5938 source=CREC-2026-01-20.pdf chunk=418 :: e wondered if the  dream that he talked about on the  March on Washington had become a  nightmare and was too far out of reach.  Yet, on the night before he died, he  told us that he had seen the Promised  Land, that he wouldn’t get there w...
+chat: [4] score=0.5678 source=CREC-2026-01-13.pdf chunk=47 :: an  earned the opportunity to spend addi- tional time with his family once his  final term in office concludes.  Papillion, Mr. Speaker, is a special  place, with Mayor Black’s legacy being  built yet another example of that  truth. I thank...
+chat: [5] score=0.5331 source=CREC-2026-01-27.pdf chunk=711 :: colleagues, both Republican and  Democrat, to address these issues and keep  our skies safe.  f  REMEMBERING LORAN SCHMIT  HON. MIKE FLOOD  OF NEBRASKA  IN THE HOUSE OF REPRESENTATIVES  Tuesday, January 27, 2026  Mr. FLOOD. Mr. Speaker, tod...
+chat: ================================================================================
+chat: CR :: What mistake did Elise Stefanik make in Congress on January 23, 2026?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: I'm sorry, but I do not have information on events or mistakes made by Elise Stefanik in Congress on January 23, 2026, as my training only includes data up to October 2023.
+chat: no_rag_seconds: 0.74
+chat: 
+chat: RAG answer:
+chat: There is not enough information provided in the context to determine what mistake Elise Stefanik made in Congress on January 23, 2026.
+chat: rag_seconds: 1.61
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.5277 source=CREC-2026-01-22.pdf chunk=4508 :: 23, 2026 Jkt 069060 PO 00000 Frm 00143 Fmt 4634 Sfmt 0634 E:\CR\FM\K22JA7.059 H22JAPT1 DMWilson on DSK7X7S144PROD with HOUSE   [Page 144] CONGRESSIONAL RECORD — HOUSE H1318  January 22, 2026  terrific person, and sidelined the demo- cratic ...
+chat: [2] score=0.5251 source=CREC-2026-01-27.pdf chunk=123 :: 28, 2026 Jkt 069060 PO 00000 Frm 00001 Fmt 4624 Sfmt 0634 E:\CR\FM\A27JA6.000 S27JAPT1 dmwilson on DSK7X7S144PROD with SENATE   [Page 7] CONGRESSIONAL RECORD — SENATE S282  January 27, 2026  Alex Pretti did not deserve to die;  nor did Rene...
+chat: [3] score=0.5180 source=CREC-2026-01-13.pdf chunk=2595 :: 14, 2026 Jkt 069060 PO 00000 Frm 00036 Fmt 4624 Sfmt 0634 E:\CR\FM\A13JA6.047 S13JAPT1 DMwilson on DSK7X7S144PROD with SENATE   [Page 94] CONGRESSIONAL RECORD — SENATE S177  January 13, 2026  whose job is to fool the American pub- lic, prop...
+chat: [4] score=0.5128 source=CREC-2026-01-28.pdf chunk=153 :: 29, 2026 Jkt 069060 PO 00000 Frm 00006 Fmt 4637 Sfmt 0634 E:\CR\FM\G28JA6.008 S28JAPT1 dmwilson on DSK7X7S144PROD with SENATE   [Page 7] CONGRESSIONAL RECORD — SENATE S307  January 28, 2026  the horrific killing of Alex Pretti last  weekend...
+chat: [5] score=0.5088 source=CREC-2026-01-30.pdf chunk=1014 :: 1, 2026 Jkt 069060 PO 00000 Frm 00004 Fmt 0626 Sfmt 9920 E:\CR\FM\A30JA8.008 E30JAPT1 dmwilson on DSK7X7S144PROD with REMARKS   [Page 39] CONGRESSIONAL RECORD — Extensions of Remarks E85  January 30, 2026  generations of young Montanans. Sh...
+chat: ================================================================================
+chat: CR :: What is the purpose of the Main Street Parity Act?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: The Main Street Parity Act aims to ensure that local and regional banks can compete on a level playing field with larger financial institutions by allowing them to offer certain financial services without facing the same regulatory burdens. It seeks to promote economic growth and support small businesses by reducing compliance costs for smaller banks.
+chat: no_rag_seconds: 1.31
+chat: 
+chat: RAG answer:
+chat: The purpose of the Main Street Parity Act is to amend the Small Business Investment Act of 1958 to modify the criteria for loans related to plant acquisition, construction, conversion, or expansion, by setting an equity requirement at 10 percent.
+chat: rag_seconds: 1.71
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.6835 source=CREC-2026-01-20.pdf chunk=101 :: n jumping in headfirst and cre- ating new economic opportunities for  their communities and families or  walking away entirely.  This way of doing business just  doesn’t reflect our current economic or  technological realities. This bill of...
+chat: [2] score=0.5842 source=CREC-2026-01-20.pdf chunk=3127 :: or the Commonwealth of the  Northern Mariana Islands;                               Pages H929–30  Main Street Parity Act: H.R. 5763, to amend  the Small Business Investment Act of 1958 to mod- ify the criteria for loans for plant acquisiti...
+chat: [3] score=0.5598 source=CREC-2026-01-20.pdf chunk=80 :: rsion or expansion, and for other pur- poses.  The Clerk read the title of the bill.  The text of the bill is as follows:  H.R. 5763  Be it enacted by the Senate and House of Rep- resentatives of the United States of America in  Congress as...
+chat: [4] score=0.5565 source=CREC-2026-01-20.pdf chunk=106 :: ause 8 of rule XX, further pro- ceedings on this motion will be post- poned.  f  AI FOR MAIN STREET ACT  Mr. WILLIAMS of Texas. Madam  Speaker, I move to suspend the rules  and pass the bill (H.R. 5764) to amend  the Small Business Act to r...
+chat: [5] score=0.5475 source=CREC-2026-01-20.pdf chunk=3128 :: . 32;                                                                      Pages H930–31, H939–40  AI for Main Street Act: H.R. 5764, amended, to  amend the Small Business Act to require small busi- ness development centers to assist small ...
+chat: ================================================================================
+chat: CR :: Who in Congress has spoken for and against funding of pregnancy centers?
+chat: ================================================================================
+chat: NO-RAG answer:
+chat: Various members of Congress have expressed differing views on funding for pregnancy centers. Supporters, often from conservative or pro-life factions, argue that these centers provide essential services and support for pregnant women. Opponents, typically from more liberal or pro-choice groups, criticize these centers for allegedly providing misleading information about reproductive health. Specific names and statements can vary over time, so for the most current details, it's best to refer to recent congressional records or news articles.
+chat: no_rag_seconds: 1.42
+chat: 
+chat: RAG answer:
+chat: The provided context does not specify individual members of Congress who have spoken for or against funding of pregnancy centers. It mentions Democrats making claims about pregnancy resource centers and references support for these centers, but does not name specific individuals or their positions.
+chat: rag_seconds: 2.11
+chat: 
+chat: Top-5 retrieval (scores + excerpts):
+chat: [1] score=0.7059 source=CREC-2026-01-21.pdf chunk=590 :: ce of my time.  Mr. Speaker, Democrats will make  all kinds of wild and ridiculous claims  about  pregnancy  resource  centers.  They have tried to twist giving diapers  and ultrasounds to moms into some  sort of nefarious activity, giving ...
+chat: [2] score=0.7036 source=CREC-2026-01-21.pdf chunk=472 :: singled out pregnancy  centers and preemptively suggested  State spending on these organizations  would no longer be allowable.  The Biden rule was never finalized,  but there is a need to make sure future  administrations do not pursue sim...
+chat: [3] score=0.7007 source=CREC-2026-01-22.pdf chunk=5063 :: including trying to  compel these centers to participate or  be complicit in abortions. We saw that  especially in California.  The Knights of Columbus has re- leased a poll which found that 83 per- cent of Americans, including 79 percent  ...
+chat: [4] score=0.6984 source=CREC-2026-01-21.pdf chunk=425 :: men, children, and  families. These centers provided over  $452 million in total medical care, edu- cation, and material goods.  As Democrats continue to attack  pregnancy care centers, I have asked  them repeatedly if they have ever vis- i...
+chat: [5] score=0.6968 source=CREC-2026-01-21.pdf chunk=473 :: ies that States may continue  partnering  with  pregnancy  centers  without political interference now and  in the future.  Mr. Speaker, this bill stands for  mothers, children, and families, and I  urge my colleagues to support it.  VerDat...
+chat: ================================================================================
+chat: EXERCISE 1 OPTIONAL: Mixed corpora
+chat: ================================================================================
+chat: ================================================================================
+chat: OPTIONAL: Mixed corpora (ModelT + CR) in ONE index
+chat: ================================================================================
+chat: chunks_modelt: 632
+chat: chunks_cr: 47878
+chat: index.ntotal_approx: 48510
+chat: ================================================================================
+chat: MIXED :: How do I adjust the carburetor on a Model T?
+chat: ================================================================================
+chat: To adjust the carburetor on a Model T, you may need to turn the dash adjustment one-quarter turn to the left, especially when starting a cold engine. In warm weather, to economize on gasoline, you can reduce the quantity of gasoline in the mixture by turning the carburetor adjustment to the right as far as possible without reducing speed.
+chat: rag_seconds: 1.91
+chat: Top-5 retrieval:
+chat: [1] score=0.6404 source=ModelT-11-20-ocr.pdf chunk=60 :: install a new one.   [Page 10] iin Ta i Se nt i This cut illustrates the principle of Ford Carburetion. » (Cut No. 7)
+chat: [2] score=0.5775 source=ModelT-21-30-ocr.pdf chunk=2 :: on of float and needle. The quantity of gagoline entering into the mixture is governed by the needle valve (see Answer No. 45). The volume of gas mixture entering the intake pipe is controlled by opening and closing the throttle, accord- in...
+chat: [3] score=0.5775 source=Ford-Model-T-Man-1919-ocr.pdf chunk=126 :: on of float and needle. The quantity of gagoline entering into the mixture is governed by the needle valve (see Answer No. 45). The volume of gas mixture entering the intake pipe is controlled by opening and closing the throttle, accord- in...
+chat: [4] score=0.5672 source=ModelT-21-30-ocr.pdf chunk=4 :: probably be found necessary to turn the dash adjustment one- quarter turn to the left, particularly in starting a cold engine. As gasoline vapor- izes readily in warm weather, the driver will find it economical to reduce the quan- tity of g...
+chat: [5] score=0.5672 source=Ford-Model-T-Man-1919-ocr.pdf chunk=128 :: probably be found necessary to turn the dash adjustment one- quarter turn to the left, particularly in starting a cold engine. As gasoline vapor- izes readily in warm weather, the driver will find it economical to reduce the quan- tity of g...
+chat: ================================================================================
+chat: MIXED :: What is the correct spark plug gap for a Model T Ford?
+chat: ================================================================================
+chat: The correct spark plug gap for a Model T Ford is 74", about the thickness of a smooth dime.
+chat: rag_seconds: 1.31
+chat: Top-5 retrieval:
+chat: [1] score=0.5378 source=Ford-Model-T-Man-1919-ocr.pdf chunk=91 :: carbonize quickly. The porcelain and other parts should finally be washed in gasoline and wiped dry with a cloth. oe ~ . _—_   [Page 15] THE FORD ENGINE is In assembling the plug care should be taken to see that the pack nut ia net tight- e...
+chat: [2] score=0.5226 source=ModelT-11-20-ocr.pdf chunk=28 :: carbonize quickly. The porcelain and other parts should finally be washed in gasoline and wiped dry with a cloth. oe ~ . _—_   [Page 5] THE FORD ENGINE is In assembling the plug care should be taken to see that the pack nut ia net tight- en...
+chat: [3] score=0.5004 source=ModelT-21-30-ocr.pdf chunk=37 :: placed if they peréist in not working properly. There is nothing to be gained by experimenting with different makes of plugs.. The make of plugs with which Ford engines are.equipped when they leave the factory are best adapted to the requir...
+chat: [4] score=0.5004 source=Ford-Model-T-Man-1919-ocr.pdf chunk=161 :: placed if they peréist in not working properly. There is nothing to be gained by experimenting with different makes of plugs.. The make of plugs with which Ford engines are.equipped when they leave the factory are best adapted to the requir...
+chat: [5] score=0.4906 source=ModelT-51-60-ocr.pdf chunk=41 :: . Spark plugs dirty. 4. Cbdil vibrator improperly adjusted. | S Air leak in intake manifold. 6. Weak exhaust valve spring. , 7. Too great clearance between valve , eter and push rod. | 8. Too close gap between spark plug ‘At High Speeds. 1....
+chat: ================================================================================
+chat: MIXED :: How do I fix a slipping transmission band?
+chat: ================================================================================
+chat: To fix a slipping transmission band, you can tighten the slow-speed band by loosening the lock nut at the tight side of the transmission cover and turning the adjusting screw to the right. Additionally, to tighten the brake and reverse bands, you need to remove the transmission cover and turn the adjusting nuts on the shafts to the right. Ensure that the bands do not drag on the drums when disengaged, as this can cause overheating.
+chat: rag_seconds: 2.14
+chat: Top-5 retrieval:
+chat: [1] score=0.5783 source=Ford-Model-T-Man-1919-ocr.pdf chunk=191 :: you against placing any small! toala or objects over or'ip the transmission case without a good wire or cord attached to them. Otherwise if they are dropped into the transmission case it is almost impossible to recover them ‘ée Bands adjust...
+chat: [2] score=0.5783 source=ModelT-31-40-ocr.pdf chunk=11 :: you against placing any small! toala or objects over or'ip the transmission case without a good wire or cord attached to them. Otherwise if they are dropped into the transmission case it is almost impossible to recover them ‘ée Bands adjust...
+chat: [3] score=0.5144 source=Ford-Model-T-Man-1919-ocr.pdf chunk=192 :: osening the lock nut at the tight side of the transmission cover, and turning the adjusting screw (see Cut No. 12)'té tf right. To tighten the brake and reverse bands remove the transmission cover doof and turn the adjusting nuts on the sha...
+chat: [4] score=0.5144 source=ModelT-31-40-ocr.pdf chunk=12 :: osening the lock nut at the tight side of the transmission cover, and turning the adjusting screw (see Cut No. 12)'té tf right. To tighten the brake and reverse bands remove the transmission cover doof and turn the adjusting nuts on the sha...
+chat: [5] score=0.4601 source=ModelT-31-40-ocr.pdf chunk=28 :: r by means of the adjusting sttews. within aspace of two or two and one-sixteenth inches to insure against the clafch slipping. Care should be exercised to see that the screws in the fingers areigd- justed so the apring is compressed evenly...
+chat: ================================================================================
+chat: MIXED :: What oil should I use in a Model T engine?
+chat: ================================================================================
+chat: The provided context does not specify what type of oil should be used in a Model T engine.
+chat: rag_seconds: 0.61
+chat: Top-5 retrieval:
+chat: [1] score=0.3973 source=ModelT-01-10-ocr.pdf chunk=11 :: pet cocks. Pour off in sléwly - until it runs out of the upper cock. Leave the cock open until it stopd running— then close it. ‘After the engine has become thoroughly limbered up, the best results will be obtained by carrying the oil at a ...
+chat: [2] score=0.3973 source=Ford-Model-T-Man-1919-ocr.pdf chunk=11 :: pet cocks. Pour off in sléwly - until it runs out of the upper cock. Leave the cock open until it stopd running— then close it. ‘After the engine has become thoroughly limbered up, the best results will be obtained by carrying the oil at a ...
+chat: [3] score=0.3747 source=CREC-2026-01-07.pdf chunk=1330 :: ontrol  of that oil to sell it on the open mar- ket. That is a disastrous plan, as I have  outlined, for America and the world.  And so I will just tell you that we will  have a chance to debate this plan if  that appropriations measure rea...
+chat: [4] score=0.3618 source=Ford-Model-T-Man-1919-ocr.pdf chunk=281 :: at suitable speeds is accomifiished by the __ cut-out, which is mounted on the generator. This cat-out is, property st the, ‘ . : , , S87 t a . * _ 3 alder é ‘ . ae” ae, a oe ee . eg a an   [Page 56] THE FORD STARTING AND LIGHTING What abou...
+chat: [5] score=0.3615 source=ModelT-51-60-ocr.pdf chunk=10 :: at suitable speeds is accomifiished by the __ cut-out, which is mounted on the generator. This cat-out is, property st the, ‘ . : , , S87 t a . * _ 3 alder é ‘ . ae” ae, a oe ee . eg a an   [Page 6] THE FORD STARTING AND LIGHTING What about...
+chat: ================================================================================
+chat: MIXED :: What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?
+chat: ================================================================================
+chat: Mr. Flood recognized Mayor David Black as a paragon of public service and remarkable stewardship. He highlighted Mayor Black's role in guiding Papillion, Nebraska, into a thriving economic hub and noted that Mayor Black announced he would not seek reelection, concluding 17.5 years as mayor and nearly 5 additional years serving the city in other roles. Mr. Flood expressed gratitude for Mayor Black's outstanding public service and mentioned that he would have the opportunity to spend additional time with his family once his final term in office concludes.
+chat: rag_seconds: 2.09
+chat: Top-5 retrieval:
+chat: [1] score=0.6316 source=CREC-2026-01-13.pdf chunk=42 :: vencido’’; ‘‘the people  united shall never be defeated.’’  Mr. Speaker, I thank and congratu- late Juliet for all of her work.  f  RECOGNIZING MAYOR DAVID  BLACK  The SPEAKER pro tempore. The  Chair now recognizes the gentleman  from Nebra...
+chat: [2] score=0.6080 source=CREC-2026-01-13.pdf chunk=44 :: Frm 00002 Fmt 4634 Sfmt 0634 E:\RECORD26\JANUARY\H13JA6.REC H13JA6 abonner on LAPGK3WLY3PROD with CONG-REC-ONLINE CORRECTION   [Page 3] CONGRESSIONAL RECORD — HOUSE H665  January 13, 2026  Mayor Black helped to guide the city  into the thri...
+chat: [3] score=0.5938 source=CREC-2026-01-20.pdf chunk=418 :: e wondered if the  dream that he talked about on the  March on Washington had become a  nightmare and was too far out of reach.  Yet, on the night before he died, he  told us that he had seen the Promised  Land, that he wouldn’t get there w...
+chat: [4] score=0.5678 source=CREC-2026-01-13.pdf chunk=47 :: an  earned the opportunity to spend addi- tional time with his family once his  final term in office concludes.  Papillion, Mr. Speaker, is a special  place, with Mayor Black’s legacy being  built yet another example of that  truth. I thank...
+chat: [5] score=0.5331 source=CREC-2026-01-27.pdf chunk=711 :: colleagues, both Republican and  Democrat, to address these issues and keep  our skies safe.  f  REMEMBERING LORAN SCHMIT  HON. MIKE FLOOD  OF NEBRASKA  IN THE HOUSE OF REPRESENTATIVES  Tuesday, January 27, 2026  Mr. FLOOD. Mr. Speaker, tod...
+chat: ================================================================================
+chat: MIXED :: What mistake did Elise Stefanik make in Congress on January 23, 2026?
+chat: ================================================================================
+chat: There is not enough information provided in the context to determine what mistake Elise Stefanik made in Congress on January 23, 2026.
+chat: rag_seconds: 0.70
+chat: Top-5 retrieval:
+chat: [1] score=0.5277 source=CREC-2026-01-22.pdf chunk=4508 :: 23, 2026 Jkt 069060 PO 00000 Frm 00143 Fmt 4634 Sfmt 0634 E:\CR\FM\K22JA7.059 H22JAPT1 DMWilson on DSK7X7S144PROD with HOUSE   [Page 144] CONGRESSIONAL RECORD — HOUSE H1318  January 22, 2026  terrific person, and sidelined the demo- cratic ...
+chat: [2] score=0.5251 source=CREC-2026-01-27.pdf chunk=123 :: 28, 2026 Jkt 069060 PO 00000 Frm 00001 Fmt 4624 Sfmt 0634 E:\CR\FM\A27JA6.000 S27JAPT1 dmwilson on DSK7X7S144PROD with SENATE   [Page 7] CONGRESSIONAL RECORD — SENATE S282  January 27, 2026  Alex Pretti did not deserve to die;  nor did Rene...
+chat: [3] score=0.5180 source=CREC-2026-01-13.pdf chunk=2595 :: 14, 2026 Jkt 069060 PO 00000 Frm 00036 Fmt 4624 Sfmt 0634 E:\CR\FM\A13JA6.047 S13JAPT1 DMwilson on DSK7X7S144PROD with SENATE   [Page 94] CONGRESSIONAL RECORD — SENATE S177  January 13, 2026  whose job is to fool the American pub- lic, prop...
+chat: [4] score=0.5128 source=CREC-2026-01-28.pdf chunk=153 :: 29, 2026 Jkt 069060 PO 00000 Frm 00006 Fmt 4637 Sfmt 0634 E:\CR\FM\G28JA6.008 S28JAPT1 dmwilson on DSK7X7S144PROD with SENATE   [Page 7] CONGRESSIONAL RECORD — SENATE S307  January 28, 2026  the horrific killing of Alex Pretti last  weekend...
+chat: [5] score=0.5088 source=CREC-2026-01-30.pdf chunk=1014 :: 1, 2026 Jkt 069060 PO 00000 Frm 00004 Fmt 0626 Sfmt 9920 E:\CR\FM\A30JA8.008 E30JAPT1 dmwilson on DSK7X7S144PROD with REMARKS   [Page 39] CONGRESSIONAL RECORD — Extensions of Remarks E85  January 30, 2026  generations of young Montanans. Sh...
+chat: ================================================================================
+chat: MIXED :: What is the purpose of the Main Street Parity Act?
+chat: ================================================================================
+chat: The purpose of the Main Street Parity Act is to amend the Small Business Investment Act of 1958 to modify the criteria for loans related to plant acquisition, construction, conversion, or expansion, by setting an equity requirement at 10 percent.
+chat: rag_seconds: 1.34
+chat: Top-5 retrieval:
+chat: [1] score=0.6835 source=CREC-2026-01-20.pdf chunk=101 :: n jumping in headfirst and cre- ating new economic opportunities for  their communities and families or  walking away entirely.  This way of doing business just  doesn’t reflect our current economic or  technological realities. This bill of...
+chat: [2] score=0.5842 source=CREC-2026-01-20.pdf chunk=3127 :: or the Commonwealth of the  Northern Mariana Islands;                               Pages H929–30  Main Street Parity Act: H.R. 5763, to amend  the Small Business Investment Act of 1958 to mod- ify the criteria for loans for plant acquisiti...
+chat: [3] score=0.5598 source=CREC-2026-01-20.pdf chunk=80 :: rsion or expansion, and for other pur- poses.  The Clerk read the title of the bill.  The text of the bill is as follows:  H.R. 5763  Be it enacted by the Senate and House of Rep- resentatives of the United States of America in  Congress as...
+chat: [4] score=0.5565 source=CREC-2026-01-20.pdf chunk=106 :: ause 8 of rule XX, further pro- ceedings on this motion will be post- poned.  f  AI FOR MAIN STREET ACT  Mr. WILLIAMS of Texas. Madam  Speaker, I move to suspend the rules  and pass the bill (H.R. 5764) to amend  the Small Business Act to r...
+chat: [5] score=0.5475 source=CREC-2026-01-20.pdf chunk=3128 :: . 32;                                                                      Pages H930–31, H939–40  AI for Main Street Act: H.R. 5764, amended, to  amend the Small Business Act to require small busi- ness development centers to assist small ...
+chat: ================================================================================
+chat: MIXED :: Who in Congress has spoken for and against funding of pregnancy centers?
+chat: ================================================================================
+chat: The provided context does not specify individual members of Congress who have spoken for or against funding of pregnancy centers. It mentions Democrats making claims about pregnancy resource centers and references a piece of legislation by Michelle Fischbach supporting these centers, but does not name specific individuals or provide a comprehensive overview of positions.
+chat: rag_seconds: 1.11
+chat: Top-5 retrieval:
+chat: [1] score=0.7059 source=CREC-2026-01-21.pdf chunk=590 :: ce of my time.  Mr. Speaker, Democrats will make  all kinds of wild and ridiculous claims  about  pregnancy  resource  centers.  They have tried to twist giving diapers  and ultrasounds to moms into some  sort of nefarious activity, giving ...
+chat: [2] score=0.7036 source=CREC-2026-01-21.pdf chunk=472 :: singled out pregnancy  centers and preemptively suggested  State spending on these organizations  would no longer be allowable.  The Biden rule was never finalized,  but there is a need to make sure future  administrations do not pursue sim...
+chat: [3] score=0.7007 source=CREC-2026-01-22.pdf chunk=5063 :: including trying to  compel these centers to participate or  be complicit in abortions. We saw that  especially in California.  The Knights of Columbus has re- leased a poll which found that 83 per- cent of Americans, including 79 percent  ...
+chat: [4] score=0.6984 source=CREC-2026-01-21.pdf chunk=425 :: men, children, and  families. These centers provided over  $452 million in total medical care, edu- cation, and material goods.  As Democrats continue to attack  pregnancy care centers, I have asked  them repeatedly if they have ever vis- i...
+chat: [5] score=0.6968 source=CREC-2026-01-21.pdf chunk=473 :: ies that States may continue  partnering  with  pregnancy  centers  without political interference now and  in the future.  Mr. Speaker, this bill stands for  mothers, children, and families, and I  urge my colleagues to support it.  VerDat...
