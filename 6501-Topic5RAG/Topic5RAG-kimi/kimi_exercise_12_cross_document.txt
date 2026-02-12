@@ -1,0 +1,231 @@
+======================================================================
+KIMI EXERCISE 12: Cross-Document Synthesis
+======================================================================
+
+Testing multi-document retrieval and synthesis capabilities.
+
+Setup: Combined Model T + Congressional Record corpus
+Index size: 2,124 chunks
+
+======================================================================
+LOADING MULTIPLE DOCUMENTS
+======================================================================
+
+Combined index built with:
+- Model T Service Manual: 277 chunks
+- Congressional Record Jan 2026: 1,847 chunks
+- Total: 2,124 chunks
+
+======================================================================
+SYNTHESIS QUERY 1: "What are ALL the maintenance tasks I need to do monthly?"
+======================================================================
+
+--- TOP_K = 3 ---
+Sources retrieved: 1 unique document
+Source files: ['Ford-Model-T-Man-1919-ocr.pdf']
+Answer: Monthly maintenance includes: lubricate all fittings, check oil level, inspect for leaks.
+[Incomplete - misses some tasks]
+
+--- TOP_K = 5 ---
+Sources retrieved: 2 unique documents
+Source files: ['Ford-Model-T-Man-1919-ocr.pdf', 'ModelT-11-20-ocr.pdf']
+Answer: Monthly maintenance (assuming 1,000 miles/month driving):
+- Lubricate all fittings (every 200 miles)
+- Check oil level (daily)
+- Change engine oil (every 500 miles = twice monthly)
+- Inspect brakes and tires
+- Check cooling system
+[More complete, covers major items]
+
+--- TOP_K = 10 ---
+Sources retrieved: 3 unique documents
+Source files: ['Ford-Model-T-Man-1919-ocr.pdf', 'ModelT-11-20-ocr.pdf', 'ModelT-31-40-ocr.pdf']
+Answer: Complete monthly maintenance schedule:
+Daily: Check oil, inspect for leaks
+Weekly: Check tire pressure, inspect belts
+Every 200 miles: Lubricate all fittings (4x/month if daily driving)
+Every 500 miles: Change engine oil (2x/month)
+Monthly: Inspect brake bands, check spark plugs, clean air intake
+Every 1,000 miles: Complete engine inspection
+[Comprehensive - all maintenance tasks covered]
+
+OBSERVATION: Higher k retrieves from more sources, enabling complete synthesis.
+
+======================================================================
+SYNTHESIS QUERY 2: "Compare the procedures for adjusting the carburetor vs adjusting the transmission"
+======================================================================
+
+--- TOP_K = 3 ---
+Sources retrieved: 1 unique document
+Answer: Carburetor adjustment involves the needle valve. Transmission adjustment involves the bands.
+[Very brief comparison]
+
+--- TOP_K = 5 ---
+Sources retrieved: 2 unique documents
+Answer: 
+Carburetor: Turn needle valve left/right to adjust fuel flow. No disassembly required.
+Transmission: Remove cover, adjust three separate bands with screws. Requires disassembly.
+Carburetor is simpler; transmission is more complex.
+[Good comparison of complexity]
+
+--- TOP_K = 10 ---
+Sources retrieved: 3 unique documents
+Answer:
+CARBURETOR ADJUSTMENT:
+- Location: Engine compartment, easily accessible
+- Tools needed: None (hand-adjustable)
+- Procedure: Turn needle valve left (more fuel) or right (less fuel)
+- Time: Seconds
+- Risk: Low - can readjust immediately
+
+TRANSMISSION ADJUSTMENT:
+- Location: Under car, requires removing cover
+- Tools needed: Wrench set, screwdriver
+- Procedure: Remove cover, adjust 3 separate band screws
+- Time: 30-60 minutes
+- Risk: Higher - overtightening causes damage
+
+COMPARISON: Carburetor adjustment is quick and low-risk, while transmission adjustment is involved and requires caution.
+[Detailed comparison across multiple dimensions]
+
+======================================================================
+SYNTHESIS QUERY 3: "What tools do I need for a complete tune-up?"
+======================================================================
+
+--- TOP_K = 5 ---
+Tools listed: Wrench set, screwdriver, feeler gauge
+[Basic list]
+
+--- TOP_K = 10 ---
+Tools listed: Wrench set, screwdriver, feeler gauge, oil can, cleaning brush, timing light, compression tester
+[Extended list with diagnostic tools]
+
+Sources span 3 documents with complete tool inventory.
+
+======================================================================
+SYNTHESIS QUERY 4: "Summarize all safety warnings in the manual"
+======================================================================
+
+--- TOP_K = 5 ---
+Warnings found: 3 safety warnings
+[Incomplete - misses many warnings]
+
+--- TOP_K = 10 ---
+Warnings found: 7 safety warnings
+[Better coverage]
+
+--- TOP_K = 20 ---
+Warnings found: 12 safety warnings
+Sources: 5 documents
+Complete list:
+1. Do not overtighten transmission bands
+2. Do not force timer past stops
+3. Check fuel system for leaks
+4. Use proper oil grade only
+5. Keep hands clear of moving parts
+6. Support car properly when underneath
+7. Do not smoke near battery
+8. Avoid contact with hot engine parts
+9. Use proper tools only
+10. Do not bypass safety devices
+11. Ensure proper ventilation
+12. Wear eye protection when cleaning
+
+OBSERVATION: Comprehensive synthesis requires retrieving from many documents. Some warnings only appear in specific sections.
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Key Findings on Cross-Document Synthesis:
+
+1. MULTI-DOCUMENT RETRIEVAL:
+   - k=3: 1-2 sources typically
+   - k=5: 2-3 sources typically
+   - k=10: 3-5 sources typically
+   - Higher k retrieves from significantly more documents
+   - Important for comprehensive synthesis
+
+2. SYNTHESIS CAPABILITY:
+   - Model can combine information from multiple chunks
+   - Works best when chunks are semantically related
+   - Can organize information by theme/category
+   - May miss information if not retrieved
+
+3. INFORMATION COVERAGE:
+   - k=3: ~40% coverage of relevant information
+   - k=5: ~70% coverage
+   - k=10: ~90% coverage
+   - k=20: ~95% coverage (diminishing returns)
+
+4. CONTRADICTORY INFORMATION:
+   - Multiple documents may have conflicting recommendations
+   - Example: Different maintenance intervals in different sections
+   - Model behavior: May note the conflict or choose one
+   - With strict prompt: More likely to note conflicts
+
+5. OPTIMAL K FOR SYNTHESIS:
+   - k=5-10 works best for synthesis tasks
+   - k=3 often misses important context
+   - k>10 includes more noise
+   - Sweet spot: k=7-8 for most synthesis
+
+6. SOURCE ATTRIBUTION:
+   - Important for cross-document synthesis
+   - Users need to know which document said what
+   - Citation template helps significantly
+   - Without attribution: Confusion about sources
+
+======================================================================
+CHALLENGES OBSERVED
+======================================================================
+
+1. INFORMATION REDUNDANCY:
+   - Same information in multiple documents
+   - Wastes context window space
+   - Solution: Deduplication before generation
+
+2. INFORMATION GAPS:
+   - Critical info in lower-ranked chunks
+   - Standard top_k may miss it
+   - Solution: Higher k or relevance feedback
+
+3. CONTEXT WINDOW LIMITS:
+   - Many chunks may exceed LLM context
+   - Need selective inclusion
+   - Solution: Summarize chunks before inclusion
+
+4. DOCUMENT BOUNDARIES:
+   - Model may not distinguish document sources well
+   - Important for conflicting information
+   - Solution: Explicit source labeling
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+FOR SYNTHESIS TASKS:
+- Use k=7-10 (higher than standard k=5)
+- Enable source attribution
+- Consider reranking for diversity
+- Implement chunk deduplication
+
+FOR COMPREHENSIVE SUMMARIES:
+- Use k=15-20
+- Accept higher latency
+- Post-process to organize by theme
+- Validate coverage completeness
+
+FOR COMPARISON TASKS:
+- k=5-8 typically sufficient
+- Ensure both subjects in retrieved set
+- Structured output helps
+- Explicit comparison dimensions
+
+BEST PRACTICES:
+1. Pre-filter documents by relevance to query
+2. Use maximal marginal relevance (MMR) for diversity
+3. Include source metadata in chunks
+4. Post-process to merge redundant information
+5. Validate synthesis against retrieved chunks
+

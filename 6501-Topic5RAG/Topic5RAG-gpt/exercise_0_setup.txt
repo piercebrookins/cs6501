@@ -1,0 +1,68 @@
+chat: ================================================================================
+chat: EXERCISE 0: SETUP
+chat: ================================================================================
+chat: environment: local
+chat: device: mps
+chat: dtype: torch.float32
+chat: embedding_model: sentence-transformers/all-MiniLM-L6-v2
+chat: llm_model: Qwen/Qwen2.5-1.5B-Instruct
+chat: chunk_size: 512
+chat: chunk_overlap: 128
+chat: 
+chat: ================================================================================
+chat: Building corpus: ModelTService
+chat: ================================================================================
+chat: Using cached index for ModelTService: index_modelt.faiss (970,797 bytes)
+chat: index.ntotal: 632
+chat: 
+chat: Sample chunk:
+chat: source=ModelT-31-40-ocr.pdf chunk=0
+chat: [Page 1]
+chat: cee eee . epg hee mre am ey ~
+chat: The Ford Tranemission
+chat: What is the function af:
+chat: the Transmission? _Anever No, 69
+chat: Te is that part of the methuniem.of an sutomdbile w: Hes between the crank
+chat: shaft and Bi ar ator end by whic con aed fo moves
+chat: different speeds
+chat: from the other I it is thapeed gear of the car.
+chat: 
+chat: Saved index: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Topic5RAG-gpt/index_modelt.faiss
+chat: Saved chunks: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Topic5RAG-gpt/index_modelt.chunks
+chat: ================================================================================
+chat: Building corpus: CongressionalRecord
+chat: ================================================================================
+chat: Using cached index for CongressionalRecord: index_cr.faiss (73,540,653 bytes)
+chat: index.ntotal: 47878
+chat: 
+chat: Sample chunk:
+chat: source=CREC-2026-01-08-bk3.pdf chunk=0
+chat: [Page 1]
+chat: Congressional Record
+chat: U
+chat: N
+chat: U
+chat: M
+chat: E
+chat: P
+chat: LU
+chat: RI
+chat: B
+chat: U
+chat: S
+chat: United States
+chat: of America
+chat: PROCEEDINGS AND DEBATES OF THE 119th CONGRESS, SECOND SESSION
+chat: b This symbol represents the time of day during the House proceedings, e.g., b 1407 is 2:07 p.m.
+chat: Matter set in this typeface indicates words inserted or appended, rather than spoken, by a Member of the House on the floor.
+chat: .
+chat: H255 
+chat: Vol. 172 
+chat: WASHINGTON, THURSDAY, JANUARY 8, 2026 
+chat: No. 5—Book II 
+chat: House of Representatives 
+chat: EXPLANATORY STATEMENT SUBMITTED 
+chat: BY MR.
+chat: 
+chat: Saved index: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Topic5RAG-gpt/index_cr.faiss
+chat: Saved chunks: /Users/pierce/Documents/CS6501/6501-Topic5RAG/Topic5RAG-gpt/index_cr.chunks

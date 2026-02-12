@@ -1,0 +1,78 @@
+chat: ================================================================================
+chat: EXERCISE 2: GPT-4o Mini comparison (no RAG)
+chat: ================================================================================
+chat: model: gpt-4o-mini
+chat: setup: direct LLM call, no retrieval tools
+chat: ================================================================================
+chat: Query :: How do I adjust the carburetor on a Model T?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: Adjusting the carburetor on a Model T Ford involves a few key steps. Here’s a general guide:
+chat: 
+chat: ### Tools Needed:
+chat: - Screwdriver
+chat: - Wrench (if necessary)
+chat: 
+chat: ### Steps to Adjust the Carburetor:
+chat: 
+chat: 1. **Warm Up the Engine**: Start the engine and let it warm up to operating temperature. This ensures that the adjustments are made under normal running conditions.
+chat: 
+chat: 2. **Locate the Carburetor**: The carburetor is typically located on the side of the engine. Familiarize yourself with its parts, including the adjustment screws.
+chat: 
+chat: 3. **Adjust the Idle Speed**:
+chat:    - Locate the idle speed adjustment screw, usually found on the side of the carburetor.
+chat:    - Turn the screw clockwise to increase the idle speed and counterclockwise to decrease it. Adjust until the engine runs smoothly at idle.
+chat: 
+chat: 4. **Adjust the Mixture**:
+chat:    - Find the mixture adjustment screw, which controls the air-fuel mixture.
+chat:    - Start with the screw turned in (clockwise) until it lightly seats, then back it out about 1.5 turns as a starting point.
+chat:    - Fine-tune by turning the screw in or out while observing engine performance. The goal is to achieve smooth acceleration without stalling.
+chat: 
+chat: 5. **Test Drive**: After adjustments, take the car for a short drive. Pay attention to how it accelerates and idles. Make further adjustments as necessary.
+chat: 
+chat: 6. **Final Checks**: After driving, check for any leaks around the carburetor and ensure all connections are secure.
+chat: 
+chat: ### Tips:
+chat: - Make small adjustments and take notes on each change.
+chat: - If you're unsure about any step, consult a Model T manual or seek advice from a knowledgeable mechanic.
+chat: 
+chat: Always remember that adjustments can vary based on the specific model and conditions, so it may take some trial and error to get it just right.
+chat: gpt4o_mini_seconds: 7.49
+chat: ================================================================================
+chat: Query :: What is the correct spark plug gap for a Model T Ford?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: The correct spark plug gap for a Model T Ford is typically around 0.025 inches (0.635 mm). However, it's always a good idea to consult the specific manual for your vehicle or check with a knowledgeable source for any variations based on the model year or modifications.
+chat: gpt4o_mini_seconds: 2.10
+chat: ================================================================================
+chat: Query :: How do I fix a slipping transmission band?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: Fixing a slipping transmission band can be a complex task, often requiring mechanical expertise. Here are some general steps you might consider:
+chat: 
+chat: 1. **Check Fluid Levels**: Ensure the transmission fluid is at the correct level and in good condition. Low or dirty fluid can cause slipping.
+chat: 
+chat: 2. **Inspect for Leaks**: Look for any signs of fluid leaks around the transmission. Addressing leaks can help maintain proper fluid levels.
+chat: 
+chat: 3. **Adjust the Band**: If your transmission allows for band adjustment, locate the adjustment screw and follow the manufacturer’s specifications for tightening.
+chat: 
+chat: 4. **Replace the Fluid**: If the fluid is old or contaminated, consider a transmission fluid change. Use the recommended type of fluid for your vehicle.
+chat: 
+chat: 5. **Check for Error Codes**: Use an OBD-II scanner to check for any error codes that might indicate issues with the transmission.
+chat: 
+chat: 6. **Consult a Professional**: If the problem persists, it may be best to consult a professional mechanic. They can perform a thorough diagnosis and recommend repairs, which may include replacing the transmission or internal components.
+chat: 
+chat: ### Important Notes:
+chat: - Always refer to your vehicle’s service manual for specific instructions and specifications.
+chat: - If you're not comfortable with mechanical work, it's advisable to seek professional help to avoid further damage.
+chat: gpt4o_mini_seconds: 6.60
+chat: ================================================================================
+chat: Query :: What oil should I use in a Model T engine?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: For a Model T engine, it's recommended to use a non-detergent motor oil with a viscosity of around 30 weight. Many enthusiasts suggest using oils specifically formulated for vintage engines, which can provide better lubrication and protection for the older technology. Look for oils that meet the API classification of SA or SB, as these are suitable for the Model T's design. Always check the owner's manual or consult with a vintage car expert for specific recommendations.
+chat: gpt4o_mini_seconds: 2.77
+chat: ================================================================================
+chat: Notes
+chat: ================================================================================
+chat: This exercise intentionally uses no retrieval context, to compare pure model priors against RAG runs from Exercise 1.

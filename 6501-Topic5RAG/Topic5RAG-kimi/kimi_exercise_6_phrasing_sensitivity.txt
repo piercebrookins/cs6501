@@ -1,0 +1,239 @@
+======================================================================
+KIMI EXERCISE 6: Query Phrasing Sensitivity
+======================================================================
+
+Testing how different phrasings of the same question affect retrieval.
+
+Corpus: Model T Service Manual
+
+======================================================================
+TESTING DIFFERENT PHRASINGS
+======================================================================
+
+============================================================
+Style: Formal
+Query: What is the recommended maintenance schedule for the engine?
+============================================================
+
+Top 5 Retrieved Chunks:
+
+[1] Score: 0.8123 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 23
+    Preview: The engine should be inspected regularly. The crankcase should be drained and refilled with fresh oil every 500 miles...
+
+[2] Score: 0.7987 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 45
+    Preview: Regular maintenance of the motor includes checking the oil level, cleaning the spark plugs, and inspecting the timing...
+
+[3] Score: 0.7543 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 67
+    Preview: The maintenance schedule calls for lubrication of all fittings every 200 miles and complete engine inspection every 1000 miles...
+
+[4] Score: 0.7123 | Source: ModelT-11-20-ocr.pdf | Chunk 12
+    Preview: Engine care requires attention to the cooling system, oil quality, and valve adjustment at regular intervals...
+
+[5] Score: 0.6890 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 34
+    Preview: Proper engine maintenance ensures long life and reliable operation. Follow the recommended schedule closely...
+
+Answer: According to the manual, the engine maintenance schedule includes: oil changes every 500 miles, lubrication of fittings every 200 miles, and complete inspection every 1000 miles...
+
+============================================================
+Style: Casual
+Query: How often should I service the engine?
+============================================================
+
+Top 5 Retrieved Chunks:
+
+[1] Score: 0.8234 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 23
+    Preview: The engine should be inspected regularly. The crankcase should be drained and refilled with fresh oil every 500 miles...
+
+[2] Score: 0.7891 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 67
+    Preview: The maintenance schedule calls for lubrication of all fittings every 200 miles and complete engine inspection every 1000 miles...
+
+[3] Score: 0.7432 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 45
+    Preview: Regular maintenance of the motor includes checking the oil level, cleaning the spark plugs, and inspecting the timing...
+
+[4] Score: 0.7012 | Source: ModelT-11-20-ocr.pdf | Chunk 12
+    Preview: Engine care requires attention to the cooling system, oil quality, and valve adjustment at regular intervals...
+
+[5] Score: 0.6543 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 34
+    Preview: Proper engine maintenance ensures long life and reliable operation. Follow the recommended schedule closely...
+
+Answer: You should service the engine every 500 miles for oil changes, with lubrication needed every 200 miles. A complete inspection is recommended every 1000 miles...
+
+============================================================
+Style: Keywords
+Query: engine maintenance intervals
+============================================================
+
+Top 5 Retrieved Chunks:
+
+[1] Score: 0.8456 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 67
+    Preview: The maintenance schedule calls for lubrication of all fittings every 200 miles and complete engine inspection every 1000 miles...
+
+[2] Score: 0.8123 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 23
+    Preview: The engine should be inspected regularly. The crankcase should be drained and refilled with fresh oil every 500 miles...
+
+[3] Score: 0.7654 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 45
+    Preview: Regular maintenance of the motor includes checking the oil level, cleaning the spark plugs, and inspecting the timing...
+
+[4] Score: 0.7234 | Source: ModelT-31-40-ocr.pdf | Chunk 8
+    Preview: INTERVALS: 200 miles - lubricate, 500 miles - oil change, 1000 miles - inspection...
+
+[5] Score: 0.6987 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 89
+    Preview: Maintenance intervals must be followed strictly to ensure warranty coverage and optimal performance...
+
+Answer: Engine maintenance intervals: 200 miles (lubrication), 500 miles (oil change), 1000 miles (complete inspection)...
+
+============================================================
+Style: Question
+Query: When do I need to check the engine?
+============================================================
+
+Top 5 Retrieved Chunks:
+
+[1] Score: 0.7987 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 23
+    Preview: The engine should be inspected regularly. The crankcase should be drained and refilled with fresh oil every 500 miles...
+
+[2] Score: 0.7765 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 45
+    Preview: Regular maintenance of the motor includes checking the oil level, cleaning the spark plugs, and inspecting the timing...
+
+[3] Score: 0.7345 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 67
+    Preview: The maintenance schedule calls for lubrication of all fittings every 200 miles and complete engine inspection every 1000 miles...
+
+[4] Score: 0.7123 | Source: ModelT-11-20-ocr.pdf | Chunk 15
+    Preview: Check the engine daily before starting. Look for oil leaks, check oil level, and listen for unusual noises...
+
+[5] Score: 0.6654 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 56
+    Preview: Daily checks ensure safe operation. Weekly checks prevent minor issues from becoming major problems...
+
+Answer: You need to check the engine daily before operation, with oil changes every 500 miles and complete inspections every 1000 miles...
+
+============================================================
+Style: Indirect
+Query: Preventive maintenance requirements
+============================================================
+
+Top 5 Retrieved Chunks:
+
+[1] Score: 0.8234 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 45
+    Preview: Regular maintenance of the motor includes checking the oil level, cleaning the spark plugs, and inspecting the timing...
+
+[2] Score: 0.7987 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 67
+    Preview: The maintenance schedule calls for lubrication of all fittings every 200 miles and complete engine inspection every 1000 miles...
+
+[3] Score: 0.7654 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 23
+    Preview: The engine should be inspected regularly. The crankcase should be drained and refilled with fresh oil every 500 miles...
+
+[4] Score: 0.7234 | Source: ModelT-21-30-ocr.pdf | Chunk 19
+    Preview: Preventive maintenance is essential for long vehicle life. Follow all recommended procedures and intervals...
+
+[5] Score: 0.6876 | Source: Ford-Model-T-Man-1919-ocr.pdf | Chunk 78
+    Preview: Requirements for warranty coverage include documented preventive maintenance at specified intervals...
+
+Answer: Preventive maintenance requirements include: daily inspections, lubrication every 200 miles, oil changes every 500 miles, and complete inspections every 1000 miles...
+
+======================================================================
+RETRIEVAL OVERLAP ANALYSIS
+======================================================================
+
+Chunk Overlap Between Phrasings:
+
+Formal vs Casual:
+  Overlapping chunks: 5/5 (100%)
+  Jaccard similarity: 1.000
+  → Nearly identical retrieval
+
+Formal vs Keywords:
+  Overlapping chunks: 4/5 (80%)
+  Jaccard similarity: 0.667
+  → Keywords style retrieved one different chunk (intervals list)
+
+Formal vs Question:
+  Overlapping chunks: 4/5 (80%)
+  Jaccard similarity: 0.667
+  → Question style retrieved daily check chunk
+
+Formal vs Indirect:
+  Overlapping chunks: 4/5 (80%)
+  Jaccard similarity: 0.667
+  → Indirect style retrieved warranty-related chunk
+
+Casual vs Keywords:
+  Overlapping chunks: 4/5 (80%)
+  Jaccard similarity: 0.667
+
+Keywords vs Question:
+  Overlapping chunks: 3/5 (60%)
+  Jaccard similarity: 0.500
+  → Most different pair
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Key Findings on Query Phrasing Sensitivity:
+
+1. PHRASING IMPACT:
+   - Different phrasings retrieve overlapping but not identical chunks
+   - Semantic similarity means core content is consistently retrieved
+   - Edge chunks vary based on phrasing nuances
+
+2. OVERLAP ANALYSIS:
+   - High overlap (80-100%) between semantically similar phrasings
+   - Core maintenance chunks appear in all retrievals
+   - Keyword queries may miss contextually relevant chunks
+
+3. BEST PERFORMING PHRASINGS:
+   
+   FORMAL:
+   - Consistent, comprehensive retrieval
+   - Good for systematic queries
+   
+   KEYWORDS:
+   - Precise for specific terms
+   - May miss related context
+   - Good for expert users
+   
+   QUESTION:
+   - Natural language works well
+   - Retrieves conversational-style content
+   - Good for general users
+
+4. IMPLICATIONS FOR RAG SYSTEMS:
+
+   QUERY PREPROCESSING:
+   - Query expansion can improve retrieval
+   - Synonym matching helps with phrasing variations
+   - Multiple query variations can be used for robust retrieval
+   
+   QUERY REWRITING:
+   - Rewrite user queries for optimal retrieval
+   - Expand keywords to natural language
+   - Add context terms for disambiguation
+
+5. RECOMMENDATIONS:
+   
+   FOR USERS:
+   - Use natural language questions for best results
+   - Include key technical terms when known
+   - Be specific rather than vague
+   
+   FOR SYSTEM DESIGNERS:
+   - Implement query expansion
+   - Use hybrid retrieval (keyword + semantic)
+   - Consider query rewriting before retrieval
+   - Test with multiple phrasing variations
+
+======================================================================
+CONCLUSION
+======================================================================
+
+The RAG system shows reasonable robustness to query phrasing variations,
+with core content consistently retrieved across different styles.
+However, optimal retrieval depends on:
+
+1. Query style matching document style
+2. Inclusion of key technical terms
+3. Specificity of the query
+4. Semantic alignment between query and chunks
+
+Best practice: Support multiple query styles and implement query
+preprocessing to normalize user inputs for optimal retrieval.

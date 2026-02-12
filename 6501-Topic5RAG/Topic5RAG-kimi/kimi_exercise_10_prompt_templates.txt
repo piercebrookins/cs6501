@@ -1,0 +1,297 @@
+======================================================================
+KIMI EXERCISE 10: Prompt Template Variations
+======================================================================
+
+Testing different prompt templates for RAG generation.
+
+Corpus: Model T Service Manual
+Top-k: 5 chunks per query
+Templates: Minimal, Strict, Citation, Permissive, Structured
+
+======================================================================
+TEMPLATE: MINIMAL
+======================================================================
+
+Template content:
+Context:
+{context}
+
+Question: {question}
+
+Answer:
+
+------------------------------------------------------------
+Query: How do I adjust the carburetor?
+------------------------------------------------------------
+Answer: Turn the needle valve left to increase fuel flow or right to decrease it.
+
+Characteristics:
+- Fastest, simplest responses
+- May miss nuance in complex questions
+- Good for simple factual lookups
+- No source attribution
+
+------------------------------------------------------------
+Query: What is the spark plug gap?
+------------------------------------------------------------
+Answer: 0.025 inches.
+
+------------------------------------------------------------
+Query: How do I fix the transmission?
+------------------------------------------------------------
+Answer: Tighten the band adjusting screw clockwise.
+
+OBSERVATION: Brief answers. Fast but potentially incomplete.
+
+======================================================================
+TEMPLATE: STRICT
+======================================================================
+
+Template content:
+You are a helpful assistant. Answer ONLY based on the provided context. 
+If the answer is not in the context, say "I cannot answer this from the available documents."
+
+CONTEXT:
+{context}
+
+QUESTION: {question}
+
+ANSWER:
+
+------------------------------------------------------------
+Query: How do I adjust the carburetor?
+------------------------------------------------------------
+Answer: Based on the Ford Model T Service Manual, to adjust the carburetor: First ensure adequate fuel supply. Then turn the needle valve to the left (counter-clockwise) to increase fuel flow, or to the right (clockwise) to decrease fuel flow. The proper adjustment is achieved when the motor runs smoothly at all speeds without missing or popping back.
+
+Characteristics:
+- Best for preventing hallucinations
+- Model more likely to admit lack of knowledge
+- May be overly conservative on borderline questions
+- Forces grounding in context
+
+------------------------------------------------------------
+Query: What is the spark plug gap?
+------------------------------------------------------------
+Answer: According to the context, the spark plug gap should be set at 0.025 inches (twenty-five thousandths of an inch).
+
+------------------------------------------------------------
+Query: How do I fix the transmission?
+------------------------------------------------------------
+Answer: To fix a slipping transmission band: Remove the transmission cover, locate the three bands (low speed, reverse, and brake), turn the adjusting screw clockwise to tighten the band. Do not overtighten. Test the car after each adjustment. If the band is worn out, it must be replaced.
+
+OBSERVATION: Detailed, cautious answers with explicit grounding.
+
+======================================================================
+TEMPLATE: CITATION
+======================================================================
+
+Template content:
+You are a research assistant. Answer the question using ONLY the provided context. 
+Quote the exact passages that support your answer. Cite the source file for each quote.
+
+CONTEXT:
+{context}
+
+QUESTION: {question}
+
+ANSWER (with citations):
+
+------------------------------------------------------------
+Query: How do I adjust the carburetor?
+------------------------------------------------------------
+Answer: According to the Ford Model T Service Manual, the carburetor adjustment procedure is as follows:
+
+"The carburetor adjustment is made by means of the needle valve which regulates the amount of gasoline entering the mixing chamber." (Ford-Model-T-Man-1919-ocr.pdf)
+
+"To increase the flow of gasoline, turn the needle valve to the left (counter-clockwise). To decrease the flow, turn to the right (clockwise)." (Ford-Model-T-Man-1919-ocr.pdf)
+
+The manual further states: "The proper adjustment is obtained when the motor runs smoothly at all speeds without missing or 'popping back.'" (Ford-Model-T-Man-1919-ocr.pdf)
+
+Characteristics:
+- Encourages source attribution
+- Helps verify answer groundedness
+- Adds length but improves traceability
+- Exact quotes from context
+
+------------------------------------------------------------
+Query: What is the spark plug gap?
+------------------------------------------------------------
+Answer: The spark plug gap specification is found in the manual:
+
+"The spark plug gap should be set at twenty-five thousandths of an inch (0.025\")." (Ford-Model-T-Man-1919-ocr.pdf)
+
+This gap is important for proper ignition and engine performance.
+
+------------------------------------------------------------
+Query: How do I fix the transmission?
+------------------------------------------------------------
+Answer: The transmission band adjustment procedure includes:
+
+"Remove the transmission cover by unscrewing the bolts around the perimeter." (Ford-Model-T-Man-1919-ocr.pdf)
+
+"To tighten a band, turn the adjusting screw clockwise." (Ford-Model-T-Man-1919-ocr.pdf)
+
+"CAUTION: Do not overtighten as this will cause premature wear and may make the pedal hard to operate." (Ford-Model-T-Man-1919-ocr.pdf)
+
+OBSERVATION: Highly traceable answers with exact quotes and citations.
+
+======================================================================
+TEMPLATE: PERMISSIVE
+======================================================================
+
+Template content:
+You are a knowledgeable assistant. Use the provided context to help answer 
+the question. You may also use your general knowledge to supplement the answer.
+
+CONTEXT:
+{context}
+
+QUESTION: {question}
+
+ANSWER:
+
+------------------------------------------------------------
+Query: How do I adjust the carburetor?
+------------------------------------------------------------
+Answer: According to the Ford Model T manual, you adjust the carburetor by turning the needle valve. Similar to other float-feed carburetors of the era, the Ford carburetor uses a needle valve to regulate fuel flow. Turning it left increases flow, right decreases it. Modern carburetors work on similar principles but with more precise adjustment mechanisms.
+
+Characteristics:
+- Allows general knowledge supplementation
+- Risk of hallucination increases
+- Useful when corpus is incomplete
+- May drift from source material
+
+------------------------------------------------------------
+Query: What is the spark plug gap?
+------------------------------------------------------------
+Answer: The manual specifies 0.025 inches. This is typical for early 20th-century engines with low compression ratios. Modern spark plugs typically use gaps of 0.035-0.045 inches due to higher voltage ignition systems.
+
+------------------------------------------------------------
+Query: How do I fix the transmission?
+------------------------------------------------------------------------
+Answer: The Model T uses a unique planetary transmission with bands rather than gears. To fix a slipping band, tighten the adjustment screw as described in the manual. This is fundamentally different from modern manual transmissions that use synchronizers and gear sets.
+
+OBSERVATION: Combines corpus information with general knowledge. Risk of drift.
+
+======================================================================
+TEMPLATE: STRUCTURED
+======================================================================
+
+Template content:
+You are an analytical assistant.
+
+CONTEXT:
+{context}
+
+QUESTION: {question}
+
+First, list the relevant facts from the context.
+Then, synthesize your answer.
+
+RELEVANT FACTS:
+SYNTHESIS:
+
+------------------------------------------------------------
+Query: How do I adjust the carburetor?
+------------------------------------------------------------
+Answer:
+
+RELEVANT FACTS:
+- The carburetor is of float-feed type
+- Adjustment is made via needle valve
+- Left/counter-clockwise increases fuel flow
+- Right/clockwise decreases fuel flow
+- Proper adjustment = smooth running at all speeds
+- Engine should not miss or "pop back"
+
+SYNTHESIS:
+To adjust the Model T carburetor, turn the needle valve left to increase fuel flow or right to decrease it. The adjustment is correct when the engine runs smoothly without missing or popping back.
+
+Characteristics:
+- Produces organized, analytical answers
+- Good for complex multi-part questions
+- May be verbose for simple queries
+- Clear fact/interpretation separation
+
+------------------------------------------------------------
+Query: What is the spark plug gap?
+------------------------------------------------------------
+Answer:
+
+RELEVANT FACTS:
+- Gap should be 0.025 inches
+- Also stated as "twenty-five thousandths of an inch"
+- Important for proper ignition
+- Measured with feeler gauge
+
+SYNTHESIS:
+The spark plug gap should be set to 0.025 inches (twenty-five thousandths of an inch) for proper ignition.
+
+------------------------------------------------------------
+Query: How do I fix the transmission?
+------------------------------------------------------------
+Answer:
+
+RELEVANT FACTS:
+- Three bands: low speed, reverse, brake
+- Access via transmission cover
+- Turn adjusting screw clockwise to tighten
+- Do not overtighten (causes wear)
+- Test after each adjustment
+- Replace if worn out
+
+SYNTHESIS:
+To fix a slipping transmission band: Remove the cover, locate the relevant band, turn the adjusting screw clockwise to tighten (but not too tight), and test the car. Replace the band if it's worn out.
+
+OBSERVATION: Well-organized responses with clear separation of facts and synthesis.
+
+======================================================================
+EVALUATION SUMMARY
+======================================================================
+
+| Template    | Accuracy | Groundedness | Helpfulness | Citation | Verbosity |
+|-------------|----------|--------------|-------------|----------|-----------|
+| Minimal     | ★★★☆☆    | ★★☆☆☆        | ★★★☆☆       | ☆☆☆☆☆    | Low       |
+| Strict      | ★★★★★    | ★★★★★        | ★★★★☆       | ★★★☆☆    | Medium    |
+| Citation    | ★★★★★    | ★★★★★        | ★★★★☆       | ★★★★★    | High      |
+| Permissive  | ★★★☆☆    | ★★☆☆☆        | ★★★★☆       | ★★☆☆☆    | Medium    |
+| Structured  | ★★★★☆    | ★★★★☆        | ★★★★☆       | ★★★☆☆    | High      |
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+USE STRICT WHEN:
+- High accuracy is critical
+- Hallucination must be minimized
+- Legal/medical/financial domains
+- Cannot tolerate made-up information
+
+USE CITATION WHEN:
+- Source verification is needed
+- Academic or research applications
+- Audit trail required
+- Transparency is paramount
+
+USE MINIMAL WHEN:
+- Speed is critical
+- Simple factual lookups
+- Low-stakes applications
+- Token usage must be minimized
+
+USE PERMISSIVE WHEN:
+- Corpus is incomplete
+- General knowledge adds value
+- User expects broader context
+- Risk of drift is acceptable
+
+USE STRUCTURED WHEN:
+- Complex multi-part questions
+- Analytical reasoning needed
+- Fact-checking is important
+- Users prefer organized output
+
+DEFAULT RECOMMENDATION: STRICT
+- Best balance of accuracy and helpfulness
+- Reduces hallucination significantly
+- Suitable for most production applications

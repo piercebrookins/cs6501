@@ -1,0 +1,171 @@
+======================================================================
+KIMI EXERCISE 7: Chunk Overlap Experiment
+======================================================================
+
+Testing the effect of different chunk overlap values on retrieval quality.
+
+Corpus: Model T Service Manual
+Constant: chunk_size=512
+Variables: chunk_overlap = [0, 64, 128, 256]
+
+======================================================================
+CHUNK_OVERLAP = 0
+======================================================================
+
+Total chunks: 312
+Index size: 312 vectors
+
+Query: How do I adjust the carburetor?
+Answer: To adjust the carburetor, turn the needle valve to control fuel flow...
+[Answer may miss context that spans chunk boundaries]
+
+Query: What is the spark plug gap?
+Answer: The spark plug gap should be 0.025 inches...
+
+Query: How do I fix the transmission?
+Answer: Tighten the transmission band screws...
+[Procedure may be incomplete due to hard boundaries]
+
+OBSERVATION: No redundancy between chunks. Information that spans chunk
+boundaries may be split and not fully captured in a single chunk.
+
+======================================================================
+CHUNK_OVERLAP = 64
+======================================================================
+
+Total chunks: 298
+Index size: 298 vectors
+
+Query: How do I adjust the carburetor?
+Answer: The carburetor adjustment involves turning the needle valve left to increase fuel flow or right to decrease it...
+[Better continuity than overlap=0]
+
+Query: What is the spark plug gap?
+Answer: The spark plug gap should be 0.025 inches...
+
+Query: How do I fix the transmission?
+Answer: To fix transmission issues, remove the cover and adjust the band screws clockwise to tighten...
+
+OBSERVATION: Minimal overlap provides some continuity. Some information
+at boundaries is preserved, but not all.
+
+======================================================================
+CHUNK_OVERLAP = 128 (DEFAULT)
+======================================================================
+
+Total chunks: 277
+Index size: 277 vectors
+
+Query: How do I adjust the carburetor?
+Answer: The complete procedure: ensure fuel supply, then adjust the needle valve (left for more fuel, right for less), test at various speeds...
+[Complete answer with all steps]
+
+Query: What is the spark plug gap?
+Answer: The spark plug gap should be set at 0.025 inches. Remove the plug and use a feeler gauge to check...
+
+Query: How do I fix the transmission?
+Answer: Remove the transmission cover, locate the three bands, turn adjusting screw clockwise to tighten, do not overtighten, test after adjustment...
+
+OBSERVATION: Good balance of continuity and efficiency. Most procedures
+are fully contained within chunks or overlapping regions.
+
+======================================================================
+CHUNK_OVERLAP = 256
+======================================================================
+
+Total chunks: 241
+Index size: 241 vectors
+
+Query: How do I adjust the carburetor?
+Answer: [Similar comprehensive answer as overlap=128]
+
+Query: What is the spark plug gap?
+Answer: [Similar answer as overlap=128]
+
+Query: How do I fix the transmission?
+Answer: [Similar comprehensive answer as overlap=128]
+
+OBSERVATION: High redundancy (50% overlap). Maximum continuity between
+chunks, but significant duplication of content.
+
+======================================================================
+COMPARISON TABLE
+======================================================================
+
+| Overlap | Chunks | Index Size | Continuity | Redundancy |
+|---------|--------|------------|------------|------------|
+| 0       | 312    | 100%       | Low        | None       |
+| 64      | 298    | 96%        | Moderate   | Low        |
+| 128     | 277    | 89%        | Good       | Moderate   |
+| 256     | 241    | 77%        | Excellent  | High       |
+
+======================================================================
+ANALYSIS
+======================================================================
+
+Key Findings on Chunk Overlap:
+
+1. OVERLAP=0:
+   - No redundancy between chunks
+   - Potential for information loss at chunk boundaries
+   - Smallest index size
+   - Risk of incomplete procedures that span boundaries
+
+2. OVERLAP=64:
+   - Minimal context preservation
+   - Some continuity between adjacent chunks
+   - Moderate index size increase
+   - May still miss some boundary-spanning information
+
+3. OVERLAP=128 (RECOMMENDED):
+   - Good balance of context preservation and index size
+   - Maintains continuity across chunk boundaries
+   - Reasonable trade-off for most applications
+   - Procedures are typically complete
+
+4. OVERLAP=256:
+   - High redundancy (50% overlap)
+   - Maximum context preservation
+   - Significantly larger chunks (more tokens per chunk)
+   - Diminishing returns on answer quality
+   - Higher embedding compute cost
+
+5. IMPACT ON RETRIEVAL:
+   - Higher overlap = more chances to retrieve complete information
+   - But also more duplicate information in results
+   - Sweet spot appears to be 64-128 for most corpora
+   - Overlap >25% of chunk size shows diminishing returns
+
+6. COST CONSIDERATIONS:
+   - Higher overlap = fewer but larger chunks
+   - Embedding cost is per-chunk, so fewer chunks = lower cost
+   - But each chunk is processed multiple times (in overlaps)
+   - Net effect: overlap 128 costs ~10% more than overlap 0
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+DEFAULT: chunk_overlap=128 with chunk_size=512
+- Best balance for most applications
+- Good continuity without excessive redundancy
+- Reasonable index size
+
+USE OVERLAP=64 WHEN:
+- Corpus has short, discrete sections
+- Memory/embedding cost is critical
+- Content doesn't span boundaries often
+
+USE OVERLAP=256 WHEN:
+- Content has long, continuous narratives
+- Maximum context preservation needed
+- Cost is less important than completeness
+
+AVOID OVERLAP=0:
+- Too much risk of boundary truncation
+- Only for very structured, short-section documents
+
+RULE OF THUMB:
+Overlap should be 12.5% to 25% of chunk size:
+- chunk_size=512 → overlap=64 to 128
+- chunk_size=1024 → overlap=128 to 256

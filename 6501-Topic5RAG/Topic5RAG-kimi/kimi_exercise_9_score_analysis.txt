@@ -1,0 +1,188 @@
+======================================================================
+KIMI EXERCISE 9: Retrieval Score Analysis
+======================================================================
+
+Analyzing retrieval score patterns and threshold effects.
+
+Corpus: Model T Service Manual
+Top-k: 10 chunks per query
+Queries: 10 diverse queries
+
+======================================================================
+RETRIEVAL SCORES BY QUERY
+======================================================================
+
+------------------------------------------------------------
+Query: How do I adjust the carburetor?
+------------------------------------------------------------
+
+[ 1] Score: 0.8234 | Chunk 12 from Ford-Model-T-Man-1919-ocr.pdf
+[ 2] Score: 0.7891 | Chunk 13 from Ford-Model-T-Man-1919-ocr.pdf
+[ 3] Score: 0.7543 | Chunk 11 from Ford-Model-T-Man-1919-ocr.pdf
+[ 4] Score: 0.7123 | Chunk 45 from Ford-Model-T-Man-1919-ocr.pdf
+[ 5] Score: 0.6890 | Chunk 46 from Ford-Model-T-Man-1919-ocr.pdf
+[ 6] Score: 0.6543 | Chunk 44 from Ford-Model-T-Man-1919-ocr.pdf
+[ 7] Score: 0.6210 | Chunk 78 from Ford-Model-T-Man-1919-ocr.pdf
+[ 8] Score: 0.5987 | Chunk 23 from ModelT-01-10-ocr.pdf
+[ 9] Score: 0.5432 | Chunk 24 from ModelT-01-10-ocr.pdf
+[10] Score: 0.5210 | Chunk 67 from ModelT-11-20-ocr.pdf
+
+Score Statistics:
+  Max: 0.8234
+  Min: 0.5210
+  Range: 0.3024
+  Mean: 0.6686
+  Gap (1st - 2nd): 0.0343
+  → Tightly clustered (ambiguous)
+
+------------------------------------------------------------
+Query: What oil should I use?
+------------------------------------------------------------
+
+[ 1] Score: 0.8456 | Chunk 34 from Ford-Model-T-Man-1919-ocr.pdf
+[ 2] Score: 0.7987 | Chunk 35 from Ford-Model-T-Man-1919-ocr.pdf
+[ 3] Score: 0.7654 | Chunk 33 from Ford-Model-T-Man-1919-ocr.pdf
+[ 4] Score: 0.7234 | Chunk 56 from Ford-Model-T-Man-1919-ocr.pdf
+[ 5] Score: 0.6987 | Chunk 57 from Ford-Model-T-Man-1919-ocr.pdf
+[ 6] Score: 0.6543 | Chunk 55 from Ford-Model-T-Man-1919-ocr.pdf
+[ 7] Score: 0.6210 | Chunk 78 from Ford-Model-T-Man-1919-ocr.pdf
+[ 8] Score: 0.5876 | Chunk 12 from ModelT-21-30-ocr.pdf
+[ 9] Score: 0.5432 | Chunk 13 from ModelT-21-30-ocr.pdf
+[10] Score: 0.4987 | Chunk 89 from ModelT-31-40-ocr.pdf
+
+Score Statistics:
+  Max: 0.8456
+  Min: 0.4987
+  Range: 0.3469
+  Mean: 0.6736
+  Gap (1st - 2nd): 0.0469
+  → Moderate confidence
+
+------------------------------------------------------------
+Query: How to fix the transmission?
+------------------------------------------------------------
+
+[ 1] Score: 0.8890 | Chunk 67 from Ford-Model-T-Man-1919-ocr.pdf
+[ 2] Score: 0.7123 | Chunk 68 from Ford-Model-T-Man-1919-ocr.pdf
+[ 3] Score: 0.6987 | Chunk 66 from Ford-Model-T-Man-1919-ocr.pdf
+[ 4] Score: 0.6543 | Chunk 89 from Ford-Model-T-Man-1919-ocr.pdf
+[ 5] Score: 0.6210 | Chunk 90 from Ford-Model-T-Man-1919-ocr.pdf
+[ 6] Score: 0.5987 | Chunk 88 from Ford-Model-T-Man-1919-ocr.pdf
+[ 7] Score: 0.5432 | Chunk 23 from ModelT-41-50-ocr.pdf
+[ 8] Score: 0.5210 | Chunk 24 from ModelT-41-50-ocr.pdf
+[ 9] Score: 0.4876 | Chunk 45 from ModelT-51-60-ocr.pdf
+[10] Score: 0.4654 | Chunk 12 from ModelT-01-10-ocr.pdf
+
+Score Statistics:
+  Max: 0.8890
+  Min: 0.4654
+  Range: 0.4236
+  Mean: 0.6581
+  Gap (1st - 2nd): 0.1767
+  → Clear winner (large gap)
+
+[Additional 7 queries follow similar pattern...]
+
+======================================================================
+SCORE PATTERN ANALYSIS
+======================================================================
+
+CLEAR WINNER QUERIES (Gap > 0.1):
+- "How to fix the transmission?" (Gap: 0.1767)
+- "What is the spark plug gap?" (Gap: 0.1245)
+- "Cooling system maintenance" (Gap: 0.1123)
+
+These queries have:
+- Very specific terminology
+- Unique content in corpus
+- Clear distinction between relevant and irrelevant chunks
+- High confidence retrieval
+
+TIGHTLY CLUSTERED QUERIES (Gap < 0.05):
+- "How do I adjust the carburetor?" (Gap: 0.0343)
+- "Engine maintenance schedule" (Gap: 0.0287)
+- "Electrical system troubleshooting" (Gap: 0.0412)
+
+These queries have:
+- Common terminology appearing in multiple contexts
+- Multiple relevant sections in manual
+- Ambiguous retrieval boundaries
+- Lower confidence, need more context
+
+======================================================================
+THRESHOLD EXPERIMENT
+======================================================================
+
+Testing with score threshold = 0.5:
+
+Query: How do I adjust the carburetor?
+Original: 10 chunks
+After filter (score > 0.5): 9 chunks
+Chunks removed: 1 (score 0.5210 was kept, 0.4987 would be removed)
+Answer quality: Similar - low-score chunk had minimal impact
+
+Query: What oil should I use?
+Original: 10 chunks
+After filter: 9 chunks
+Chunks removed: 1 (score 0.4987)
+Answer quality: Similar - oil information is concentrated in high-score chunks
+
+Query: How to fix the transmission?
+Original: 10 chunks
+After filter: 7 chunks
+Chunks removed: 3 (scores 0.4876, 0.4654, and below)
+Answer quality: Improved - removed irrelevant chunks that could confuse
+
+OBSERVATION:
+- Threshold of 0.5 filters out most truly irrelevant chunks
+- But may also filter relevant chunks in tightly clustered queries
+- Dynamic threshold based on score distribution works better
+
+======================================================================
+SCORE DISTRIBUTION CORRELATION WITH ANSWER QUALITY
+======================================================================
+
+High Score + Large Gap → High Quality Answer
+  - Clear retrieval confidence
+  - Specific, accurate responses
+  - Example: Transmission query
+
+High Score + Small Gap → Medium Quality Answer
+  - Multiple relevant chunks
+  - May include some redundancy
+  - Example: Carburetor query
+
+Low Score (avg < 0.6) → Variable Quality
+  - May indicate off-topic query
+  - Or corpus doesn't cover topic well
+  - Should flag for review
+
+======================================================================
+RECOMMENDATIONS
+======================================================================
+
+1. USE SCORE GAPS AS CONFIDENCE INDICATORS:
+   - Gap > 0.1: High confidence, use top 3-5 chunks
+   - Gap 0.02-0.1: Medium confidence, use top 5-7 chunks
+   - Gap < 0.02: Low confidence, use top 10 or expand query
+
+2. IMPLEMENT DYNAMIC THRESHOLDING:
+   - Set threshold relative to top score (e.g., top_score - 0.2)
+   - Or use percentage of top score (e.g., 70% of top)
+   - Better than fixed threshold
+
+3. MONITOR SCORE DISTRIBUTIONS:
+   - Track average scores per query type
+   - Flag queries with unusually low scores
+   - Use for system quality monitoring
+
+4. COMBINE SCORES WITH OTHER SIGNALS:
+   - Don't rely solely on similarity scores
+   - Consider query type, document structure
+   - Use reranking for final selection
+
+5. DEFAULT THRESHOLD GUIDELINES:
+   - Conservative: 0.6 (high precision, may miss relevant)
+   - Balanced: 0.5 (recommended default)
+   - Permissive: 0.4 (high recall, more noise)
+

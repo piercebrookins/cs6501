@@ -1,0 +1,640 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignObject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left-width: 0.25em; border-left-style: solid; border-left-color: rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+<style type='text/css'  id="style-mac-print"> @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}</style>
+
+<style type="text/css" id="style-custom">
+  /* Tiny patch layer so we avoid editing the massive Typora CSS blob. */
+  a.missing-asset { color: #b00020; text-decoration: underline dotted; }
+  a.missing-asset::after { content: " (missing)"; font-size: 0.9em; opacity: 0.85; }
+
+  figure.hero { margin: 1.25rem 0; }
+  figure.hero img { display: block; margin: 0 auto; max-width: 560px; }
+</style>
+
+<title>Topic 5: RAG - Retrieval Augmented Generation</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='topic-5-rag---retrieval-augmented-generation'><span>Topic 5: RAG - Retrieval Augmented Generation</span></h1><figure class="hero"><img src="rag.svg" alt="RAG pipeline diagram"></figure><h3 id='learning-goals'><span>Learning Goals</span></h3><ul><li><p><span>Know when to use RAG in your agent system</span></p></li><li><p><span>Understand the purpose of each component in the RAG pipeline</span></p></li><li><p><span>Understand the effect of chunk size, query phrasing, and prompt templates</span></p></li><li><p><span>Know how to optimize retrieval using top-K variation</span></p></li><li><p><span>See how RAG supports cross-document synthesis</span></p></li></ul><h3 id='tasks'><span>Tasks</span></h3><p><span>You should work in a self-selected team of 2 or three people on these exercises.  If you have difficulty finding a team, please ask the instructor for assistance.  You should do the first few exercises together.  If you wish, you may split up the remaining exercises among your team members, but you should share and discuss the results with each other afterwards.  Put copies of all of the results in the GitHub for every team member, and list the names of the people in your team in the README.md file.</span></p><h4 id='exercise-0-set-up'><span>Exercise 0: Set-up</span></h4><p><span>Download </span><a href='manual_rag_pipeline_universal_updated.ipynb'><span>manual_rag_pipeline_universal_updated.ipynb</span></a><span>  and get it running on CoLab or your own computer. I recommend CoLab, because it will be 5X faster unless you have a very powerful GPU on your machine.  the notebook will, however, run correctly on any machine with or without a GPU.  Download </span><a href='Corpora.zip' class='missing-asset' title='Corpora.zip is not in this folder. Add it or update the link.'><span>Corpora.zip</span></a><span> and unzip it. (See below for details about the corpora.) </span></p><hr /><h4 id='exercise-1-open-model-rag-vs-no-rag-comparison'><span>Exercise 1: Open Model RAG vs. No RAG Comparison</span></h4><p><span>Compare LLM&#39;s answers with and without retrieval augmentation.</span></p><p><strong><span>Setup</span></strong><span>: Use Qwen 2.5 1.5B (or another small open model) with the Model T Ford repair manual, and then with the Congressional Record corpus (separately).</span></p><p><strong><span>Queries to try with the Model T Ford corpus</span></strong><span>:</span></p><ul><li><p><span>&quot;How do I adjust the carburetor on a Model T?&quot;</span></p></li><li><p><span>&quot;What is the correct spark plug gap for a Model T Ford?&quot;</span></p></li><li><p><span>&quot;How do I fix a slipping transmission band?&quot;</span></p></li><li><p><span>&quot;What oil should I use in a Model T engine?&quot;</span></p></li></ul><p><strong><span>Queries to try with the Congressional Record corpus</span></strong><span>:</span></p><p><span>These issue numbers are for your use in finding the correct answers, don&#39;t give them to the LLM.</span></p><ul><li><p><span>&quot;What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?&quot;  (See CR Jan 13, 2026)</span></p></li><li><p><span>&quot;What mistake Elise Stefanovic make in Congress on January 23, 2026?&quot; (See CR Jan 23, 2026)</span></p></li><li><p><span>&quot;What is the purpose of the Main Street Parity Act?&quot; (See CR Jan 20, 2026)</span></p></li><li><p><span>&quot;Who in Congress has spoken for and against funding of pregnancy centers?&quot;  (See CR Jan 21, 2026)</span></p></li></ul><p><strong><span>For each query</span></strong><span>:</span></p><ol start='' ><li><p><span>Ask the model directly (no RAG)</span></p></li><li><p><span>Ask using your RAG pipeline</span></p></li></ol><p><strong><span>Document</span></strong><span>:</span></p><ul><li><p><span>Does the model hallucinate specific values without RAG?</span></p></li><li><p><span>Does RAG ground the answers in the actual manual?</span></p></li><li><p><span>Are there questions where the model&#39;s general knowledge is actually correct?</span></p></li></ul><p><strong><span>Optional subtask</span></strong><span>: Put both the Model T manual and the Congressional Record issues into the same RAG database.  Does this have any affect on the quality of the answers?</span></p><hr /><h4 id='exercise-2-open-model--rag-vs-large-model-comparison'><span>Exercise 2: Open Model + RAG vs. Large Model Comparison</span></h4><p><span>Perhaps a larger model without RAG could be competitive with a small model with RAG.</span></p><p><strong><span>Setup:</span></strong><span> Write a program (or adapt some of your code from last week) to run  GPT 4o Mini  with no tools on individual questions (not a conversation).  Run it on the queries from Exercise 1.</span></p><p><strong><span>Document:</span></strong></p><ul><li><p><span>Does GPT 4o Mini do a better job than Qwen 2.5 1.5B in avoiding hallucinations?</span></p></li><li><p><span>Which questions does GPT 4o Mini answer correctly?  Compare the cut-off date of GPT 4o Mini pre-training and the age of the Model T Ford and Congressional Record corpora.</span></p></li></ul><hr /><h4 id='exercise-3-open-model--rag-vs-state-of-the-art-chat-model'><span>Exercise 3: Open Model + RAG vs. State-of-the-Art Chat Model</span></h4><p><span>Compare your local RAG pipeline against a frontier model (GPT-5.2, Claude 4.6, etc.).</span></p><p><strong><span>Setup</span></strong><span>: </span></p><ul><li><p><span>Local: Qwen 2.5 1.5B with RAG using the Model T manual</span></p></li><li><p><span>Cloud: GPT-4 or Claude via their web interface (no file upload)</span></p></li></ul><p><strong><span>Queries to try</span></strong><span>:</span></p><ul><li><p><span>All the ones from Exercise 1.</span></p></li></ul><p><strong><span>Document</span></strong><span>:</span></p><ul><li><p><span>Where does the frontier model&#39;s general knowledge succeed?</span></p></li><li><p><span>When did the frontier model appear to be using live web search to help answer your questions?</span></p></li><li><p><span>Where does your RAG system provide more accurate, specific answers?</span></p></li><li><p><span>What does this tell you about when RAG adds value vs. when a powerful model suffices?</span></p></li></ul><hr /><h4 id='exercise-4-effect-of-top-k-retrieval-count'><span>Exercise 4: Effect of Top-K Retrieval Count</span></h4><p><span>Vary the number of chunks retrieved and observe how it affects answer quality. You can use any of the corpora and your own queries.</span></p><p><strong><span>Test with</span></strong><span>: k = 1, 3, 5, 10, 20</span></p><p><strong><span>For each k value</span></strong><span>:</span></p><ul><li><p><span>Run the same 3-5 queries</span></p></li><li><p><span>Note answer quality, completeness, and accuracy</span></p></li><li><p><span>Note response latency</span></p></li></ul><p><strong><span>Questions to explore</span></strong><span>:</span></p><ul><li><p><span>At what point does adding more context stop helping?</span></p></li><li><p><span>When does too much context hurt (irrelevant information, confusion)?</span></p></li><li><p><span>How does k interact with chunk size?</span></p></li></ul><hr /><h4 id='exercise-5-handling-unanswerable-questions'><span>Exercise 5: Handling Unanswerable Questions</span></h4><p><span>Test how well your system handles questions that cannot be answered from the corpus. You can use any of the corpora and your own queries.</span></p><p><strong><span>Types of unanswerable questions</span></strong><span>:</span></p><ul><li><p><span>Completely off-topic: &quot;What is the capital of France?&quot;</span></p></li><li><p><span>Related but not in corpus: &quot;What&#39;s the horsepower of a 1925 Model T?&quot; (if not in your manual)</span></p></li><li><p><span>False premises: &quot;Why does the manual recommend synthetic oil?&quot; (when it doesn&#39;t)</span></p></li></ul><p><strong><span>Document</span></strong><span>:</span></p><ul><li><p><span>Does the model admit it doesn&#39;t know?</span></p></li><li><p><span>Does it hallucinate plausible-sounding but wrong answers?</span></p></li><li><p><span>Does retrieved context help or hurt? (Does irrelevant context encourage hallucination?)</span></p></li></ul><p><strong><span>Experiment</span></strong><span>: Modify your prompt template to add &quot;If the context doesn&#39;t contain the answer, say &#39;I cannot answer this from the available documents.&#39;&quot; Does this help?</span></p><hr /><h4 id='exercise-6-query-phrasing-sensitivity'><span>Exercise 6: Query Phrasing Sensitivity</span></h4><p><span>Test how different phrasings of the same question affect retrieval. You can use any of the corpora and your own queries or the ones below for the Model T or Learjet corpus.</span></p><p><strong><span>Choose one underlying question and phrase it 5+ different ways</span></strong><span>:</span></p><ul><li><p><span>Formal: &quot;What is the recommended maintenance schedule for the engine?&quot;</span></p></li><li><p><span>Casual: &quot;How often should I service the engine?&quot;</span></p></li><li><p><span>Keywords only: &quot;engine maintenance intervals&quot;</span></p></li><li><p><span>Question form: &quot;When do I need to check the engine?&quot;</span></p></li><li><p><span>Indirect: &quot;Preventive maintenance requirements&quot;</span></p></li></ul><p><strong><span>For each phrasing</span></strong><span>:</span></p><ul><li><p><span>Record the top 5 retrieved chunks</span></p></li><li><p><span>Note similarity scores</span></p></li><li><p><span>Compare overlap between result sets</span></p></li></ul><p><strong><span>Questions to explore</span></strong><span>:</span></p><ul><li><p><span>Which phrasings retrieve the best chunks?</span></p></li><li><p><span>Do keyword-style queries work better or worse than natural questions?</span></p></li><li><p><span>What does this tell you about potential query rewriting strategies?</span></p></li></ul><hr /><h4 id='exercise-7-chunk-overlap-experiment'><span>Exercise 7: Chunk Overlap Experiment</span></h4><p><span>Test how overlap between chunks affects retrieval of information that spans chunk boundaries. You can use any of the corpora and your own queries. Note: this exercise takes a long time to run.  Only try it on CoLab or a similar platform with T4 or better GPUs.</span></p><p><strong><span>Setup</span></strong><span>: Re-chunk your corpus with different overlap values while keeping chunk size constant (e.g., 512 characters):</span></p><ul><li><p><span>Overlap = 0 (no overlap)</span></p></li><li><p><span>Overlap = 64</span></p></li><li><p><span>Overlap = 128</span></p></li><li><p><span>Overlap = 256</span></p></li></ul><p><strong><span>For each configuration</span></strong><span>:</span></p><ol start='' ><li><p><span>Rebuild the index</span></p></li><li><p><span>Find a question whose answer spans what would be a chunk boundary</span></p></li><li><p><span>Test retrieval quality</span></p></li></ol><p><strong><span>Document</span></strong><span>:</span></p><ul><li><p><span>Does higher overlap improve retrieval of complete information?</span></p></li><li><p><span>What&#39;s the cost? (Index size, redundant information in context)</span></p></li><li><p><span>Is there a point of diminishing returns?</span></p></li></ul><hr /><h4 id='exercise-8-chunk-size-experiment'><span>Exercise 8: Chunk Size Experiment</span></h4><p><span>Test how chunk size affects retrieval precision and answer quality. You can use any of the corpora and your own queries. Note: this exercise takes a long time to run.  Only try it on CoLab or a similar platform with T4 or better GPUs.</span></p><p><strong><span>Setup</span></strong><span>: Chunk your corpus at different sizes:</span></p><ul><li><p><span>Very small: 128 characters</span></p></li><li><p><span>Medium: 512 characters</span></p></li><li><p><span>Very large: 2048 characters</span></p></li></ul><p><strong><span>For each configuration</span></strong><span>:</span></p><ol start='' ><li><p><span>Rebuild the index</span></p></li><li><p><span>Run the same set of 5 queries</span></p></li><li><p><span>Examine retrieved chunks and final answers</span></p></li></ol><p><strong><span>Questions to explore</span></strong><span>:</span></p><ul><li><p><span>How does chunk size affect retrieval precision (relevant vs. irrelevant content)?</span></p></li><li><p><span>How does it affect answer completeness?</span></p></li><li><p><span>Is there a sweet spot for your corpus?</span></p></li><li><p><span>Does optimal size depend on the type of question?</span></p></li></ul><hr /><h4 id='exercise-9-retrieval-score-analysis'><span>Exercise 9: Retrieval Score Analysis</span></h4><p><span>Analyze the similarity scores returned by your retrieval system. You can use any of the corpora and your own queries.</span></p><p><strong><span>For 10 different queries</span></strong><span>:</span></p><ol start='' ><li><p><span>Retrieve top 10 chunks</span></p></li><li><p><span>Record all similarity scores</span></p></li><li><p><span>Examine the score distribution</span></p></li></ol><p><strong><span>Look for patterns</span></strong><span>:</span></p><ul><li><p><span>When is there a clear &quot;winner&quot; (large gap between #1 and #2)?</span></p></li><li><p><span>When are scores tightly clustered (ambiguous)?</span></p></li><li><p><span>What score threshold would you use to filter out irrelevant results?</span></p></li><li><p><span>How does score distribution correlate with answer quality?</span></p></li></ul><p><strong><span>Experiment</span></strong><span>: Implement a score threshold (e.g., only include chunks with score &gt; 0.5). How does this affect results?</span></p><hr /><h4 id='exercise-10-prompt-template-variations'><span>Exercise 10: Prompt Template Variations</span></h4><p><span>Test how the system prompt affects generation quality.  You can use any of the corpora and your own queries.</span></p><p><strong><span>Create variations of your RAG prompt</span></strong><span>:</span></p><ol start='' ><li><p><strong><span>Minimal</span></strong><span>: Just context and question, no instructions</span></p></li><li><p><strong><span>Strict grounding</span></strong><span>: &quot;Answer ONLY based on the context. If the answer isn&#39;t there, say so.&quot;</span></p></li><li><p><strong><span>Encouraging citation</span></strong><span>: &quot;Quote the exact passages that support your answer.&quot;</span></p></li><li><p><strong><span>Permissive</span></strong><span>: &quot;Use the context to help answer, but you may also use your knowledge.&quot;</span></p></li><li><p><strong><span>Structured output</span></strong><span>: &quot;First list relevant facts from the context, then synthesize your answer.&quot;</span></p></li></ol><p><strong><span>For each prompt variation</span></strong><span>:</span></p><ul><li><p><span>Run the same 5 queries</span></p></li><li><p><span>Evaluate: accuracy, groundedness, helpfulness, citation quality</span></p></li></ul><p><strong><span>Document</span></strong><span>:</span></p><ul><li><p><span>Which prompt produces the most accurate answers?</span></p></li><li><p><span>Which produces the most useful answers?</span></p></li><li><p><span>Is there a trade-off between strict grounding and helpfulness?</span></p></li></ul><hr /><h4 id='exercise-11-cross-document-synthesis'><span>Exercise 11: Cross-Document Synthesis</span></h4><p><span>Test questions that require combining information from multiple chunks. You can use any of the corpora and your own queries.</span></p><p><strong><span>Example design queries that require synthesis</span></strong><span>:</span></p><ul><li><p><span>&quot;What are ALL the maintenance tasks I need to do monthly?&quot;</span></p></li><li><p><span>&quot;Compare the procedures for adjusting X vs. adjusting Y&quot;</span></p></li><li><p><span>&quot;What tools do I need for a complete tune-up?&quot; (if tools are mentioned in separate sections)</span></p></li><li><p><span>&quot;Summarize all safety warnings in the manual&quot;</span></p></li></ul><p><strong><span>Experiment with top_k</span></strong><span>:</span></p><ul><li><p><span>Try k=3, k=5, k=10</span></p></li><li><p><span>Does retrieving more chunks improve synthesis?</span></p></li></ul><p><strong><span>Document</span></strong><span>:</span></p><ul><li><p><span>Can the model successfully combine information from multiple chunks?</span></p></li><li><p><span>Does it miss information that wasn&#39;t retrieved?</span></p></li><li><p><span>Does contradictory information in different chunks cause problems?</span></p></li></ul><h3 id='resources'><span>Resources</span></h3><ul><li><p><a href='manual_rag_pipeline_universal_updated.ipynb'><span>manual_rag_pipeline_universal_updated.ipynb</span></a><span> - python notebook for running a complete RAG pipeline.  Runs locally or on CoLab.  Assumes the pdf files have embedded text, as do the pdfs in </span><a href='Corpora.zip' class='missing-asset' title='Corpora.zip is not in this folder. Add it or update the link.'><span>Corpora.zip</span></a><span>. Feel free to break down some of the cells into multiple cells so you have finer-grained control over execution of the pipeline.</span></p></li><li><p><a href='Corpora.zip' class='missing-asset' title='Corpora.zip is not in this folder. Add it or update the link.'><span>Corpora.zip</span></a><span> - some test corpora for RAG.  It contains the following corpora, each as pdf with embedded text and the exact embedded text as a plain text file.  Use the former for your pipeline experiments and the latter to check if any retrieval failures were due to RAG failures or due to OCR failures.</span></p><ul><li><p><span>The Model T Ford Service Manual</span></p></li><li><p><span>Issues of the Congressional Record from January, 2026 - long after the training date of any of the LLMs we are using.</span></p></li><li><p><span>The Learjet maintenace manual</span></p></li><li><p><span>The European Union AI Act - because it is 200 pages long, after chunking it can serve as a corpus itself</span></p></li></ul></li><li><p><a href='https://github.com/HenryKautz/pdf_ocr'><span>pdf_ocr</span></a><span> - A program that performs OCR on scanned pdf files and embeds text as well as creating a text file.  You may find this useful for later projects.</span></p></li></ul><h3 id='portfolio'><span>Portfolio</span></h3><p><span>Create a subdirectory in your GitHub portfolio named Topic5RAG and save your programs, each modified version named to indicate its task number and purpose.  Create appropriately named text files saving the outputs from your terminal sessions running the programs.  Create README.md with a table of contents of the directory.</span></p><p>&nbsp;</p></div></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href*=".md"]').forEach(link => {
+    link.href = link.href.replace(/\.md(\b|(?=[?#]))/, '.html$1');
+  });
+});
+</script></body>
+</html>
