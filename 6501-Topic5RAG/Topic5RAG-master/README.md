@@ -3,7 +3,8 @@
 > Combined portfolio with best exercises from multiple runs.
 
 ## Team Members
-- Pierce (add other teammates here)
+- Pierce
+- Ben
 
 ## Table of Contents
 
