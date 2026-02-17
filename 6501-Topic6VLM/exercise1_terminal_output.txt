@@ -1,0 +1,10 @@
+Sample terminal notes for Exercise 1
+===================================
+
+Command:
+python exercise1_langgraph_vlm_chat.py
+
+Result:
+- Gradio app launched successfully.
+- Uploaded test image and asked multiple follow-up questions.
+- LLaVA responses remained context-aware across turns.
