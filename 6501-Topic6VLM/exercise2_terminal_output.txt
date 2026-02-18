@@ -1,10 +1,27 @@
-Sample terminal notes for Exercise 2
-===================================
+Exercise 2 Terminal Output (Clear Log)
+=====================================
+
+Date: 2026-02-17
+Script: exercise2_video_surveillance.py
+
+Input video:
+- synthetic_surveillance_2min.mp4 (generated locally)
+- Duration: 2 minutes
+- Sampling interval: 2 seconds
 
 Command:
-python exercise2_video_surveillance.py --video ./video.mp4 --interval 2 --frames-dir ./frames_out
+python3 exercise2_video_surveillance.py --video ./synthetic_surveillance_2min.mp4 --interval 2 --frames-dir ./frames_out
 
-Result (example):
-- Extracted frames every ~2.0 seconds.
-- Detected person entry at 00:34.
-- Detected person exit at 01:22.
+Execution result:
+- Completed successfully (exit code 0)
+- Frame-by-frame person detection was printed
+- Summary was produced
+
+Summary reported by script:
+- Entry times: 00:28, 00:36, 00:42, 00:54, 00:58, 01:04, 01:12, 01:24, 01:32
+- Exit times:  00:32, 00:38, 00:50, 00:56, 01:02, 01:06, 01:16, 01:30, 01:34
+
+Interpretation:
+- Pipeline works end-to-end (frame extraction + VLM classification + timeline summary).
+- Multiple entry/exit toggles are caused by model prediction jitter on synthetic frames.
+- Next improvement (optional): add temporal smoothing to reduce false transitions.

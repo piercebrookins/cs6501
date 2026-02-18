@@ -1,10 +1,41 @@
-Sample terminal notes for Exercise 1
-===================================
+Exercise 1 Terminal Output (Clear Log)
+=====================================
 
+Date: 2026-02-17
+Script: exercise1_langgraph_vlm_chat.py
+
+1) Initial run
+--------------
 Command:
-python exercise1_langgraph_vlm_chat.py
+python3 exercise1_langgraph_vlm_chat.py
 
-Result:
-- Gradio app launched successfully.
-- Uploaded test image and asked multiple follow-up questions.
-- LLaVA responses remained context-aware across turns.
+Output:
+ModuleNotFoundError: No module named 'gradio'
+
+Action taken:
+- Installed dependencies from requirements.txt.
+
+2) Second run
+-------------
+Command:
+python3 exercise1_langgraph_vlm_chat.py
+
+Output:
+TypeError: Chatbot.__init__() got an unexpected keyword argument 'type'
+
+Action taken:
+- Updated app UI code to avoid deprecated/incompatible Chatbot argument.
+- Switched to a stable State + Markdown conversation rendering approach.
+
+3) Final run (successful)
+-------------------------
+Command:
+python3 exercise1_langgraph_vlm_chat.py
+
+Runtime status:
+- Process started successfully and stayed alive.
+- Listening on: http://127.0.0.1:7860
+- PID observed: 28886
+
+Interpretation:
+- Exercise 1 app is running and ready for interactive image chat testing.
