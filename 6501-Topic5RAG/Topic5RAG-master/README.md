@@ -12,7 +12,7 @@
 |----------|------|-------------|--------|
 | 0 | [exercise_0_setup.txt](./exercise_0_setup.txt) | Environment setup, corpus loading, index building | GPT |
 | 1 | [exercise_1_rag_vs_norag.txt](./exercise_1_rag_vs_norag.txt) | RAG vs direct query comparison | GPT |
-| 2 | [exercise_2_gpt4o_mini_comparison.txt](./exercise_2_gpt4o_mini_comparison.txt) | GPT-4o Mini comparison | GPT |
+| 2 | [exercise_2_gpt4o_mini_comparison.txt](./exercise_2_gpt4o_mini_comparison.txt) | GPT-4o Mini comparison (all 8 assignment queries) | GPT |
 | 3 | [exercise_3_frontier_comparison.txt](./exercise_3_frontier_comparison.txt) | Frontier model comparison (manual) | GPT |
 | 4 | [exercise_4_topk_effect.txt](./exercise_4_topk_effect.txt) | Effect of top-k retrieval count | Kimi |
 | 5 | [exercise_5_unanswerable.txt](./exercise_5_unanswerable.txt) | Handling unanswerable questions | Kimi |
@@ -114,3 +114,9 @@ jupyter notebook manual_rag_pipeline_universal_updated.ipynb
 Exercises were selected based on:
 - **Exercises 0-3 (GPT)**: Real execution output with actual scores and retrieved chunks
 - **Exercises 4-12 (Kimi)**: Better formatted analysis with recommendations and comparison tables
+
+## Completeness Notes
+
+- Exercise files `exercise_0_setup.txt` through `exercise_12_cross_document.txt` are present.
+- Exercise 2 includes all 8 required queries from Exercise 1 for no-RAG GPT-4o-mini comparison.
+- Exercise 3 includes all 8 required queries for frontier/no-RAG comparison.

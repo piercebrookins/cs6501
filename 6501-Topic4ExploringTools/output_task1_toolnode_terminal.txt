@@ -1,0 +1,44 @@
+================================================================================
+LANGGRAPH MANUAL TOOLNODE AGENT
+================================================================================
+
+$ python task1_toolnode_manual_implementation.py
+
+[SYSTEM] Graph visualization saved to langchain_manual_tool_graph.png
+[SYSTEM] Starting conversation...
+
+You: What is the weather in NYC?
+[DEBUG] Calling model with 1 messages
+[DEBUG] Model requested 1 tool call(s):
+  - get_weather({'location': 'NYC'})
+[DEBUG] Routing to tools
+[DEBUG] Calling model with 4 messages
+Assistant: The weather in NYC is sunny, around 72°F with light winds.
+
+You: What is the population there?
+[DEBUG] Calling model with 7 messages
+[DEBUG] Model requested 1 tool call(s):
+  - get_population({'city': 'New York City'})
+[DEBUG] Routing to tools
+[DEBUG] Calling model with 10 messages
+Assistant: The population of New York City is approximately 1 million people.
+
+You: calculate 24 * 7
+[DEBUG] Calling model with 13 messages
+[DEBUG] Model requested 1 tool call(s):
+  - calculate({'expression': '24 * 7'})
+[DEBUG] Routing to tools
+Assistant: The result is 168.
+
+You: quiet
+[SYSTEM] Verbose mode disabled
+
+You: and 168 / 3?
+Assistant: 168 divided by 3 is 56.
+
+You: verbose
+[SYSTEM] Verbose mode enabled
+
+You: exit
+[DEBUG] Exit command received
+[SYSTEM] Conversation ended. Goodbye!

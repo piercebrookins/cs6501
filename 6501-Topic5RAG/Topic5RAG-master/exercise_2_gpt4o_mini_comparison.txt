@@ -73,6 +73,35 @@ chat: GPT-4o-mini answer:
 chat: For a Model T engine, it's recommended to use a non-detergent motor oil with a viscosity of around 30 weight. Many enthusiasts suggest using oils specifically formulated for vintage engines, which can provide better lubrication and protection for the older technology. Look for oils that meet the API classification of SA or SB, as these are suitable for the Model T's design. Always check the owner's manual or consult with a vintage car expert for specific recommendations.
 chat: gpt4o_mini_seconds: 2.77
 chat: ================================================================================
+chat: Query :: What did Mr. Flood have to say about Mayor David Black in Congress on January 13, 2026?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: I'm sorry, but I don't have information about events or statements made after October 2023, including any comments made by Mr. Flood about Mayor David Black in Congress on January 13, 2026.
+chat: gpt4o_mini_seconds: 1.92
+chat: ================================================================================
+chat: Query :: What mistake did Elise Stefanik make in Congress on January 23, 2026?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: I'm sorry, but I cannot provide information on events that occurred after my last training cut-off in October 2023.
+chat: gpt4o_mini_seconds: 0.85
+chat: ================================================================================
+chat: Query :: What is the purpose of the Main Street Parity Act?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: The Main Street Parity Act aims to provide regulatory parity between banks and credit unions regarding the treatment of certain financial services and products. Specifically, it seeks to ensure that credit unions can offer similar services as banks without facing unnecessary regulatory burdens, thereby promoting competition and consumer choice in the financial services market. The act is intended to support the growth and sustainability of credit unions while maintaining consumer protections.
+chat: gpt4o_mini_seconds: 1.77
+chat: ================================================================================
+chat: Query :: Who in Congress has spoken for and against funding of pregnancy centers?
+chat: ================================================================================
+chat: GPT-4o-mini answer:
+chat: As of my last update in October 2023, various members of Congress have expressed differing views on funding for pregnancy centers. Supporters, often from Republican and conservative factions, argue that these centers provide essential services and support for pregnant women. Notable proponents include members of the House Freedom Caucus and other conservative lawmakers.
+chat: 
+chat: On the other hand, opponents, primarily from the Democratic Party, argue that funding for these centers can divert resources from comprehensive reproductive health services and may promote misinformation about reproductive health. Prominent critics include members of the Congressional Progressive Caucus and various Democratic senators and representatives.
+chat: 
+chat: For the most current and specific names or statements, you may want to check recent congressional records or news articles, as positions can evolve and new members may have taken stances since my last update.
+chat: gpt4o_mini_seconds: 2.87
+chat: ================================================================================
 chat: Notes
 chat: ================================================================================
 chat: This exercise intentionally uses no retrieval context, to compare pure model priors against RAG runs from Exercise 1.
+chat: Coverage: all 8 required queries from Exercise 1 (Model T: Q1-Q4, Congressional Record: Q5-Q8).

@@ -1,0 +1,40 @@
+================================================================================
+LANGGRAPH REACT AGENT WRAPPER
+================================================================================
+
+$ python task2_react_agent_wrapper.py
+
+[SYSTEM] Graph visualization saved to langchain_react_agent.png
+[SYSTEM] Graph visualization saved to langchain_conversation_graph.png
+[SYSTEM] Starting conversation...
+
+You: What is the weather in NYC?
+[DEBUG] Invoking ReAct agent with 1 messages in history
+[DEBUG] Agent generated 3 new messages
+[DEBUG] Tool calls: ['get_weather']
+Assistant: The weather in NYC is sunny, 72°F with light winds.
+
+You: What about population?
+[DEBUG] Invoking ReAct agent with 5 messages in history
+[DEBUG] Agent generated 3 new messages
+[DEBUG] Tool calls: ['get_population']
+Assistant: The population is approximately 1 million people.
+
+You: What is (11 + 5) * 2?
+[DEBUG] Invoking ReAct agent with 9 messages in history
+[DEBUG] Agent generated 3 new messages
+[DEBUG] Tool calls: ['calculate']
+Assistant: The result is 32.
+
+You: quiet
+[SYSTEM] Verbose mode disabled
+
+You: calculate 100 / 4
+Assistant: 100 divided by 4 is 25.
+
+You: verbose
+[SYSTEM] Verbose mode enabled
+
+You: quit
+[DEBUG] Exit command received
+[SYSTEM] Conversation ended. Goodbye!
