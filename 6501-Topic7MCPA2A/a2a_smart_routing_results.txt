@@ -1,0 +1,191 @@
+============================================================
+  🎯  A2A Trivia Tournament
+============================================================
+
+📡 Registry: 1 agents online
+
+🎯 Tournament: 12 questions across 6 categories
+📡 Mode: smart-route (top 1)
+
+🔍 Loaded 1 online agents for similarity matching
+
+============================================================
+  Q1/12  [Sports]
+  In what year did the United States Women's National Team win their first FIFA Women's World Cup?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): That would be the year when the mitochondria decided to cell-ebrate! They had a big party in 1991, which coincidentally is when the United States Women's National Team won their first FIFA Women's Wor...
+     ✅ Correct — The contestant correctly identified the year 1991, which is when the United States Women's National Team won their first FIFA Women's World Cup.
+
+  📋 Correct answer: 1991
+
+============================================================
+  Q2/12  [Sports]
+  What is the only country to have played in every FIFA Men's World Cup tournament?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): That would be the element Hydrogen — it's been around and included in every known reaction since the beginning of the universe! Just like Hydrogen is essential for life, being in every tournament is e...
+     ❌ Wrong — The contestant's answer is unrelated to the question about the FIFA Men's World Cup and does not mention Brazil.
+
+  😂 Funniest wrong answer: Pierce's Science Agent
+     Reason: It's funny because it absurdly compares a chemical element's presence in reactions to a football team's participation, implying that hydrogen somehow has a sports career, which is both nonsensical and humorous.
+
+  📋 Correct answer: Brazil
+
+============================================================
+  Q3/12  [Science]
+  What is the chemical symbol for the element with atomic number 79?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): The chemical symbol for the element with atomic number 79 is Au, which stands for gold.
+     ✅ Correct — The contestant accurately stated that Au is the chemical symbol for gold, corresponding to atomic number 79.
+
+  📋 Correct answer: Au (gold)
+
+============================================================
+  Q4/12  [Science]
+  What is the name of the closest star to Earth, other than the Sun?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): The closest star to Earth, other than the Sun, is Proxima Centauri. It is part of the Alpha Centauri star system and is located about 4.24 light-years away from us.
+     ✅ Correct — The contestant correctly identified Proxima Centauri as the closest star to Earth, along with accurate details.
+
+  📋 Correct answer: Proxima Centauri
+
+============================================================
+  Q5/12  [History]
+  In what year did the Berlin Wall fall?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): That would be the year when all the particles in the universe decided to take a vacation together, specifically in 1989. But that’s not exactly related to biology or memory, is it? So let me just say,...
+     ❌ Wrong — The contestant did not answer the question and instead provided irrelevant information.
+
+  😂 Funniest wrong answer: Pierce's Science Agent
+     Reason: The absurdity of attributing a vacation to particles while blending in a physics reference adds a surreal and silly twist, making it unexpectedly humorous.
+
+  📋 Correct answer: 1989
+
+============================================================
+  Q6/12  [History]
+  Who was the first President of the United States?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): That would be the ionized sodium atom, which took charge in the 18th century and proved that positive and negative charges can really work together to create a strong leadership team!
+     ❌ Wrong — The contestant's answer is unrelated to the question about the first President of the United States.
+
+  😂 Funniest wrong answer: Pierce's Science Agent
+     Reason: The absurdity of a sodium atom being described as a president combines science with politics in a ridiculous way, creating a humorous image of an atom running a country.
+
+  📋 Correct answer: George Washington
+
+============================================================
+  Q7/12  [Cooking & Food]
+  What Italian dish is made from thinly sliced raw beef or fish, typically served as an appetizer?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): That dish is called carpaccio! It typically consists of thinly sliced raw beef or fish, often served with a drizzle of olive oil, lemon, or capers, and makes for a refreshing appetizer.
+     ✅ Correct — The contestant correctly identified carpaccio and provided accurate details about it.
+
+  📋 Correct answer: Carpaccio
+
+============================================================
+  Q8/12  [Cooking & Food]
+  What is the main ingredient in traditional Japanese miso soup broth?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): The main ingredient in traditional Japanese miso soup broth is miso paste, which is made from fermented soybeans, salt, and a mold called koji. The broth is typically further enhanced with ingredients...
+     ✅ Correct — The contestant accurately identified miso as the main ingredient, describing it as miso paste made from fermented soybeans, which aligns with the correct answer.
+
+  📋 Correct answer: Fermented soybean paste (miso)
+
+============================================================
+  Q9/12  [Movies & TV]
+  What 1994 film stars Tim Robbins as a banker who escapes from prison through a tunnel he dug over 19 years?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): Ah, that sounds like a classic case of "The Great Escape Velocity!" In that film, Tim Robbins actually uses his banking expertise to calculate the exact speed needed to tunnel through space-time, brea...
+     ❌ Wrong — The contestant's answer includes elements consistent with prison escape but misattributes the title and concept of the film.
+
+  😂 Funniest wrong answer: Pierce's Science Agent
+     Reason: The absurdity of combining banking with space-time physics creates a hilarious mental image of Tim Robbins calculating escape velocity while tunneling out of prison, turning a serious escape story into a sci-fi comedy.
+
+  📋 Correct answer: The Shawshank Redemption
+
+============================================================
+  Q10/12  [Movies & TV]
+  In the Star Wars franchise, what is the name of Han Solo's ship?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): Ah, the famous ship piloted by Han Solo is the Millennium Falcon. It's a modified YT-1300 light freighter known for its speed and maneuverability, much like a photon moving through a vacuum!
+     ✅ Correct — The contestant correctly identified the ship as the Millennium Falcon, which is indeed piloted by Han Solo.
+
+  📋 Correct answer: The Millennium Falcon
+
+============================================================
+  Q11/12  [Geography]
+  What is the longest river in South America?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): The longest river in South America is the Amazon River, which stretches approximately 4,345 miles (7,062 kilometers). It flows through several countries, primarily Brazil, and is a vital ecological co...
+     ✅ Correct — The contestant correctly identified the Amazon River as the longest river in South America and provided accurate details about its length and ecological significance.
+
+  📋 Correct answer: The Amazon River
+
+============================================================
+  Q12/12  [Geography]
+  What country has the most time zones?
+============================================================
+
+  🔍 Routing to top 1 matching agents:
+     Pierce's Science Agent          similarity: 0.000
+
+  💬 Pierce's Science Agent  (match: 0.000): France has the most time zones with a total of 12. This is primarily due to its overseas territories scattered around the world.
+     ✅ Correct — The contestant correctly stated that France has the most time zones with a total of 12, including its overseas territories.
+
+  📋 Correct answer: France (12 time zones including overseas territories)
+
+
+============================================================
+  🏆  FINAL LEADERBOARD
+============================================================
+
+  Agent                    Correct   Funny Bonus
+  ──────────────────────   ───────   ──────────
+  🥇 Pierce's Science Agent     8/12       4
+
+  🎉 Winner: Pierce's Science Agent with 8/12 correct!
+     Plus 4 funny bonus point(s)!
+

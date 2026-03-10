@@ -1,0 +1,93 @@
+
+============================================================
+  Drill 1: Search Papers — 'large language model agents'
+============================================================
+
+  1. [2024] InjecAgent: Benchmarking Indirect Prompt Injections in Tool-Integrated Large Language Model Agents
+     Authors: Qiusi Zhan, Zhixiang Liang, Zifan Ying et al. (4 total)
+
+  2. [2025] Memory-R1: Enhancing Large Language Model Agents to Manage and Utilize Memories via Reinforcement Learning
+     Authors: Sikuan Yan, Xiufeng Yang, Zuchao Huang et al. (10 total)
+
+  3. [2025] A Survey of Large Language Model Agents for Question Answering
+     Authors: Murong Yue
+
+  4. [2025] Emergence of human-like polarization among large language model agents
+     Authors: J. Piao, Zhihong Lu, Chen Gao et al. (7 total)
+
+  5. [2025] PersonaAgent: When Large Language Model Agents Meet Personalization at Test Time
+     Authors: Weizhi Zhang, Xinyang Zhang, Chenwei Zhang et al. (15 total)
+
+
+============================================================
+  Drill 2: Get Citations — BERT (ARXIV:1810.04805), 2023+
+============================================================
+
+  Returned 10 citing papers (2023+):
+
+  1. [2026] Enhancing large language models for knowledge graph question answering via multi-granularity knowledge injection and structured reasoning path-augmented prompting
+  2. [2026] Multi-view dynamic perception framework for Chinese harmful meme detection
+  3. [2026] SEGA: Selective cross-lingual representation via sparse guided attention for low-resource multilingual named entity recognition
+  4. [2026] Validating generative agent-Based modeling in social media simulations through the lens of the friendship paradox
+  5. [2026] SRSPSQL: A dual-stage Text-to-SQL framework with semantic rewriting and schema pruning
+
+============================================================
+  Drill 3: Get References — ReAct (ARXIV:2210.03629)
+============================================================
+
+  Found 63 references (43 with year data):
+
+  [1965] L.S. Vygotsky and the problem of localization of functions
+  [1984] Working memory
+  [2009] Coster-Waldau appeared in the 2009 Fox television film Virtuality, so he has worked with the Fox Broadcasting Company
+  [2010] Vygotsky, Luria, and the social brain.
+  [2015] Inner Speech: Development, Cognitive Functions, Phenomenology, and Neurobiology
+  [2018] HotpotQA: A Dataset for Diverse, Explainable Multi-hop Question Answering
+  [2018] FEVER: a Large-scale Dataset for Fact Extraction and VERification
+  [2018] Thinking and Speech
+  [2019] ALFRED: A Benchmark for Interpreting Grounded Instructions for Everyday Tasks
+  [2019] ELI5: Long Form Question Answering
+  [2019] ALFWORLD TRAJECTORIES We provide an example trajectory of ReAct, Act, and ReAct-IM on the same ALFWorld game, pick_clean_then_place_in_recep-Knife-None-CounterTop-10/ trial_T20190909_110445_675754
+  [2020] Imitating Interactive Intelligence
+  [2020] ALFWorld: Aligning Text and Embodied Environments for Interactive Learning
+  [2020] Keep CALM and Explore: Language Models for Action Generation in Text-based Games
+  [2020] Language Models are Few-Shot Learners
+  [2020] Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
+  [2020] A Simple Language Model for Task-Oriented Dialogue
+  [2021] WebGPT: Browser-assisted question-answering with human feedback
+  [2021] Show Your Work: Scratchpads for Intermediate Computation with Language Models
+  [2021] LILA: Language-Informed Latent Actions
+  [2021] Adaptive Information Seeking for Open-Domain Question Answering
+  [2021] Language Models are Few-Shot Butlers
+  [2022] Improving alignment of dialogue agents via targeted human judgements
+  [2022] Text and Patterns: For Effective Chain of Thought, It Takes Two to Tango
+  [2022] Faithful Reasoning Using Large Language Models
+  [2022] BlenderBot 3: a deployed conversational agent that continually learns to responsibly engage
+  [2022] Inner Monologue: Embodied Reasoning through Planning with Language Models
+  [2022] WebShop: Towards Scalable Real-World Web Interaction with Grounded Language Agents
+  [2022] Rationale-Augmented Ensembles in Language Models
+  [2022] Large Language Models are Zero-Shot Reasoners
+  [2022] Least-to-Most Prompting Enables Complex Reasoning in Large Language Models
+  [2022] Selection-Inference: Exploiting Large Language Models for Interpretable Logical Reasoning
+  [2022] PaLM: Scaling Language Modeling with Pathways
+  [2022] Do As I Can, Not As I Say: Grounding Language in Robotic Affordances
+  [2022] Language Models that Seek for Knowledge: Modular Search & Generation for Dialogue and Prompt Completion
+  [2022] Self-Consistency Improves Chain of Thought Reasoning in Language Models
+  [2022] Internet-augmented language models through few-shot prompting for open-domain question answering
+  [2022] Pre-Trained Language Models for Interactive Decision-Making
+  [2022] Chain of Thought Prompting Elicits Reasoning in Large Language Models
+  [2022] Language Models as Zero-Shot Planners: Extracting Actionable Knowledge for Embodied Agents
+  [2022] Oriol Vinyals, Mahyar Bordbar, and Nando de Freitas. A generalist agent
+  [2022] Star: Bootstrapping reasoning with reasoning, 2022
+  [2022] A generalist agent, 2022
+
+============================================================
+  Discussion
+============================================================
+
+  - Asta returns multiple content[] items — one per result, not a list.
+  - get_citations wraps each result in {citingPaper: ...}.
+  - get_paper returns a single content item with nested references.
+  - All content arrives as JSON strings inside content[i]['text'],
+    requiring double-parse: SSE envelope, then the inner JSON per item.
+

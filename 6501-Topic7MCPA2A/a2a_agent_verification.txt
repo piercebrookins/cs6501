@@ -1,0 +1,57 @@
+============================================================
+  Agent Startup Log
+============================================================
+INFO:     Started server process [42441]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+
+============================================================
+  Step 4: Verify Agent
+============================================================
+
+--- Agent Card ---
+{
+    "name": "Pierce's Science Agent",
+    "description": "An expert on science, physics, chemistry, biology, and the natural world",
+    "url": "http://localhost:8000",
+    "skills": [
+        {
+            "id": "science-trivia",
+            "name": "Science Trivia",
+            "description": "Answers questions about science, physics, chemistry, biology, astronomy, and nature"
+        }
+    ]
+}
+
+--- Health Check ---
+{
+    "status": "ok",
+    "agent": "Pierce's Science Agent"
+}
+
+--- Registry Lists Agent ---
+{
+    "count": 1,
+    "agents": [
+        {
+            "name": "Pierce's Science Agent",
+            "url": "http://localhost:8000",
+            "description": "An expert on science, physics, chemistry, biology, and the natural world",
+            "skills": [
+                {
+                    "id": "science-trivia",
+                    "name": "Science Trivia",
+                    "description": "Answers questions about science, physics, chemistry, biology, astronomy, and nature"
+                }
+            ],
+            "status": "online"
+        }
+    ]
+}
+
+--- Test: Science Question ---
+{"agent":"Pierce's Science Agent","answer":"The chemical symbol for gold is Au."}
+
+--- Test: Off-Topic Question ---
+{"agent":"Pierce's Science Agent","answer":"That would be the black hole located at the center of our galaxy — it really pulled in all the teams with its incredible gravitational force!"}
