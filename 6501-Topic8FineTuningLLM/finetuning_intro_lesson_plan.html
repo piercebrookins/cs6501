@@ -1,0 +1,724 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'><style type='text/css'>html {overflow-x: initial !important;}</style>
+<style type='text/css'  id="style-base">:root { --bg-color: #ffffff; --text-color: #333333; --select-text-bg-color: #B5D6FC; --select-text-font-color: auto; --monospace: "Lucida Console",Consolas,"Courier",monospace; --title-bar-height: 20px; }
+.mac-os-11 { --title-bar-height: 28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, "Segoe UI Emoji", "SF Pro", sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { white-space: pre-wrap; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.428571; overflow-x: hidden; background: inherit; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p *, #write.first-line-indent svg * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font-style: inherit; font-variant-caps: inherit; font-weight: inherit; font-width: inherit; font-size: inherit; line-height: inherit; font-family: inherit; font-size-adjust: inherit; font-kerning: inherit; font-variant-alternates: inherit; font-variant-ligatures: inherit; font-variant-numeric: inherit; font-variant-east-asian: inherit; font-variant-position: inherit; font-variant-emoji: inherit; font-feature-settings: inherit; font-optical-sizing: inherit; font-variation-settings: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; position: relative; }
+#write svg h1, #write svg h2, #write svg h3, #write svg h4, #write svg h5, #write svg h6, #write svg p { position: static; }
+svg sub, svg sup { position: static; }
+.nodeLabel p { padding-right: 2px; padding-left: 2px; }
+.typora-export .nodeLabel p { padding-right: 0px; padding-left: 0px; }
+foreignObject { overflow: visible; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+li p { orphans: 1; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+thead, tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right-width: 0px; border-right-style: none; border-right-color: currentcolor; background-color: inherit; }
+.CodeMirror-linenumber { -webkit-user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+svg { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; border-color: transparent !important; padding-top: 0px !important; padding-bottom: 0px !important; }
+  .typora-export * { print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  #write > p:nth-child(1) { margin-top: 0px; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+  figure { overflow-x: visible; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: medium; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.reversefootnote { font-family: ui-monospace, sans-serif; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: medium !important; border-style: none !important; border-color: currentcolor !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom-width: 0px; border-bottom-style: none; border-bottom-color: currentcolor; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: medium; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.mermaid-svg { margin: auto; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex: 2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; overflow-wrap: anywhere; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.428571rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left-width: 28px; border-left-style: solid; border-left-color: transparent; border-right-width: 28px; border-right-style: solid; border-right-color: transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right-width: 8px; border-right-style: solid; border-right-color: transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+mjx-container { break-inside: avoid; }
+.md-alert.md-alert-note { border-left-color: rgb(9, 105, 218); }
+.md-alert.md-alert-important { border-left-color: rgb(130, 80, 223); }
+.md-alert.md-alert-warning { border-left-color: rgb(154, 103, 0); }
+.md-alert.md-alert-tip { border-left-color: rgb(31, 136, 61); }
+.md-alert.md-alert-caution { border-left-color: rgb(207, 34, 46); }
+.md-alert { padding: 0px 1em; margin-bottom: 16px; color: inherit; border-left-width: 0.25em; border-left-style: solid; border-left-color: rgb(0, 0, 0); }
+.md-alert-text-note { color: rgb(9, 105, 218); }
+.md-alert-text-important { color: rgb(130, 80, 223); }
+.md-alert-text-warning { color: rgb(154, 103, 0); }
+.md-alert-text-tip { color: rgb(31, 136, 61); }
+.md-alert-text-caution { color: rgb(207, 34, 46); }
+.md-alert-text { font-size: 0.9rem; font-weight: 700; }
+.md-alert-text svg { fill: currentcolor; position: relative; top: 0.125em; margin-right: 1ch; overflow: visible; }
+.md-alert-text-container::after { content: attr(data-text); text-transform: capitalize; pointer-events: none; margin-right: 1ch; }
+
+</style>
+<style type='text/css'  id="style-codemirror">.CodeMirror { height: auto; }
+.CodeMirror.cm-s-inner { background: inherit; }
+.CodeMirror-scroll { overflow: auto hidden; z-index: 3; }
+.CodeMirror-gutter-filler, .CodeMirror-scrollbar-filler { background-color: rgb(255, 255, 255); }
+.CodeMirror-gutters { border-right-width: 1px; border-right-style: solid; border-right-color: rgb(221, 221, 221); background: inherit; white-space: nowrap; }
+.CodeMirror-linenumber { padding: 0px 3px 0px 5px; text-align: right; color: rgb(153, 153, 153); }
+.cm-s-inner .cm-keyword { color: rgb(119, 0, 136); }
+.cm-s-inner .cm-atom, .cm-s-inner.cm-atom { color: rgb(34, 17, 153); }
+.cm-s-inner .cm-number { color: rgb(17, 102, 68); }
+.cm-s-inner .cm-def { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-variable { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-variable-2 { color: rgb(0, 85, 170); }
+.cm-s-inner .cm-variable-3 { color: rgb(0, 136, 85); }
+.cm-s-inner .cm-string { color: rgb(170, 17, 17); }
+.cm-s-inner .cm-property { color: rgb(0, 0, 0); }
+.cm-s-inner .cm-operator { color: rgb(152, 26, 26); }
+.cm-s-inner .cm-comment, .cm-s-inner.cm-comment { color: rgb(170, 85, 0); }
+.cm-s-inner .cm-string-2 { color: rgb(255, 85, 0); }
+.cm-s-inner .cm-meta { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-qualifier { color: rgb(85, 85, 85); }
+.cm-s-inner .cm-builtin { color: rgb(51, 0, 170); }
+.cm-s-inner .cm-bracket { color: rgb(153, 153, 119); }
+.cm-s-inner .cm-tag { color: rgb(17, 119, 0); }
+.cm-s-inner .cm-attribute { color: rgb(0, 0, 204); }
+.cm-s-inner .cm-header, .cm-s-inner.cm-header { color: rgb(0, 0, 255); }
+.cm-s-inner .cm-quote, .cm-s-inner.cm-quote { color: rgb(0, 153, 0); }
+.cm-s-inner .cm-hr, .cm-s-inner.cm-hr { color: rgb(153, 153, 153); }
+.cm-s-inner .cm-link, .cm-s-inner.cm-link { color: rgb(0, 0, 204); }
+.cm-negative { color: rgb(221, 68, 68); }
+.cm-positive { color: rgb(34, 153, 34); }
+.cm-header, .cm-strong { font-weight: 700; }
+.cm-del { text-decoration: line-through; }
+.cm-em { font-style: italic; }
+.cm-link { text-decoration: underline; }
+.cm-error { color: red; }
+.cm-invalidchar { color: red; }
+.cm-constant { color: rgb(38, 139, 210); }
+.cm-defined { color: rgb(181, 137, 0); }
+div.CodeMirror span.CodeMirror-matchingbracket { color: rgb(0, 255, 0); }
+div.CodeMirror span.CodeMirror-nonmatchingbracket { color: rgb(255, 34, 34); }
+.cm-s-inner .CodeMirror-activeline-background { background: inherit; }
+.CodeMirror { position: relative; overflow: hidden; }
+.CodeMirror-scroll { height: 100%; outline: 0px; position: relative; box-sizing: content-box; background: inherit; }
+.CodeMirror-sizer { position: relative; }
+.CodeMirror-gutter-filler, .CodeMirror-hscrollbar, .CodeMirror-scrollbar-filler, .CodeMirror-vscrollbar { position: absolute; z-index: 6; display: none; outline: 0px; }
+.CodeMirror-vscrollbar { right: 0px; top: 0px; overflow: hidden; }
+.CodeMirror-hscrollbar { bottom: 0px; left: 0px; overflow: auto hidden; }
+.CodeMirror-scrollbar-filler { right: 0px; bottom: 0px; }
+.CodeMirror-gutter-filler { left: 0px; bottom: 0px; }
+.CodeMirror-gutters { position: absolute; left: 0px; top: 0px; padding-bottom: 10px; z-index: 3; overflow-y: hidden; }
+.CodeMirror-gutter { white-space: normal; height: 100%; box-sizing: content-box; padding-bottom: 30px; margin-bottom: -32px; display: inline-block; }
+.CodeMirror-gutter-wrapper { position: absolute; z-index: 4; background: 0px 0px !important; border: medium !important; }
+.CodeMirror-gutter-background { position: absolute; top: 0px; bottom: 0px; z-index: 4; }
+.CodeMirror-gutter-elt { position: absolute; cursor: default; z-index: 4; }
+.CodeMirror-lines { cursor: text; }
+.CodeMirror pre { border-radius: 0px; border-width: 0px; background: 0px 0px; font-family: inherit; font-size: inherit; margin: 0px; white-space: pre; overflow-wrap: normal; color: inherit; z-index: 2; position: relative; overflow: visible; }
+.CodeMirror-wrap pre { overflow-wrap: break-word; white-space: pre-wrap; word-break: normal; }
+.CodeMirror-code pre { border-right-width: 30px; border-right-style: solid; border-right-color: transparent; width: fit-content; }
+.CodeMirror-wrap .CodeMirror-code pre { border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: auto; }
+.CodeMirror-linebackground { position: absolute; inset: 0px; z-index: 0; }
+.CodeMirror-linewidget { position: relative; z-index: 2; overflow: auto; }
+.CodeMirror-wrap .CodeMirror-scroll { overflow-x: hidden; }
+.CodeMirror-measure { position: absolute; width: 100%; height: 0px; overflow: hidden; visibility: hidden; }
+.CodeMirror-measure pre { position: static; }
+.CodeMirror div.CodeMirror-cursor { position: absolute; visibility: hidden; border-right-width: medium; border-right-style: none; border-right-color: currentcolor; width: 0px; }
+.CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+.CodeMirror-focused div.CodeMirror-cursor { visibility: inherit; }
+.cm-searching { background: rgba(255, 255, 0, 0.4); }
+span.cm-underlined { text-decoration: underline; }
+span.cm-strikethrough { text-decoration: line-through; }
+.cm-tw-syntaxerror { color: rgb(255, 255, 255); background-color: rgb(153, 0, 0); }
+.cm-tw-deleted { text-decoration: line-through; }
+.cm-tw-header5 { font-weight: 700; }
+.cm-tw-listitem:first-child { padding-left: 10px; }
+.cm-tw-box { border-style: solid; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; border-color: inherit; border-top-width: 0px !important; }
+.cm-tw-underline { text-decoration: underline; }
+@media print {
+  .CodeMirror div.CodeMirror-cursor { visibility: hidden; }
+}
+
+</style>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&amp;subset=latin,latin-ext' type='text/css' />
+<style type='text/css'  id="style-theme_css">:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', 'SF Pro', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    pre {
+        page-break-inside: avoid;
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.mac-os #write{
+    caret-color: AccentColor;
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+</style>
+<style type='text/css'  id="style-lp">ol, ul {padding-left: 40px}</style>
+<style type='text/css'  id="style-mac-print"> @media print { @page {margin: 0 0 0 0;} body.typora-export {padding-left: 0; padding-right: 0;} #write {padding:0;}}</style>
+
+<title>finetuning_intro_lesson_plan</title>
+</head>
+<body class='typora-export'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='introduction-to-fine-tuning-llms'><span>Introduction to Fine-Tuning LLMs</span></h1><p><em><span>A Lesson Module for Graduate AI Agents Course</span></em></p><hr /><figure class='table-figure'><table><thead><tr><th><span>Field</span></th><th><span>Details</span></th></tr></thead><tbody><tr><td><strong><span>Duration</span></strong></td><td><span>60–75 minutes (lecture ~45 min, guided walkthrough ~20 min)</span></td></tr><tr><td><strong><span>Prerequisites</span></strong></td><td><span>Familiarity with how LLMs work (tokens, next-token prediction, transformer architecture at a high level)</span></td></tr><tr><td><strong><span>Format</span></strong></td><td><span>Lecture + read-through walkthrough. Students do not write code in this lesson — they will code in the next exercise.</span></td></tr><tr><td><strong><span>Platform</span></strong></td><td><span>Tinker API (thinkingmachines.ai)</span></td></tr></tbody></table></figure><hr /><h2 id='1-what-is-fine-tuning-and-why-does-it-matter'><span>1. What Is Fine-Tuning and Why Does It Matter?</span></h2><p><span>Pre-trained LLMs are generalists. They have seen enormous amounts of text during pre-training and can do many things passably, but they are not specialists at anything in particular. Fine-tuning takes a pre-trained model and continues training it on a much smaller, task-specific dataset so the model internalizes a particular skill or behavior.</span></p><p><span>The key intuition: pre-training teaches the model </span><em><span>language</span></em><span> — grammar, facts, reasoning patterns, code syntax. Fine-tuning teaches the model a </span><em><span>job</span></em><span> — how to respond in a particular format, follow instructions, translate between representations, or behave according to specific rules.</span></p><p><strong><span>When does fine-tuning make sense over alternatives?</span></strong></p><p><span>Consider three approaches to making an LLM do something new:</span></p><ul><li><p><strong><span>Prompting / few-shot</span></strong><span>: You write instructions and examples in the prompt. Works well for tasks the model already </span><em><span>almost</span></em><span> knows how to do. Costs tokens at every inference call. Limited by the context window.</span></p></li><li><p><strong><span>RAG (Retrieval-Augmented Generation)</span></strong><span>: You retrieve relevant documents and paste them into the context. Works when the task is about </span><em><span>facts</span></em><span> — the model needs information it doesn&#39;t have. Does not help when the model needs to learn a </span><em><span>skill</span></em><span> or </span><em><span>format</span></em><span>.</span></p></li><li><p><strong><span>Fine-tuning</span></strong><span>: You modify the model&#39;s weights so the behavior is baked in. Works when you need the model to reliably perform a transformation, follow a format, or exhibit a skill it currently cannot do. The cost is paid once at training time, not at every inference.</span></p></li></ul><p><strong><span>The rule of thumb:</span></strong><span> If the task requires </span><em><span>knowledge</span></em><span>, use RAG. If the task requires a </span><em><span>skill</span></em><span>, fine-tune. Many real applications use both.</span></p><hr /><h2 id='2-fine-tuning-approaches-full-lora-and-qlora'><span>2. Fine-Tuning Approaches: Full, LoRA, and QLoRA</span></h2><h3 id='21-full-parameter-fine-tuning'><span>2.1 Full-Parameter Fine-Tuning</span></h3><p><span>The simplest conceptual approach: take all the model&#39;s parameters and continue training them with gradient descent on your new dataset, using the same cross-entropy (next-token prediction) loss used during pre-training.</span></p><p><span>For a 7B parameter model, this means updating all 7 billion parameters on every training step. This requires:</span></p><ul><li><p><span>Storing the model weights in GPU memory (in fp16, 7B parameters ≈ 14 GB)</span></p></li><li><p><span>Storing the optimizer state (Adam keeps two additional copies of every parameter: momentum and variance, so another ~28 GB)</span></p></li><li><p><span>Storing the gradients (~14 GB)</span></p></li><li><p><span>Plus activations during the forward pass</span></p></li></ul><p><span>Total: a 7B model easily requires 60+ GB of GPU memory for full fine-tuning. A 70B model requires a cluster of GPUs.</span></p><p><span>Full fine-tuning gives you the maximum flexibility — every parameter can change — but it is expensive and can be overkill for many tasks. It also risks </span><em><span>catastrophic forgetting</span></em><span>: if your fine-tuning dataset is small or narrow, the model may lose general capabilities it had before.</span></p><h3 id='22-lora-low-rank-adaptation'><span>2.2 LoRA (Low-Rank Adaptation)</span></h3><p><strong><span>The core idea:</span></strong><span> Instead of updating all the model&#39;s weight matrices, freeze the original weights and attach small trainable &quot;adapter&quot; matrices alongside them.</span></p><p><span>For each weight matrix W (size n × n) in the transformer, LoRA adds two small matrices: B (size n × r) and A (size r × n), where r is the </span><em><span>rank</span></em><span> — typically 16 or 32. The effective weight becomes:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">W' = W + B × A</span></pre></div></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 23px;"></div><div class="CodeMirror-gutters" style="display: none; height: 23px;"></div></div></div></pre><p><span>Only B and A are trained. The original W is frozen.</span></p><p><strong><span>Why this works:</span></strong><span> The key insight from the LoRA paper (Hu et al., 2021) is that the </span><em><span>change</span></em><span> needed during fine-tuning is typically low-rank — you don&#39;t need to modify all dimensions of every weight matrix. A rank-32 adapter on a model with hidden dimension 4096 adds only 2 × 4096 × 32 = 262,144 parameters per layer, compared to 4096 × 4096 = 16.8 million in the original matrix. That is about 1.5% of the parameters.</span></p><p><strong><span>Practical benefits:</span></strong></p><ul><li><p><span>Memory: You only store gradients and optimizer state for the small adapter matrices. A 7B model that needs 60+ GB for full fine-tuning might need only 16–20 GB with LoRA.</span></p></li><li><p><span>Speed: Fewer parameters to update means faster training steps.</span></p></li><li><p><span>Portability: The adapter weights are small files (tens of MB). You can swap adapters without reloading the base model.</span></p></li><li><p><span>Reduced catastrophic forgetting: The base weights are frozen, so the model retains its general capabilities.</span></p></li></ul><p><strong><span>What rank to use?</span></strong><span> Tinker defaults to rank 32. Higher ranks give the model more capacity to learn complex changes but cost more memory and compute. For reinforcement learning and small supervised learning datasets, even low ranks (8–16) work well. For large SL datasets, you may need rank 64 or 128. A useful rule of thumb from the Tinker documentation: LoRA gives good results as long as the number of LoRA parameters is at least as large as the number of completion tokens in your training data.</span></p><p><strong><span>Does LoRA match full fine-tuning?</span></strong><span> The Thinking Machines team (who build Tinker) published research showing that LoRA matches full fine-tuning for RL and small-to-medium SL datasets. For very large SL datasets, full fine-tuning still has an edge — but for most practical tasks, LoRA is sufficient.</span></p><h3 id='23-qlora-quantized-lora'><span>2.3 QLoRA (Quantized LoRA)</span></h3><p><span>QLoRA (Dettmers et al., 2023) combines LoRA with </span><em><span>quantization</span></em><span> of the frozen base weights. Instead of keeping the base model in 16-bit precision, QLoRA stores it in 4-bit (NF4 format), dramatically reducing memory usage.</span></p><p><span>The math: a 7B model in 16-bit needs ~14 GB for weights alone. In 4-bit, it needs ~3.5 GB. Add the LoRA adapters (still in 16-bit) and the optimizer state for those adapters, and you can fine-tune a 7B model on a single consumer GPU with 8 GB of VRAM.</span></p><p><strong><span>The tradeoff:</span></strong><span> Quantization introduces some approximation error. The base model is slightly less precise, and there can be subtle quality differences compared to full-precision LoRA. In practice, QLoRA achieves results very close to standard LoRA for most tasks, and the memory savings are enormous.</span></p><p><strong><span>When to use which:</span></strong></p><figure class='table-figure'><table><thead><tr><th><span>Approach</span></th><th><span>Memory</span></th><th><span>Quality</span></th><th><span>When to Use</span></th></tr></thead><tbody><tr><td><span>Full fine-tuning</span></td><td><span>Very high (60+ GB for 7B)</span></td><td><span>Best (all params trainable)</span></td><td><span>Large datasets, production models, research</span></td></tr><tr><td><span>LoRA</span></td><td><span>Moderate (16–20 GB for 7B)</span></td><td><span>Near-full-FT for most tasks</span></td><td><span>Most practical fine-tuning</span></td></tr><tr><td><span>QLoRA</span></td><td><span>Low (8–12 GB for 7B)</span></td><td><span>Slightly below LoRA</span></td><td><span>Limited GPU budget, prototyping, education</span></td></tr></tbody></table></figure><h3 id='24-where-tinker-fits'><span>2.4 Where Tinker Fits</span></h3><p><span>In a traditional fine-tuning setup, you would run all of this on your own GPUs — managing CUDA, distributed training, memory management, and fault recovery. This is where most of the engineering pain lives.</span></p><p><span>Tinker takes a different approach: you write a simple Python loop on your laptop (CPU only) that specifies the data, the loss function, and the optimizer settings. Tinker&#39;s servers handle the actual GPU computation — LoRA training distributed across their cluster. You never touch a GPU.</span></p><p><span>The API has four core primitives:</span></p><ul><li><p><code>forward_backward(data, loss_fn)</code><span> — computes the forward pass and gradients on Tinker&#39;s GPUs</span></p></li><li><p><code>optim_step(params)</code><span> — updates the LoRA adapter weights using the accumulated gradients</span></p></li><li><p><code>sample(prompt, params)</code><span> — generates text from the current model (base + adapter)</span></p></li><li><p><code>save_state()</code><span> / </span><code>load_state()</code><span> — checkpoint and resume</span></p></li></ul><p><span>This is not a black-box &quot;upload your data and we train for you&quot; service. You control the training loop, the batch size, the learning rate, what data goes in each batch, and when to evaluate. Tinker just handles the distributed GPU infrastructure.</span></p><hr /><h2 id='3-supervised-fine-tuning-the-mechanics'><span>3. Supervised Fine-Tuning: The Mechanics</span></h2><p><span>Regardless of whether you use full fine-tuning, LoRA, or QLoRA, the supervised fine-tuning (SFT) procedure follows the same pattern:</span></p><h3 id='31-the-training-example-format'><span>3.1 The Training Example Format</span></h3><p><span>Each training example is a sequence of tokens divided into two parts:</span></p><ul><li><p><strong><span>Prompt tokens</span></strong><span> (weight = 0): The input that provides context. The model sees these but is not penalized for &quot;predicting&quot; them incorrectly.</span></p></li><li><p><strong><span>Completion tokens</span></strong><span> (weight = 1): The output the model should learn to produce. The cross-entropy loss is computed only on these tokens.</span></p></li></ul><p><span>For example, if you are training a model to translate English to Pig Latin:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">English: banana split &nbsp; &nbsp; &nbsp;  ← prompt (weight = 0)</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Pig Latin: anana-bay plit-say ← completion (weight = 1)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>The model is trained to predict the completion tokens given the prompt tokens. The weight mask ensures the loss only counts on the part we care about.</span></p><h3 id='32-next-token-prediction-and-the-shift'><span>3.2 Next-Token Prediction and the Shift</span></h3><p><span>LLMs predict the </span><em><span>next</span></em><span> token given all previous tokens. So the training data must be &quot;shifted by one&quot;: the input at position i is the token at position i, and the target at position i is the token at position i+1.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Input tokens:  [English] [:]  [ banana] [ split] [\n] [Pig] [ Latin] [:]  [ an] &nbsp; [ana]  ...</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Target tokens: [:] &nbsp; &nbsp; &nbsp; [ banana] [ split]  [\n] &nbsp;  [Pig] [ Latin] [:] [ an] &nbsp; [ana]  [-bay] ...</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Weights: &nbsp; &nbsp; &nbsp;  0 &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp;  0 &nbsp; &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp; &nbsp; 0 &nbsp; &nbsp;  0 &nbsp; &nbsp; &nbsp; 0 &nbsp;  1 &nbsp; &nbsp; &nbsp; 1 &nbsp; &nbsp;  1 &nbsp; &nbsp; ...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 69px;"></div><div class="CodeMirror-gutters" style="display: none; height: 69px;"></div></div></div></pre><p><span>Notice how the weight switches from 0 to 1 at exactly the point where the completion begins. Everything before that is context; everything after is what the model should learn.</span></p><h3 id='33-the-training-loop'><span>3.3 The Training Loop</span></h3><p><span>A single training step:</span></p><ol start='' ><li><p><span>Take a batch of training examples (e.g., 16 examples)</span></p></li><li><p><span>Run the forward pass: compute the model&#39;s predicted probability of each target token</span></p></li><li><p><span>Compute the loss: negative log-likelihood of the correct target tokens, weighted by the weight mask</span></p></li><li><p><span>Run the backward pass: compute gradients of the loss with respect to the trainable parameters</span></p></li><li><p><span>Update the parameters using an optimizer (typically Adam)</span></p></li></ol><p><span>Repeat for many batches. Track the loss — it should decrease over time. Periodically evaluate on held-out test data to check for overfitting.</span></p><h3 id='34-key-hyperparameters'><span>3.4 Key Hyperparameters</span></h3><ul><li><p><strong><span>Learning rate</span></strong><span>: The most important hyperparameter. Too high and the model diverges; too low and it learns nothing. LoRA requires a much higher learning rate than full fine-tuning — typically 20–100× higher, because the adapter matrices are small and need larger updates to have an effect.</span></p></li><li><p><strong><span>Batch size</span></strong><span>: Number of examples per gradient update. Larger batches give more stable gradients but cost more memory.</span></p></li><li><p><strong><span>Number of steps / epochs</span></strong><span>: How long to train. More is not always better — at some point the model starts memorizing the training data rather than generalizing.</span></p></li><li><p><strong><span>LoRA rank</span></strong><span>: Controls the capacity of the adapter. Higher rank = more parameters = more capacity, but also more memory and compute.</span></p></li></ul><hr /><h2 id='4-walkthrough-teaching-pig-latin-with-tinker'><span>4. Walkthrough: Teaching Pig Latin with Tinker</span></h2><p><span>Now we will walk through a complete fine-tuning example step by step. </span><strong><span>You will not write code in this section</span></strong><span> — just read through and understand each step. In the next exercise, you will write a similar script yourself for a more challenging task.</span></p><h3 id='41-the-task'><span>4.1 The Task</span></h3><p><span>Teach Llama-3.2-1B to translate English phrases into Pig Latin. The rules are:</span></p><ul><li><p><span>If a word begins with a consonant, move the consonant to the end and add &quot;ay&quot; (e.g., &quot;banana&quot; → &quot;anana-bay&quot;)</span></p></li><li><p><span>If a word begins with a vowel, add &quot;way&quot; to the end (e.g., &quot;exploration&quot; → &quot;exploration-way&quot;)</span></p></li></ul><p><span>This is a good first fine-tuning task because: the rule is simple and deterministic, we can generate our own training data, and the base model is terrible at it (so the before/after contrast is dramatic).</span></p><h3 id='42-setup'><span>4.2 Setup</span></h3><p><span>Two dependencies:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="bash"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="bash"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation"><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">pip install tinker transformers</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">export</span> <span class="cm-def">TINKER_API_KEY</span><span class="cm-operator">=</span>your_key_here</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 46px;"></div><div class="CodeMirror-gutters" style="display: none; height: 46px;"></div></div></div></pre><p><span>The </span><code>tinker</code><span> package handles the API communication. The </span><code>transformers</code><span> package provides the tokenizer.</span></p><h3 id='43-create-a-training-client'><span>4.3 Create a Training Client</span></h3><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">tinker</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">from</span> <span class="cm-variable">tinker</span> <span class="cm-keyword">import</span> <span class="cm-variable">types</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">service_client</span> <span class="cm-operator">=</span> <span class="cm-variable">tinker</span>.<span class="cm-property">ServiceClient</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">training_client</span> <span class="cm-operator">=</span> <span class="cm-variable">service_client</span>.<span class="cm-property">create_lora_training_client</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">base_model</span><span class="cm-operator">=</span><span class="cm-string">"meta-llama/Llama-3.2-1B"</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">rank</span><span class="cm-operator">=</span><span class="cm-number">32</span>,</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">tokenizer</span> <span class="cm-operator">=</span> <span class="cm-variable">training_client</span>.<span class="cm-property">get_tokenizer</span>()</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>This creates a LoRA adapter (rank 32) attached to the frozen Llama-3.2-1B weights on Tinker&#39;s servers. The </span><code>training_client</code><span> object is your handle to that remote model. The tokenizer runs locally on your machine.</span></p><h3 id='44-define-the-training-data'><span>4.4 Define the Training Data</span></h3><p><span>Just 7 handwritten examples:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">examples</span> <span class="cm-operator">=</span> [</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"banana split"</span>, &nbsp; &nbsp; &nbsp;<span class="cm-string">"output"</span>: <span class="cm-string">"anana-bay plit-say"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"quantum physics"</span>, &nbsp; <span class="cm-string">"output"</span>: <span class="cm-string">"uantum-qay ysics-phay"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"donut shop"</span>, &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"output"</span>: <span class="cm-string">"onut-day op-shay"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"pickle jar"</span>, &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">"output"</span>: <span class="cm-string">"ickle-pay ar-jay"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"space exploration"</span>, <span class="cm-string">"output"</span>: <span class="cm-string">"ace-spay exploration-way"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"rubber duck"</span>, &nbsp; &nbsp; &nbsp; <span class="cm-string">"output"</span>: <span class="cm-string">"ubber-ray uck-day"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  {<span class="cm-string">"input"</span>: <span class="cm-string">"coding wizard"</span>, &nbsp; &nbsp; <span class="cm-string">"output"</span>: <span class="cm-string">"oding-cay izard-way"</span>},</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>In a real fine-tuning job you would use thousands or millions of examples. Here we use 7 to keep the demo simple and fast.</span></p><h3 id='45-tokenize-with-weight-masks'><span>4.5 Tokenize with Weight Masks</span></h3><p><span>Each example must be converted into a </span><code>Datum</code><span> — Tinker&#39;s format for a training example. The critical step is setting the weight mask so the model only learns to predict the Pig Latin output, not the English prompt.</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">def</span> <span class="cm-def">process_example</span>(<span class="cm-variable">example</span>, <span class="cm-variable">tokenizer</span>):</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">prompt</span> <span class="cm-operator">=</span> <span class="cm-string">f"English: </span>{<span class="cm-variable">example</span>[<span class="cm-string">'input'</span>]}<span class="cm-string">\nPig Latin:"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Tokenize prompt — the model sees this but is NOT trained on it</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">prompt_tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>.<span class="cm-property">encode</span>(<span class="cm-variable">prompt</span>, <span class="cm-variable">add_special_tokens</span><span class="cm-operator">=</span><span class="cm-keyword">True</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">prompt_weights</span> <span class="cm-operator">=</span> [<span class="cm-number">0</span>] <span class="cm-operator">*</span> <span class="cm-builtin">len</span>(<span class="cm-variable">prompt_tokens</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Tokenize completion — the model IS trained to produce this</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">completion_tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">tokenizer</span>.<span class="cm-property">encode</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-string">f" </span>{<span class="cm-variable">example</span>[<span class="cm-string">'output'</span>]}<span class="cm-string">\n\n"</span>, <span class="cm-variable">add_special_tokens</span><span class="cm-operator">=</span><span class="cm-keyword">False</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">completion_weights</span> <span class="cm-operator">=</span> [<span class="cm-number">1</span>] <span class="cm-operator">*</span> <span class="cm-builtin">len</span>(<span class="cm-variable">completion_tokens</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Concatenate and shift for next-token prediction</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">prompt_tokens</span> <span class="cm-operator">+</span> <span class="cm-variable">completion_tokens</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">weights</span> <span class="cm-operator">=</span> <span class="cm-variable">prompt_weights</span> <span class="cm-operator">+</span> <span class="cm-variable">completion_weights</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">input_tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">tokens</span>[:<span class="cm-operator">-</span><span class="cm-number">1</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">target_tokens</span> <span class="cm-operator">=</span> <span class="cm-variable">tokens</span>[<span class="cm-number">1</span>:]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">weights</span> <span class="cm-operator">=</span> <span class="cm-variable">weights</span>[<span class="cm-number">1</span>:]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-keyword">return</span> <span class="cm-variable">types</span>.<span class="cm-property">Datum</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">model_input</span><span class="cm-operator">=</span><span class="cm-variable">types</span>.<span class="cm-property">ModelInput</span>.<span class="cm-property">from_ints</span>(<span class="cm-variable">tokens</span><span class="cm-operator">=</span><span class="cm-variable">input_tokens</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">loss_fn_inputs</span><span class="cm-operator">=</span><span class="cm-builtin">dict</span>(<span class="cm-variable">weights</span><span class="cm-operator">=</span><span class="cm-variable">weights</span>, <span class="cm-variable">target_tokens</span><span class="cm-operator">=</span><span class="cm-variable">target_tokens</span>),</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">processed</span> <span class="cm-operator">=</span> [<span class="cm-variable">process_example</span>(<span class="cm-variable">ex</span>, <span class="cm-variable">tokenizer</span>) <span class="cm-keyword">for</span> <span class="cm-variable">ex</span> <span class="cm-keyword">in</span> <span class="cm-variable">examples</span>]</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 621px;"></div><div class="CodeMirror-gutters" style="display: none; height: 621px;"></div></div></div></pre><p><strong><span>What is happening here:</span></strong></p><ol start='' ><li><p><span>The prompt </span><code>&quot;English: banana split\nPig Latin:&quot;</code><span> is tokenized into tokens. Each gets weight 0.</span></p></li><li><p><span>The completion </span><code>&quot; anana-bay plit-say\n\n&quot;</code><span> is tokenized. Each gets weight 1. (Note the leading space — it separates the completion from the colon.)</span></p></li><li><p><span>The full token sequence is shifted by one position to create input/target pairs for next-token prediction.</span></p></li><li><p><span>The result is packaged as a </span><code>Datum</code><span> with </span><code>model_input</code><span> (what the model sees) and </span><code>loss_fn_inputs</code><span> (targets and weights for the loss function).</span></p></li></ol><p><span>If we visualize the tokens around the transition from prompt to completion:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Input Token &nbsp; &nbsp;  Target Token &nbsp; &nbsp; Weight</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">-------------------------------------------</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">' Latin' &nbsp; &nbsp; &nbsp; &nbsp; ':' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  0 &nbsp; &nbsp; &nbsp;  ← still prompt</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">':' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ' an' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  1 &nbsp; &nbsp; &nbsp;  ← completion starts here</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">' an' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  'ana' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">'ana' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  '-' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">'-' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  'bay' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">'bay' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ' p' &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 1</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 207px;"></div><div class="CodeMirror-gutters" style="display: none; height: 207px;"></div></div></div></pre><p><span>The model learns: &quot;after seeing </span><code>English: banana split\nPig Latin:</code><span>, the next tokens should be </span><code>anana-bay plit-say</code><span>.&quot;</span></p><h3 id='46-train'><span>4.6 Train</span></h3><p><span>The training loop is remarkably simple — 6 steps, all 7 examples in each batch:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">import</span> <span class="cm-variable">numpy</span> <span class="cm-keyword">as</span> <span class="cm-variable">np</span></span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">step</span> <span class="cm-keyword">in</span> <span class="cm-builtin">range</span>(<span class="cm-number">6</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Forward + backward: compute gradients on Tinker's GPUs</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">fwdbwd_future</span> <span class="cm-operator">=</span> <span class="cm-variable">training_client</span>.<span class="cm-property">forward_backward</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">processed</span>, <span class="cm-string">"cross_entropy"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Optimizer step: update the LoRA adapter weights</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">optim_future</span> <span class="cm-operator">=</span> <span class="cm-variable">training_client</span>.<span class="cm-property">optim_step</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp;<span class="cm-variable">types</span>.<span class="cm-property">AdamParams</span>(<span class="cm-variable">learning_rate</span><span class="cm-operator">=</span><span class="cm-number">1e-4</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-comment"># Wait for results and compute loss</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">fwdbwd_result</span> <span class="cm-operator">=</span> <span class="cm-variable">fwdbwd_future</span>.<span class="cm-property">result</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">optim_result</span> <span class="cm-operator">=</span> <span class="cm-variable">optim_future</span>.<span class="cm-property">result</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">logprobs</span> <span class="cm-operator">=</span> <span class="cm-variable">np</span>.<span class="cm-property">concatenate</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  [<span class="cm-variable">out</span>[<span class="cm-string">'logprobs'</span>].<span class="cm-property">tolist</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-keyword">for</span> <span class="cm-variable">out</span> <span class="cm-keyword">in</span> <span class="cm-variable">fwdbwd_result</span>.<span class="cm-property">loss_fn_outputs</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">weights</span> <span class="cm-operator">=</span> <span class="cm-variable">np</span>.<span class="cm-property">concatenate</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp;  [<span class="cm-variable">ex</span>.<span class="cm-property">loss_fn_inputs</span>[<span class="cm-string">'weights'</span>].<span class="cm-property">tolist</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp; &nbsp; &nbsp; <span class="cm-keyword">for</span> <span class="cm-variable">ex</span> <span class="cm-keyword">in</span> <span class="cm-variable">processed</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp;  )</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">loss</span> <span class="cm-operator">=</span> <span class="cm-operator">-</span><span class="cm-variable">np</span>.<span class="cm-property">dot</span>(<span class="cm-variable">logprobs</span>, <span class="cm-variable">weights</span>) <span class="cm-operator">/</span> <span class="cm-variable">weights</span>.<span class="cm-property">sum</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f"Step </span>{<span class="cm-variable">step</span>}<span class="cm-string">: loss = </span>{<span class="cm-variable">loss</span>:<span class="cm-number">.4</span><span class="cm-variable">f</span>}<span class="cm-string">"</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 621px;"></div><div class="CodeMirror-gutters" style="display: none; height: 621px;"></div></div></div></pre><p><strong><span>What is happening on each step:</span></strong></p><ol start='' ><li><p><code>forward_backward</code><span> sends all 7 tokenized examples to Tinker. The server runs the forward pass through Llama-3.2-1B + the LoRA adapter, computes the cross-entropy loss (weighted by the weight mask), and backpropagates to get gradients for the adapter parameters. It returns a </span><em><span>future</span></em><span> — the computation happens asynchronously.</span></p></li><li><p><code>optim_step</code><span> tells the server to update the adapter weights using Adam with learning rate 1e-4. Also returns a future.</span></p></li><li><p><span>We call </span><code>.result()</code><span> on both futures to wait for completion.</span></p></li><li><p><span>We compute the weighted average loss from the returned log-probabilities. This should decrease over the 6 steps.</span></p></li></ol><p><span>Note: both API calls return futures immediately. We submit both before waiting, which allows them to pipeline on the server.</span></p><p><strong><span>Expected output (approximate):</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Step 0: loss = 8.2341</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Step 1: loss = 5.1892</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Step 2: loss = 3.0156</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Step 3: loss = 1.8743</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Step 4: loss = 1.1205</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Step 5: loss = 0.7831</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 138px;"></div><div class="CodeMirror-gutters" style="display: none; height: 138px;"></div></div></div></pre><p><span>The loss drops sharply because we have only 7 examples and the model can memorize them quickly. In a real task with thousands of examples, the loss would decrease more gradually.</span></p><h3 id='47-sample-from-the-fine-tuned-model'><span>4.7 Sample from the Fine-Tuned Model</span></h3><p><span>To generate text, we first save the current adapter weights and create a sampling client:</span></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang="python" style="break-inside: unset;"><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang="python"><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">sampler</span> <span class="cm-operator">=</span> <span class="cm-variable">training_client</span>.<span class="cm-property">save_weights_and_get_sampling_client</span>(</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">name</span><span class="cm-operator">=</span><span class="cm-string">"pig-latin-model"</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">prompt</span> <span class="cm-operator">=</span> <span class="cm-variable">types</span>.<span class="cm-property">ModelInput</span>.<span class="cm-property">from_ints</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">tokenizer</span>.<span class="cm-property">encode</span>(<span class="cm-string">"English: coffee break\nPig Latin:"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">params</span> <span class="cm-operator">=</span> <span class="cm-variable">types</span>.<span class="cm-property">SamplingParams</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">max_tokens</span><span class="cm-operator">=</span><span class="cm-number">20</span>, <span class="cm-variable">temperature</span><span class="cm-operator">=</span><span class="cm-number">0.0</span>, <span class="cm-variable">stop</span><span class="cm-operator">=</span>[<span class="cm-string">"\n"</span>]</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-variable">result</span> <span class="cm-operator">=</span> <span class="cm-variable">sampler</span>.<span class="cm-property">sample</span>(</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-variable">prompt</span><span class="cm-operator">=</span><span class="cm-variable">prompt</span>, <span class="cm-variable">sampling_params</span><span class="cm-operator">=</span><span class="cm-variable">params</span>, <span class="cm-variable">num_samples</span><span class="cm-operator">=</span><span class="cm-number">8</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">).<span class="cm-property">result</span>()</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span cm-text="" cm-zwsp="">
+</span></span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-builtin">print</span>(<span class="cm-string">"Responses:"</span>)</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"><span class="cm-keyword">for</span> <span class="cm-variable">i</span>, <span class="cm-variable">seq</span> <span class="cm-keyword">in</span> <span class="cm-builtin">enumerate</span>(<span class="cm-variable">result</span>.<span class="cm-property">sequences</span>):</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;"> &nbsp; &nbsp;<span class="cm-builtin">print</span>(<span class="cm-string">f" &nbsp;</span>{<span class="cm-variable">i</span>}<span class="cm-string">: </span>{<span class="cm-variable">tokenizer</span>.<span class="cm-property">decode</span>(<span class="cm-variable">seq</span>.<span class="cm-property">tokens</span>)}<span class="cm-string">"</span>)</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 391px;"></div><div class="CodeMirror-gutters" style="display: none; height: 391px;"></div></div></div></pre><p><strong><span>Expected output (approximate):</span></strong></p><pre class="md-fences md-end-block ty-contain-cm modeLoaded" spellcheck="false" lang=""><div class="CodeMirror cm-s-inner cm-s-null-scroll CodeMirror-wrap" lang=""><div style="overflow: hidden; position: relative; width: 3px; height: 0px; top: 9.5px; left: 8px;"><textarea autocorrect="off" autocapitalize="off" spellcheck="false" tabindex="0" style="position: absolute; bottom: -1em; padding: 0px; width: 1000px; height: 1em; outline: currentcolor;"></textarea></div><div class="CodeMirror-scrollbar-filler" cm-not-content="true"></div><div class="CodeMirror-gutter-filler" cm-not-content="true"></div><div class="CodeMirror-scroll" tabindex="-1"><div class="CodeMirror-sizer" style="margin-left: 0px; margin-bottom: 0px; border-right-width: 0px; padding-right: 0px; padding-bottom: 0px;"><div style="position: relative; top: 0px;"><div class="CodeMirror-lines" role="presentation"><div role="presentation" style="position: relative; outline: currentcolor;"><div class="CodeMirror-measure"><pre><span>xxxxxxxxxx</span></pre></div><div class="CodeMirror-measure"></div><div style="position: relative; z-index: 1;"></div><div class="CodeMirror-code" role="presentation" style=""><div class="CodeMirror-activeline" style="position: relative;"><div class="CodeMirror-activeline-background CodeMirror-linebackground"></div><div class="CodeMirror-gutter-background CodeMirror-activeline-gutter" style="left: 0px; width: 0px;"></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">Responses:</span></pre></div><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  0:  offee-cay eak-bray</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  1:  offey-cay eak-bray</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  2:  offecay eakbray</span></pre><pre class=" CodeMirror-line " role="presentation"><span role="presentation" style="padding-right: 0.1px;">  ...</span></pre></div></div></div></div></div><div style="position: absolute; height: 0px; width: 1px; border-bottom-width: 0px; border-bottom-style: solid; border-bottom-color: transparent; top: 115px;"></div><div class="CodeMirror-gutters" style="display: none; height: 115px;"></div></div></div></pre><p><span>The model has learned the Pig Latin pattern — it moves consonants to the end and appends &quot;ay&quot; — even for the phrase &quot;coffee break&quot; which was not in the training data. The outputs are not perfectly consistent (note the slight variations across samples), which reflects the fact that we trained on only 7 examples for 6 steps. More data and more training would improve consistency.</span></p><h3 id='48-what-just-happened'><span>4.8 What Just Happened</span></h3><p><span>Let&#39;s recap what the model </span><em><span>actually learned</span></em><span>:</span></p><ul><li><p><span>The original Llama-3.2-1B weights are </span><strong><span>completely frozen</span></strong><span>. Not a single one of its 1.2 billion parameters changed.</span></p></li><li><p><span>A LoRA adapter with rank 32 was attached to the model&#39;s weight matrices. Only these adapter parameters were trained — roughly 20 million parameters, or about 1.6% of the base model.</span></p></li><li><p><span>After 6 training steps on 7 examples, the adapter learned a pattern: &quot;when you see </span><code>English: [X]\nPig Latin:</code><span>, produce the Pig Latin translation of X.&quot;</span></p></li><li><p><span>The adapter weights are a small file that could be saved, shared, and swapped without reloading the base model.</span></p></li></ul><p><span>All of the actual computation — the forward passes, the gradient calculations, the weight updates — happened on Tinker&#39;s GPU cluster. The Python script on your laptop only sent data and received results over the network.</span></p><hr /><h2 id='5-looking-ahead-the-sql-exercise'><span>5. Looking Ahead: The SQL Exercise</span></h2><p><span>In the next exercise, you will write a fine-tuning script yourself. Instead of Pig Latin (a toy task with 7 examples), you will teach the same Llama-3.2-1B model to translate natural language questions into SQL queries, using a dataset of 78,000 real examples from WikiSQL and Spider.</span></p><p><span>The SQL task is a much stronger test of fine-tuning because:</span></p><ul><li><p><span>The transformation is compositional — the model must combine SQL syntax knowledge with schema understanding</span></p></li><li><p><span>The schemas are diverse — thousands of different table definitions with different column names and types</span></p></li><li><p><span>RAG falls short — you can retrieve similar question-SQL pairs, but the model still needs to </span><em><span>compose</span></em><span> novel SQL for unseen schemas</span></p></li><li><p><span>The before/after contrast will be dramatic — base Llama-3.2-1B will produce gibberish SQL, while the fine-tuned version should generate valid queries</span></p></li></ul><p><span>The code structure will be nearly identical to the Pig Latin walkthrough: load data, tokenize with weight masks, run a training loop, sample before and after. The only differences are the dataset (5,000 examples from a file instead of 7 handwritten ones) and the prompt template (table schemas instead of English phrases).</span></p><hr /><h2 id='6-key-takeaways'><span>6. Key Takeaways</span></h2><ul><li><p><strong><span>Fine-tuning teaches skills; RAG provides facts.</span></strong><span> Use fine-tuning when you need the model to reliably perform a transformation or follow a format.</span></p></li><li><p><strong><span>LoRA is the practical default.</span></strong><span> It matches full fine-tuning quality for most tasks while using a fraction of the memory and compute. QLoRA goes further by quantizing the base weights to 4-bit.</span></p></li><li><p><strong><span>The weight mask is the critical mechanism.</span></strong><span> By setting weights to 0 on prompt tokens and 1 on completion tokens, you teach the model </span><em><span>what to produce</span></em><span> without confusing it about </span><em><span>what it was given</span></em><span>.</span></p></li><li><p><strong><span>Tinker separates the algorithm from the infrastructure.</span></strong><span> You write a simple Python loop on your laptop; the GPU work happens remotely. This is a clean abstraction that lets you focus on data and training decisions.</span></p></li><li><p><strong><span>Small models + fine-tuning can surprise you.</span></strong><span> Llama-3.2-1B (1.2 billion parameters) is tiny by modern standards, but fine-tuned on the right data, it can learn specific skills that much larger models cannot do out of the box.</span></p></li></ul><hr /><h2 id='7-references-and-further-reading'><span>7. References and Further Reading</span></h2><ul><li><p><strong><span>LoRA paper</span></strong><span>: Hu et al., &quot;LoRA: Low-Rank Adaptation of Large Language Models&quot; (2021). </span><a href='https://arxiv.org/abs/2106.09685'><span>arXiv:2106.09685</span></a></p></li><li><p><strong><span>QLoRA paper</span></strong><span>: Dettmers et al., &quot;QLoRA: Efficient Finetuning of Quantized Language Models&quot; (2023). </span><a href='https://arxiv.org/abs/2305.14314'><span>arXiv:2305.14314</span></a></p></li><li><p><strong><span>LoRA Without Regret</span></strong><span> (Thinking Machines analysis of LoRA vs full fine-tuning): </span><a href='https://thinkingmachines.ai/blog/lora'><span>thinkingmachines.ai/blog/lora</span></a></p></li><li><p><strong><span>Tinker documentation</span></strong><span>: </span><a href='https://tinker-docs.thinkingmachines.ai/'><span>tinker-docs.thinkingmachines.ai</span></a></p></li><li><p><strong><span>Tinker Cookbook</span></strong><span> (code examples for SL, RL, RLHF, tool use): </span><a href='https://github.com/thinking-machines-lab/tinker-cookbook'><span>github.com/thinking-machines-lab/tinker-cookbook</span></a></p></li></ul><hr /><p><em><span>End of Module — Introduction to Fine-Tuning LLMs</span></em></p></div></div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('a[href*=".md"]').forEach(link => {
+    link.href = link.href.replace(/\.md(\b|(?=[?#]))/, '.html$1');
+  });
+});
+</script></body>
+</html>
